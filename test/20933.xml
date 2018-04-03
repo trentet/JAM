@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Message UID="20933">
+  <Part ID="0">
+    <Delivered-To>trentfromrid@gmail.com</Delivered-To>
+    <Received>by 10.2.30.221 with SMTP id 90csp1579842jat; Thu, 10 Aug 201713:52:03 -0700 (PDT)</Received>
+    <X-Received>by 10.55.138.71 with SMTP id m68mr16795699qkd.137.1502398323615;Thu, 10 Aug 2017 13:52:03 -0700 (PDT)</X-Received>
+    <ARC-Seal>i=1; a=rsa-sha256; t=1502398323; cv=none; d=google.com;s=arc-20160816;b=DIVEDocwdBddrhm3Uy7w+rcEnuv0Zi31ZsAZKyvZRwW1fQVHeW8UMgqkskRtbxdULYpS36o6kO5WOQiyCkNxW6M7zAeiXrKo9Zb5Q9bjhi8PuAx5L9SchTbZzqz2rbpZ4ngH0Zx0m9pW+5uaDbNeCx5dckX30MeES9Q9uSGAGY1FpkbIo741AtW6tF++cvpMIaavvfPtD/rlUER1uuMoiqcSX3d5DgqW/5SCXmgfPrHXyyEF21BZtmPxukvRTmvET4/oELjjMLWft6SlmPGKD4+GrOZHpDu/RNQ6QAvwr76kLaTqnBLUro/Wb9mVyaEmxTrPnqC/c4BLiwsLiO 3pag==</ARC-Seal>
+    <ARC-Message-Signature>i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;s=arc-20160816;h=replyto:mime-version:subject:message-id:to:reply-to:from:date:dkim-signature:dkim-filter:arc-authentication-results;bh=ZInumyVD/r/xdvb1bkfEqMfVTVfFON3MrRYa4qLPmdM=;b=jtNhx7j9I+1MpejJiPDJj9xuKCO+2NGjWjnS/oOBdqUIWWQ0me99bUqOO841Z9xWljwJfLymtpibY6qi2hmEV1OvMTIE+MisP2sgigx7ELBieceWIF15JciQ6A/Jo2Wwv4mfw11x9rfkYYZEGIS0ukoTv2Uef8f5h2qyyCe9MfumyzDh5U+UTEZtkvR5AJdaWTD0iB1wcNzp5tOKck7tGf/JF3yCkGo+4PxR/PL3yloR1rj0RC9+Tpp9svUX7tdMGZSeIkFG81Z+Cfdd1PtxBjR8yt6rv9wysEgEo4TQVXmUHq9dBtoHnpLs2NdtbLHP3lAdNBSQ41Lp5ISjxB zejQ==</ARC-Message-Signature>
+    <ARC-Authentication-Results>i=1; mx.google.com; dkim=pass header.i=@ebay.comheader.s=dkim1k header.b=gyNw2Pyw; spf=pass (google.com: domain ofebay@ebay.com designates 66.211.184.69 as permitted sender)smtp.mailfrom=ebay@ebay.com; dmarc=pass (p=NONE sp=NONE dis=NONE)header.from=ebay.com</ARC-Authentication-Results>
+    <Return-Path>&lt;ebay@ebay.com&gt;</Return-Path>
+    <Received>from mxphxpool1003.ebay.com (mxphxpool1003.ebay.com.[66.211.184.69]) by mx.google.com with ESMTPS idm6si6148747qkb.345.2017.08.10.13.52.03 for &lt;trentfromrid@gmail.com&gt;(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128); Thu, 10 Aug2017 13:52:03 -0700 (PDT)</Received>
+    <Received-SPF>pass (google.com: domain of ebay@ebay.com designates66.211.184.69 as permitted sender) client-ip=66.211.184.69;</Received-SPF>
+    <Authentication-Results>mx.google.com; dkim=pass header.i=@ebay.comheader.s=dkim1k header.b=gyNw2Pyw; spf=pass (google.com: domain ofebay@ebay.com designates 66.211.184.69 as permitted sender)smtp.mailfrom=ebay@ebay.com; dmarc=pass (p=NONE sp=NONE dis=NONE)header.from=ebay.com</Authentication-Results>
+    <Received>from chd1b02c-834e.stratus.phx.ebay.com(chd1b02c-834e.stratus.phx.ebay.com [10.98.31.85]) by mxphxpool1003.ebay.com(8.14.7/8.14.7) with ESMTP id v7AKp7sW021760 for &lt;trentfromrid@gmail.com&gt;;Thu, 10 Aug 2017 13:52:02 -0700</Received>
+    <DKIM-Filter>OpenDKIM Filter v2.10.3 mxphxpool1003.ebay.com v7AKp7sW021760</DKIM-Filter>
+    <DKIM-Signature>v=1; a=rsa-sha1; c=relaxed/relaxed; d=ebay.com; s=dkim1k;t=1502398322; bh=7PWL7IKtksenf4hVN1BuJ0ZDHPM=; h=From:Reply-To:To:Subject;b=gyNw2PywMB8HkDT/lyKxANX7wdCSMsZ9eJmz0rjkXw2irmFtDhSh5lvKUeXTnUfzg4KiG7t0WQp6nf6TyE0YhXtqt7RtZa1cE3UQHdTuHPis9gcNnSzesozuBoUYC/z8sM2g3fYRX5X9TfKA8+0UdU9+SGAnrjCOBQCEHAwVTks=</DKIM-Signature>
+    <Date>Thu, 10 Aug 2017 13:52:02 -0700</Date>
+    <From>eBay &lt;ebay@ebay.com&gt;</From>
+    <Reply-To>ebay@ebay.com</Reply-To>
+    <To>trentfromrid@gmail.com</To>
+    <Message-ID>&lt;85240599-4b37-45b0-9cb2-c9786cc2d592@chd1b02c-834e&gt;</Message-ID>
+    <Subject>The seller accepted your return</Subject>
+    <MIME-Version>1.0</MIME-Version>
+    <Content-Type>multipart/alternative;boundary="----=_Part_59132239_1555193010.1502398322314"</Content-Type>
+    <ReplyTo>ebay@ebay.com</ReplyTo>
+    <X-eBay-MailVersionTracker>1011.18404497</X-eBay-MailVersionTracker>
+    <X-eBay-MailTracker>11922.1011.0.0.a919d707e9644f59b3c590845e88cbfb</X-eBay-MailTracker>
+    <Part ID="1">
+      <DATA>
+-----------------------------------------------------------------
+Get ready to send the item back=20
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Get ready to send the item back, thomatretren
+-----------------------------------------------------------------
+
+Hi thomatretren,=20
+
+nintendoplayerschoice accepted a return for 10X NINTENDO GAMECUBE CONTROLLE=
+R JOYSTICK CAPS GRAY + TRI WING SCREWDRIVER.
+
+You should receive a return shipping label by Aug 15, 2017. We'll email you=
+ as soon as it's ready.
+
+You should receive a refund no later than 6 days after the item's delivered=
+ back to the seller.
+
+
+
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+See return details
+http://postorder.ebay.com/Return/ReturnsDetail?returnId=3D5062046401
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+
+=20
+-----------------------------------------------------------------
+Item Information
+-----------------------------------------------------------------
+10X NINTENDO GAMECUBE CONTROLLER JOYSTICK CAPS GRAY + TRI WING SCREWDRIVER =
+http://rover.ebay.com/rover/0/e11922.m43.l3160/7?euid=3Da919d707e9644f59b3c=
+590845e88cbfb&amp;loc=3Dhttp%3A%2F%2Fcgi.ebay.com%2Fws%2FeBayISAPI.dll%3FViewIt=
+em%26item%3D191641950590%26ssPageName%3DADME%3AX%3ARRIRTB%3AUS%3A3160
+Item ID: 191641950590
+Return ID: 5062046401
+Seller ID: nintendoplayerschoice
+Return Quantity: 0
+=20
+-----------------------------------------------------------------
+Email reference id: [#a919d707e9644f59b3c590845e88cbfb#]
+-----------------------------------------------------------------
+
+
+-----------------------------------------------------------------
+eBay sent this message to Trent Thomas (thomatretren). Learn more http://ro=
+ver.ebay.com/rover/0/e11922.m1852.l3167/7?euid=3Da919d707e9644f59b3c590845e=
+88cbfb&amp;loc=3Dhttp%3A%2F%2Fpages.ebay.com%2Fhelp%2Fconfidence%2Fname-userid-=
+emails.html%3FssPageName%3DADME%3AX%3ARRIRTB%3AUS%3A3167
+
+Why am I receiving this email?
+You are receiving this email based on your eBay account preferences. If you=
+'d rather not receive these emails, click unsubscribe http://rover.ebay.com=
+/rover/0/e11922.m1852.l1142/7?euid=3Da919d707e9644f59b3c590845e88cbfb&amp;loc=
+=3Dhttp%3A%2F%2Fmy.ebay.com%2Fws%2FeBayISAPI.dll%3FEmailUnsubscribe%26email=
+Type%3D11922%26ssPageName%3DADME%3AX%3ARRIRTB%3AUS%3A1142.
+
+eBay is committed to your privacy. Learn more about our privacy notice http=
+://rover.ebay.com/rover/0/e11922.m1852.l3168/7?euid=3Da919d707e9644f59b3c59=
+0845e88cbfb&amp;loc=3Dhttp%3A%2F%2Fpages.ebay.com%2Fhelp%2Fpolicies%2Fprivacy-p=
+olicy.html%3FssPageName%3DADME%3AX%3ARRIRTB%3AUS%3A3168 and user agreement =
+http://rover.ebay.com/rover/0/e11922.m1852.l3165/7?euid=3Da919d707e9644f59b=
+3c590845e88cbfb&amp;loc=3Dhttp%3A%2F%2Fpages.ebay.com%2Fhelp%2Fpolicies%2Fuser-=
+agreement.html%3FssPageName%3DADME%3AX%3ARRIRTB%3AUS%3A3165.
+
+=C2=A9 2017 eBay Inc., 2145 Hamilton Avenue, San Jose, CA 95125
+
+</DATA>
+      <content-type>TEXT/PLAIN; CHARSET="UTF-8"</content-type>
+      <content-transfer-encoding>QUOTED-PRINTABLE</content-transfer-encoding>
+      <content-size>3340</content-size>
+    </Part>
+    <Part ID="2">
+      <DATA>&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt; &lt;table width=3D"600"&gt;&lt;tr&gt;&lt;td&gt;&lt;div id=3D"preHeader=
+Component" style=3D"font-family: Verdana;font-size: 10px;color: #333333;tex=
+t-align: right;"&gt;=09Get ready to send the item back&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;=
+=09=09&lt;!-- Begin eBay Header --&gt;&lt;div style=3D"width:600px"&gt;&lt;table width=3D"=
+600" CELLPADDING=3D0 CELLSPACING=3D-5&gt;=09=09&lt;tr&gt;=09=09=09&lt;td style=3D"width=
+:300px"&gt;=09=09=09=09&lt;a href=3D"http://rover.ebay.com/rover/0/e11922.m1831.l=
+3127/7?euid=3Da919d707e9644f59b3c590845e88cbfb&amp;amp;loc=3Dhttp%3A%2F%2Fwww.e=
+bay.com%3FssPageName%3DADME%3AX%3ARRIRTB%3AUS%3A3127"&gt;&lt;img title=3D"eBay" s=
+rc=3D"http://p.ebaystatic.com/aw/pics/logos/logoEbay_x45.gif" alt=3D"eBay" =
+border=3D"0" height=3D"45" width=3D"110"&gt;&lt;/img&gt;&lt;/a&gt;=09=09=09&lt;/td&gt;=09=09&lt;/tr=
+&gt;=09=09&lt;tr&gt;=09=09=09&lt;td colspan=3D2 style=3D"width: 600px; align: center"&gt;=
+=09=09=09&lt;table cellspacing=3D"0" cellpadding=3D"1" border=3D"0" width=3D"1=
+00%"&gt;=09=09=09=09&lt;tr&gt;=09=09=09=09=09&lt;td style=3D"background-color:#FF0000;h=
+eight:2px;width:22%;"&gt;&lt;/td&gt;=09=09=09=09=09&lt;td style=3D"background-color:#99=
+0033;height:2px;width:4%;"&gt;&lt;/td&gt;=09=09=09=09=09&lt;td style=3D"background-colo=
+r:#000099;height:2px;width:22%;"&gt;&lt;/td&gt;=09=09=09=09=09&lt;td style=3D"backgroun=
+d-color:#CC6600;height:2px;width:4%;"&gt;&lt;/td&gt;=09=09=09=09=09&lt;td style=3D"back=
+ground-color:#FFCC00;height:2px;width:22%;"&gt;&lt;/td&gt;=09=09=09=09=09&lt;td style=
+=3D"background-color:#999900;height:2px;width:4%;"&gt;&lt;/td&gt;=09=09=09=09=09&lt;td =
+style=3D"background-color:#99CC00;height:2px;width:22%;"&gt;&lt;/td&gt;=09=09=09=09&lt;=
+/tr&gt;=09=09=09&lt;/table&gt;=09=09=09=09=09=09=09=09=09=09=09&lt;img src=3D"http://ro=
+ver.ebay.com/roveropen/0/e11922/7?euid=3Da919d707e9644f59b3c590845e88cbfb" =
+border=3D"0" height=3D"1" width=3D"1" /&gt;=09=09=09=09=09&lt;/td&gt;=09=09&lt;/tr&gt;=09=
+=09=09=09&lt;/table&gt;&lt;/div&gt; &lt;table width=3D"600" cellspacing=3D"0px" cellpaddin=
+g=3D"0px" style=3D"border-bottom: 1px solid gray;margin-bottom:15px;"&gt;&lt;tr&gt;&lt;=
+td&gt;&lt;div id=3D"titleComponent" style=3D"width:600px;text-align:left;"&gt;&lt;div&gt;=
+=09&lt;p style=3D" color:#333333;font-family:Trebuchet MS;word-wrap:break-word=
+;overflow:hidden;font-size:24px;margin-bottom:5px;margin-top:20px;"&gt;=09Get =
+ready to send the item back, thomatretren&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;=
+&lt;table width=3D"600" cellspacing=3D"0px" cellpadding=3D"0px"&gt;&lt;tr&gt;&lt;td&gt;&lt;div s=
+tyle=3D"font-size:13px;color: #333333;font-family:Arial;line-height:20px;wi=
+dth:600px;margin-bottom:20px;word-wrap:break-word;" id=3D"para-link"&gt;=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09&lt;p style=3D"margin-bottom:1em"&gt;Hi thomatretren, =
+&lt;/p&gt;=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09&lt;p =
+style=3D"margin-bottom:1em"&gt;nintendoplayerschoice accepted a return for 10X=
+ NINTENDO GAMECUBE CONTROLLER JOYSTICK CAPS GRAY + TRI WING SCREWDRIVER.&lt;/p=
+&gt;=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+&lt;p style=3D"margin-bottom:1em"&gt;You should receive a return shipping label b=
+y Aug 15, 2017. We'll email you as soon as it's ready.&lt;/p&gt;=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09&lt;p style=3D"margin=
+-bottom:1em"&gt;You should receive a refund no later than 6 days after the ite=
+m's delivered back to the seller.&lt;/p&gt;=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09&lt;/div&gt; &lt;/td&gt;=
+&lt;/tr&gt;&lt;/table&gt; &lt;table cellpadding=3D"5" style=3D"background:#3c8ACD; display=
+: inline-block; font-size:15px;font-family:Trebuchet MS;font-weight:bold; t=
+ext-decoration: none; color:#ffffff;max-width:600px;"&gt;&lt;tr&gt;&lt;td&gt;&lt;a style=3D"c=
+olor:#ffffff; font-family:trebuchet MS;font-weight:bold;font-size:15px;text=
+-decoration:none" href=3D"http://postorder.ebay.com/Return/ReturnsDetail?re=
+turnId=3D5062046401"&gt;&lt;span color=3D"#ffffff"&gt;See return details&lt;/span&gt;&lt;/a&gt;&lt;=
+/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;table&gt;&lt;tr&gt;&lt;td height=3D"15"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;=09 &lt;div id=
+=3D"itemDetailsComponent"&gt;=09&lt;table width=3D"600"&gt;&lt;/table&gt;    &lt;table width=
+=3D"600" cellpadding=3D"10" cellspacing=3D"0" style=3D"background-color:rgb=
+(239, 239, 239);"&gt;=09=09&lt;tr&gt;=09=09=09&lt;td&gt;  =09=09=09&lt;table width=3D"580" ce=
+llpadding=3D"10" cellspacing=3D"0" style=3D"background-color:#FFFFFF;"&gt;=09=
+=09=09=09=09&lt;tr&gt;&lt;td&gt;=09=09&lt;div style=3D"color: rgb(51, 51, 51); font-family=
+: trebuchet MS; font-size: 19px;"&gt;Item Information&lt;/div&gt;=09=09&lt;div&gt;&lt;table c=
+ellpadding=3D"0" cellspacing=3D"0" style=3D"background-color:rgb(153, 153, =
+153);"&gt;&lt;tr&gt;&lt;td width=3D"560" height=3D"1"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;=09=09&lt;di=
+v&gt;&lt;table&gt;&lt;tr&gt;&lt;td height=3D"15"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;=09  &lt;div&gt;=09=09&lt;tab=
+le border=3D"0" cellpadding=3D"0" cellspacing=3D"0"&gt;=09=09=09&lt;tr&gt;=09=09=09=
+=09&lt;td width=3D"98;" valign=3D"top"&gt;=09=09=09=09=09&lt;div style=3D"border: 1p=
+x solid #cccccc;"&gt;=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09&lt;a href=3D"http://rover.ebay.com/rover/0/e11922.=
+m43.l1120/7?euid=3Da919d707e9644f59b3c590845e88cbfb&amp;loc=3Dhttp%3A%2F%2Fcgi.=
+ebay.com%2Fws%2FeBayISAPI.dll%3FViewItem%26item%3D191641950590%26ssPageName=
+%3DADME%3AX%3ARRIRTB%3AUS%3A1120"&gt;&lt;img style=3D"display: block; vertical-al=
+ign: top;" width=3D"98" height=3D"98" border=3D"0" src=3D"http://i.ebayimg.=
+com/00/s/MTIwMFgxMjAw/z/TTAAAOSwPcVVsnJg/$_0.JPG?set_id=3D880000500F" /&gt;&lt;/a=
+&gt;=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09&lt;/div&gt;=09=09=09=09&lt;/=
+td&gt;=09=09=09=09&lt;td width=3D"15"&gt;&lt;/td&gt;=09=09=09=09&lt;td valign=3D"top"&gt;=09=09=
+=09=09=09&lt;div style=3D"width:440px;word-wrap: break-word;"&gt;=09=09=09=09=09=
+=09&lt;a href=3D"http://rover.ebay.com/rover/0/e11922.m43.l3160/7?euid=3Da919d=
+707e9644f59b3c590845e88cbfb&amp;loc=3Dhttp%3A%2F%2Fcgi.ebay.com%2Fws%2FeBayISAP=
+I.dll%3FViewItem%26item%3D191641950590%26ssPageName%3DADME%3AX%3ARRIRTB%3AU=
+S%3A3160" style=3D"text-decoration:none;color:#002398; font-family: trebuch=
+et MS; font-size: 15px; font-weight:bold;"&gt;=09=09=09=09=09=0910X NINTENDO G=
+AMECUBE CONTROLLER JOYSTICK CAPS GRAY + TRI WING SCREWDRIVER&lt;/a&gt;=09=09=09=
+=09=09&lt;/div&gt;=09=09=09=09=09 &lt;div&gt;=09=09=09=09=09=09&lt;table border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" style=3D"font-family: Arial;font-size: 12px=
+; color: #333333;"&gt;=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09&lt;tr valign=3D"TOP"&gt;=
+=09=09=09=09=09=09&lt;td style=3D"padding-top:3px;" nowrap&gt;&lt;b&gt;Item ID:&lt;/b&gt;&lt;/td=
+&gt;=09=09=09=09=09=09&lt;td style=3D"padding-top:3px;padding-left:10px;"&gt;&lt;b&gt;1916=
+41950590&lt;/b&gt;&lt;/td&gt;=09=09=09=09=09&lt;/tr&gt;=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09&lt;tr valign=3D"TOP"&gt;=09=09=09=09=
+=09=09&lt;td style=3D"padding-top:3px;" nowrap&gt;&lt;b&gt;Return ID:&lt;/b&gt;&lt;/td&gt;=09=09=09=
+=09=09=09&lt;td style=3D"padding-top:3px;padding-left:10px;"&gt;&lt;b&gt;5062046401&lt;/b&gt;=
+&lt;/td&gt;=09=09=09=09=09&lt;/tr&gt;=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09&lt;tr valign=3D"TOP"&gt;=09=09=09=09=09=09&lt;td style=3D"padding-top:3px;" nowr=
+ap&gt;&lt;b&gt;Seller ID:&lt;/b&gt;&lt;/td&gt;=09=09=09=09=09=09&lt;td style=3D"padding-top:3px;pad=
+ding-left:10px;"&gt;&lt;b&gt;nintendoplayerschoice&lt;/b&gt;&lt;/td&gt;=09=09=09=09=09&lt;/tr&gt;=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09&lt;/table&gt;=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tab=
+le&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;table&gt;&lt;tr&gt;&lt;td height=3D"15"&gt;&lt;=
+/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;=09&lt;table cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0"&gt;=09 &lt;tbody&gt;=09 =09&lt;tr&gt;=09 =09=09&lt;td id=3D"emailReferenceComponent" s=
+tyle=3D"display: inline-block;color:#333333;font-family:Arial;font-size:8pt=
+;text-align:left;word-wrap:break-word;=09=09=09=09overflow:hidden;width:600=
+px;"&gt;=09=09=09    Email reference id: [#a919d707e9644f59b3c590845e88cbfb#]=
+=09 =09=09&lt;/td&gt;=09 =09&lt;/tr&gt;=09 &lt;/tbody&gt;&lt;/table&gt;&lt;table&gt;&lt;tr&gt;&lt;td height=3D"4"&gt;=
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;=09=09=09=09=09=09&lt;table width=3D"600" cellspacing=3D"0" =
+cellpadding=3D"0" style=3D"border-top:1px dotted #cccccc;font-family:verdan=
+a; font-size:10px; color:#666666; word-wrap:break-word"&gt;=09=09=09&lt;tr&gt;=09=09=
+=09=09=09=09&lt;td style=3D"padding:20px; background:#EDEDED"&gt;=09=09=09=09&lt;div=
+&gt;=09=09=09=09=09=09&lt;table cellspacing=3D"0" cellpadding=3D"0" style=3D"font=
+-family:verdana; font-size:10px; color:#666666; word-wrap:break-word"&gt;=09=
+=09=09&lt;tr&gt;=09=09=09&lt;td style=3D"padding-bottom: 15px;"&gt;=09=09=09eBay sent t=
+his message to Trent Thomas (thomatretren). &lt;a href=3D"http://rover.ebay.co=
+m/rover/0/e11922.m1852.l3167/7?euid=3Da919d707e9644f59b3c590845e88cbfb&amp;amp;=
+loc=3Dhttp%3A%2F%2Fpages.ebay.com%2Fhelp%2Fconfidence%2Fname-userid-emails.=
+html%3FssPageName%3DADME%3AX%3ARRIRTB%3AUS%3A3167"&gt;Learn more&lt;/a&gt;=09=09=09&lt;=
+/td&gt;=09=09=09&lt;/tr&gt;=09=09=09&lt;tr&gt;=09=09=09&lt;td style=3D"padding-bottom: 15px;"=
+&gt;=09=09=09=09=09Why am I receiving this email?=09=09=09&lt;div&gt;=09=09=09=09=09=
+You are receiving this email based on your eBay account preferences. If you=
+'d rather not receive these emails, click &lt;a href=3D"http://rover.ebay.com/=
+rover/0/e11922.m1852.l1142/7?euid=3Da919d707e9644f59b3c590845e88cbfb&amp;amp;lo=
+c=3Dhttp%3A%2F%2Fmy.ebay.com%2Fws%2FeBayISAPI.dll%3FEmailUnsubscribe%26emai=
+lType%3D11922%26ssPageName%3DADME%3AX%3ARRIRTB%3AUS%3A1142"&gt;unsubscribe&lt;/a&gt;=
+.=09=09=09&lt;/div&gt;=09=09=09&lt;/td&gt;=09=09=09&lt;/tr&gt;=09=09=09&lt;tr&gt;=09=09=09&lt;td style=
+=3D"padding-bottom: 15px;"&gt;=09=09=09eBay is committed to your privacy. Lear=
+n more about our &lt;a href=3D"http://rover.ebay.com/rover/0/e11922.m1852.l316=
+8/7?euid=3Da919d707e9644f59b3c590845e88cbfb&amp;amp;loc=3Dhttp%3A%2F%2Fpages.eb=
+ay.com%2Fhelp%2Fpolicies%2Fprivacy-policy.html%3FssPageName%3DADME%3AX%3ARR=
+IRTB%3AUS%3A3168"&gt;privacy notice&lt;/a&gt; and &lt;a href=3D"http://rover.ebay.com/r=
+over/0/e11922.m1852.l3165/7?euid=3Da919d707e9644f59b3c590845e88cbfb&amp;amp;loc=
+=3Dhttp%3A%2F%2Fpages.ebay.com%2Fhelp%2Fpolicies%2Fuser-agreement.html%3Fss=
+PageName%3DADME%3AX%3ARRIRTB%3AUS%3A3165"&gt;user agreement&lt;/a&gt;.=09=09=09&lt;/td&gt;=
+=09=09=09&lt;/tr&gt;=09=09=09&lt;tr&gt;=09=09=09&lt;td&gt;=09=09=09=09=09=09&lt;/td&gt;=09=09=09&lt;/t=
+r&gt;=09=09=09=09=09=09=09=09=09&lt;tr&gt;=09=09=09&lt;td&gt;=09=09=09=C2=A9 2017 eBay Inc=
+., 2145 Hamilton Avenue, San Jose, CA 95125=09=09=09=09=09=09=09=09=09=09=
+=09=09=09&lt;/td&gt;=09=09=09&lt;/tr&gt;=09=09=09=09=09=09=09=09=09=09=09&lt;/table&gt;=09=09=
+=09&lt;/div&gt;=09=09=09=09=09=09&lt;/td&gt;=09=09=09&lt;/tr&gt;=09=09&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</DATA>
+      <content-type>TEXT/HTML; CHARSET="UTF-8"</content-type>
+      <content-transfer-encoding>QUOTED-PRINTABLE</content-transfer-encoding>
+      <content-size>17976</content-size>
+    </Part>
+  </Part>
+</Message>

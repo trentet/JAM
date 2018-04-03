@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Message UID="21934">
+  <Part ID="0">
+    <Delivered-To>trentfromrid@gmail.com</Delivered-To>
+    <Received>by 10.55.167.146 with SMTP id q140csp4601662qke; Thu, 19 Oct 201707:35:33 -0700 (PDT)</Received>
+    <X-Google-Smtp-Source>ABhQp+RkrsrYGYzCF5GxDWg9pqamt3wR+cOq5RxUfRlQG+SwT89sACYmv7UaT8JQWl0J2SjpsEUU</X-Google-Smtp-Source>
+    <X-Received>by 10.159.244.133 with SMTP id y5mr349125plr.211.1508423732995;Thu, 19 Oct 2017 07:35:32 -0700 (PDT)</X-Received>
+    <ARC-Seal>i=1; a=rsa-sha256; t=1508423732; cv=none; d=google.com;s=arc-20160816;b=BXzAS5twnp7IsC8uiNwTixkKp/0fweORbw/CAVKw+lZTm10pqSz1Lo/MjAfft6eNbYns/xbNsAEgYVp5MNSfFYcczTgwpBWAfRE0PkA2dMpFR3zVxx5ADbThBpWyd7SW3hhoXJjMaqfH+2eVFe1YOU1IpJSOHRZ1wBr2c7EUbv/t5U44hHlgOP46TAeH7egDvaMmB2+21lu1xDCYTmwtyvEq8mjyB9nfLP4C0IzgQYZf91Kgqzxmb7NewUGIxflL5UYGeUKA11MryRAHqUcK3LjWMm+QOOLeOvH3xy6S2FD7rYU+Ncgy7ldBpMAMVMEwPyjzcyi1qSEz8BvbSQ KbnA==</ARC-Seal>
+    <ARC-Message-Signature>i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;s=arc-20160816; h=content-transfer-encoding:subject:date:to:from:mime-version:domainkey-signature:dkim-signature:message-id :arc-authentication-results;bh=bD0gko5g2u9jkuCjH0oEtj7Ag+gVwMi52FiFGQ66qjc=;b=jGpNMcNWsNEJwwkpehS1c2rg1s3Kj49O59yrU/8G5xyp9tS3OrATeAo5+AAkaQeJTeEuTp8Jm+t2UiAVt8845culFxsQnC29JNObrDO2BfzNT/wDE8DJMjbrwZ59J4SmWfHC9G9kFOnzKQKQAyCTFrTeJsCQdishnAL5ixTahVdeuffTMxl6CFVKxI515nkeraEFP2KvV/v9h33X77gYGJYG6E3qGd6w0ieBHCoeIRi/ocN1j/G18gsNGYMH7J3PowcO9M/M/HfLJ/IFgGtHoNtk+GhREEvuOhYyRWXVljcj/crLZ2+CywBHl43+Rm/WptkWGD594NIYJl4/j4 5cZg==</ARC-Message-Signature>
+    <ARC-Authentication-Results>i=1; mx.google.com; dkim=passheader.i=@esurance.com header.s=publickey header.b=kQaF02Ih; spf=pass(google.com: domain of tkaminski@esurance.com designates 63.83.4.221 aspermitted sender) smtp.mailfrom=TKaminski@esurance.com; dmarc=pass (p=NONEsp=NONE dis=NONE) header.from=esurance.com</ARC-Authentication-Results>
+    <Return-Path>&lt;TKaminski@esurance.com&gt;</Return-Path>
+    <Received>from PMTA2.esurance.com (pmta2.esurance.com. [63.83.4.221]) bymx.google.com with ESMTP id 31si4140672plz.611.2017.10.19.07.35.32 for&lt;TrentFromRiD@gmail.com&gt;; Thu, 19 Oct 2017 07:35:32 -0700 (PDT)</Received>
+    <Received-SPF>pass (google.com: domain of tkaminski@esurance.com designates63.83.4.221 as permitted sender) client-ip=63.83.4.221;</Received-SPF>
+    <Authentication-Results>mx.google.com; dkim=pass header.i=@esurance.comheader.s=publickey header.b=kQaF02Ih; spf=pass (google.com: domain oftkaminski@esurance.com designates 63.83.4.221 as permitted sender)smtp.mailfrom=TKaminski@esurance.com; dmarc=pass (p=NONE sp=NONE dis=NONE)header.from=esurance.com</Authentication-Results>
+    <Message-ID>&lt;59e8b834.a28f540a.180c3.691eSMTPIN_ADDED_BROKEN@mx.google.com&gt;</Message-ID>
+    <X-Google-Original-Message-ID>ClaimID:070010000027418|UserID:057640000000037</X-Google-Original-Message-ID>
+    <DKIM-Signature>v=1; a=rsa-sha1; c=relaxed/relaxed; s=publickey;d=esurance.com;h=Message-ID:MIME-Version:From:To:Date:Subject:Content-Type:Content-Transfer-Encoding;i=TKaminski@esurance.com; bh=nHD2I8/873ktOPJi4Z+gzUOsh4k=;b=kQaF02IhhpFXvcjjKnBmOz/dX6zi0dBvYzlA87RTc3CQnAICHeiuZ8AcKCenTeMDFdsDKiUDzGaMKDEL0j3yHG+F8etKzyC5v+idKBCkycpdiRQCKHJQBhVzBExZ8qpnwwqYNQsL2iFWPu9h6Go7xcgvxbhq2CE+r3Fk626fNVA=</DKIM-Signature>
+    <DomainKey-Signature>a=rsa-sha1; c=nofws; q=dns; s=publickey; d=esurance.com;b=sR3tjVhBRIsnKY19cgM4lGEQm3mXzZidHKeqWBlHPCKVHydDoGa4Tb4wOiRWNgjK1K1naXIz6S/AlWVAV1Vy2jjj+m6gsUMaCnCytDqj827xRO2ByuzgfyR0d6Se+iJqvMxEWVFZSFeN7MDKqROTM1WZy1fWO202dL/wx1MuTSk=;</DomainKey-Signature>
+    <Received>by PMTA2.esurance.com (PowerMTA(TM) v3.5r11) id ht2s3u0ivaks for&lt;TrentFromRiD@gmail.com&gt;; Thu, 19 Oct 2017 07:33:55 -0700 (envelope-from&lt;TKaminski@esurance.com&gt;)</Received>
+    <MIME-Version>1.0</MIME-Version>
+    <From>TKaminski@esurance.com</From>
+    <To>TrentFromRiD@gmail.com</To>
+    <Date>19 Oct 2017 07:33:44 -0700</Date>
+    <Subject>Esurance Claim: DEN-0079070</Subject>
+    <Content-Type>text/plain; charset=utf-8</Content-Type>
+    <Content-Transfer-Encoding>base64</Content-Transfer-Encoding>
+    <Part ID="1">
+      <content-type>TEXT/PLAIN; CHARSET="utf-8"</content-type>
+      <content-transfer-encoding>BASE64</content-transfer-encoding>
+      <content-size>1254</content-size>
+    </Part>
+  </Part>
+</Message>

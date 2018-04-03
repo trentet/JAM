@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Message UID="21800">
+  <Part ID="0">
+    <Delivered-To>trentfromrid@gmail.com</Delivered-To>
+    <Received>by 10.55.148.4 with SMTP id w4csp666384qkd; Wed, 11 Oct 201706:28:01 -0700 (PDT)</Received>
+    <X-Google-Smtp-Source>AOwi7QD1l3ex47VWgZxHF9SZneP/ZNZ9QumvXcnywzzZwipEjk4W6qgwkJeA9MfIlrLyx+Xp+5gd</X-Google-Smtp-Source>
+    <X-Received>by 10.98.2.200 with SMTP id 191mr16756798pfc.285.1507728481694;Wed, 11 Oct 2017 06:28:01 -0700 (PDT)</X-Received>
+    <ARC-Seal>i=1; a=rsa-sha256; t=1507728481; cv=none; d=google.com;s=arc-20160816;b=RU7hyigTtBax54CN1fp5LJLWFDZpU0Zm9AQkYVnzvOS4TvYCB3pZYWVue4mb6nNPEEFrNa1GSYEs+5WTCfbLthwwhJof082B4IVS6q/fDeEXXnAUDsPyTAJ0Prvp0GH+esj/GekYWGz3J5sn2gv20lYqFm97PmBjQ2mXnJ7VkJ4k8M7683t0zujn3XYxiT2Sl4aq3qnLR6N6k7cZ+WePV2IckOCStDVMWX1B1Ylia70wzUpLiBTC8ydtjj//fXR0scMIB+ymaE1WTXQvy/rDJG+HBRN25YI9XvjKQ8vtEVNh9AexAqwGa8/WunUMwbRkpDvcj1RK4VvhV4lE6y MrTg==</ARC-Seal>
+    <ARC-Message-Signature>i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;s=arc-20160816; h=mime-version:subject:date:message-id:to:reply-to:from:domainkey-signature:dkim-signature:arc-authentication-results;bh=tYFq3dEiblr+WZac0SEycy+E4xDS1cdEXaAF2sgrKsQ=;b=JtCpRoFYz8S4gkrOuyiz9A9ebJUfBi9A2IV1LVJYM/ctxOWbNrAFLY4m0w6RZ2WIfVtJpsbfCKeRl39RUkqaXwFb1L5nnvp4YQA2DwRVaOU5neRb9HLDP+fAjEQprA/DJsVBotkpEcQ3+zE/m6VnhJNuzE4MmrORafw7jWIBfj183k4+N6W4M8VXvvpKNE+Yf0cmQi6HkEebdgxVinHhpfKYavbGVN3/tWKaLPyv4sProBpeFcpxqmSAJG/9bh0kY6VN9mH/tSsxLJmvyJ0uSReueIlyt8w88YWm2JAxJUbNDtSry5KBFt+kKraDwbapIelCY588lRa8AhTkfj sPvA==</ARC-Message-Signature>
+    <ARC-Authentication-Results>i=1; mx.google.com; dkim=passheader.i=@esurance.com header.s=publickey header.b=o8WT/6ek; spf=pass(google.com: domain of bounce@bounce.esurance.com designates 63.83.4.220 aspermitted sender) smtp.mailfrom=bounce@bounce.esurance.com; dmarc=pass(p=NONE sp=NONE dis=NONE) header.from=esurance.com</ARC-Authentication-Results>
+    <Return-Path>&lt;bounce@bounce.esurance.com&gt;</Return-Path>
+    <Received>from PMTA1.esurance.com (pmta1.esurance.com. [63.83.4.220]) bymx.google.com with ESMTP id h125si1831747pgc.401.2017.10.11.06.28.01 for&lt;TrentFromRiD@gmail.com&gt;; Wed, 11 Oct 2017 06:28:01 -0700 (PDT)</Received>
+    <Received-SPF>pass (google.com: domain of bounce@bounce.esurance.comdesignates 63.83.4.220 as permitted sender) client-ip=63.83.4.220;</Received-SPF>
+    <Authentication-Results>mx.google.com; dkim=pass header.i=@esurance.comheader.s=publickey header.b=o8WT/6ek; spf=pass (google.com: domain ofbounce@bounce.esurance.com designates 63.83.4.220 as permitted sender)smtp.mailfrom=bounce@bounce.esurance.com; dmarc=pass (p=NONE sp=NONEdis=NONE) header.from=esurance.com</Authentication-Results>
+    <DKIM-Signature>v=1; a=rsa-sha1; c=relaxed/relaxed; s=publickey;d=esurance.com;h=From:Reply-To:To:Message-ID:Date:Subject:MIME-Version:Content-Type;i=CustomerService@csr.esurance.com; bh=jN9cnK23lt6P/g8EkyvGZOkbG74=;b=o8WT/6ekrLrdc48oJbGPeYqSUiGhiHj+vEU2byxy9+JZszZlCZ0naUY6j1+LsFldzNGI0vgrKGUe7cpLSKsyZDjMSSJ1iouMwHVFcvrKqOLIWLtwTs4Z4y40Wv4Ly4VQ/KaUPsoSiFQh43O2lgDpba/4R/3Ydo9nO9Ek+b9qgVk=</DKIM-Signature>
+    <DomainKey-Signature>a=rsa-sha1; c=nofws; q=dns; s=publickey; d=esurance.com;b=hYHoZ+UFyvAbbtx7CwfOQNoUQAlhkAY7OapbncZK/QiZJEY2D7jXnlz22KTzXGgwqH+hVoqDBlogAVqViXdI9bCZHFGVO/lrWk3m/q1KtUPYl9jYrIxpcaKCZ0qgs2gG+AfKXLTqIjnziViqOwTMb1a/V9vfKNGDUor5n2+Xnw0=;</DomainKey-Signature>
+    <Received>by PMTA1.esurance.com (PowerMTA(TM) v3.5r11) id hroe3q0ivakm for&lt;TrentFromRiD@gmail.com&gt;; Wed, 11 Oct 2017 06:27:25 -0700 (envelope-from&lt;bounce@bounce.esurance.com&gt;)</Received>
+    <From>"Esurance Customer Service" &lt;CustomerService@csr.esurance.com&gt;</From>
+    <Return-path>&lt;bounce@bounce.esurance.com&gt;</Return-path>
+    <Reply-To>"Esurance" &lt;noreply@esurance.com&gt;</Reply-To>
+    <To>TrentFromRiD@gmail.com</To>
+    <Message-ID>&lt;9f650e920e5444728959a2c5de6bcfa9RequestId766827996@esurance.com&gt;</Message-ID>
+    <Date>Wed, 11 Oct 2017 06:28:01 -0700</Date>
+    <X-Priority>3</X-Priority>
+    <Subject>Your Esurance  policy renewal</Subject>
+    <MIME-Version>1.0</MIME-Version>
+    <Content-Type>multipart/alternative;boundary="----=_NextPart_95bf105b_50cf_4574_be76_b6632089c7c6"</Content-Type>
+    <Part ID="1">
+      <DATA>Dear Trent Thomas,
+
+Your car insurance policy will automatically renew at your current cove=
+rage=20
+levels on 11/28/2017=2E=20
+
+=09=09=09
+  RENEWAL POLICY INFO
+  - Policy Number: PAUT6174176
+  - 6-month premium: $475=2E00
+  - Payment Plan: Monthly
+  - Payment due date: 11/04/2017
+  - Amount due: $65=2E59
+
+  PAYMENT SCHEDULE=09=09=09
+    - 11/04/2017 =2E=2E=2E=2E=2E $65=2E59=09=09=09
+    - 12/04/2017 =2E=2E=2E=2E=2E $84=2E17=09=09=09
+    - 01/04/2018 =2E=2E=2E=2E=2E $84=2E17=09=09=09
+    - 02/04/2018 =2E=2E=2E=2E=2E $84=2E17=09=09=09
+    - 03/04/2018 =2E=2E=2E=2E=2E $84=2E17=09=09=09
+    - 04/04/2018 =2E=2E=2E=2E=2E $84=2E15
+ =20
+  DISCOUNTS &amp; SAVINGS
+  - Affinity discount - PayPal
+  - Education discount
+  - Good Student discount
+  - Total savings: $43
+
+By renewing your policy, you're agreeing to Esurance's current Terms an=
+d Conditions=2E
+    https://www=2Eesurance=2Ecom/legal/car/terms-and-conditions?request=
+_id=3D766827996&amp;product=3D1&amp;webversion=3Dyes&amp;PromoID=3DP52UT1101117NBAC=
+T#Utah
+
+Customize your email reminders and alerts by updating your preferences:
+    https://www=2Eesurance=2Ecom/welcome/email/EmailPreferenceRedirecto=
+r=2Easpx?eml=3DTrentFromRiD@gmail=2Ecom&amp;request_id=3D766827996&amp;product=3D=
+1&amp;PromoID=3DP52UT1101117NBAC
+
+To verify that your vehicle, driver, and payment information are curren=
+t, please log into your policy at:
+    https://www=2Eesurance=2Ecom/policy-login?request_id=3D766827996&amp;pr=
+oduct=3D1&amp;webversion=3Dyes&amp;PromoID=3DP52UT1101117NBAC
+=09=09=09
+View your complete payment schedule and renewal offer documents anytime=
+ in your online account at:
+    https://www=2Eesurance=2Ecom/policy-login?request_id=3D766827996&amp;pr=
+oduct=3D1&amp;webversion=3Dyes&amp;PromoID=3DP52UT1101117NBAC
+
+All licensed drivers who live in your household and anyone=20
+who is a regular operator of your vehicle(s) should be listed on your p=
+olicy=2E
+  =20
+Thanks again for being an Esurance policyholder=2E We look forward to s=
+erving you for another term=2E
+
+Sincerely,
+
+The Esurance Customer Service Team
+
+***********************************************************************=
+*******
+
+Because we're always working to improve your experience, please tell us
+if this email was helpful=2E
+
+Yes, it was:=20
+    http://app=2Ekeysurvey=2Ecom/f/1151778/4a05/?LQID=3D1&amp;request_id=3D=
+766827996&amp;email_send=3D20171011&amp;POLICY_ID=3D6174176
+
+No, It wasn't:
+    https://app=2Ekeysurvey=2Ecom/f/1151779/5d2f/?LQID=3D1&amp;request_id=3D=
+766827996&amp;email_send=3D20171011&amp;POLICY_ID=3D6174176
+
+***********************************************************************=
+*******
+
+We're here for you=20
+With easy online and mobile access to manage your policy 24/7=2E
+Plus, with Allstate behind us, you can feel confident we'll be here whe=
+n you need us most=2E
+Allstate products are not available through Esurance=2E
+
+
+-----------------------------------------------------------------------=
+-----------------
+Home: https://www=2Eesurance=2Ecom/?request_id=3D766827996&amp;product=3D1&amp;=
+PromoID=3DP52UT1101117NBAC
+
+Login: https://www=2Eesurance=2Ecom/policy-login?request_id=3D766827996=
+&amp;product=3D1&amp;webversion=3Dyes&amp;PromoID=3DP52UT1101117NBAC</DATA>
+      <content-type>TEXT/PLAIN; CHARSET="utf-8"</content-type>
+      <content-transfer-encoding>QUOTED-PRINTABLE</content-transfer-encoding>
+      <content-size>3235</content-size>
+    </Part>
+    <Part ID="2">
+      <content-type>TEXT/HTML; CHARSET="utf-8"</content-type>
+      <content-transfer-encoding>QUOTED-PRINTABLE</content-transfer-encoding>
+      <content-size>26038</content-size>
+    </Part>
+  </Part>
+</Message>

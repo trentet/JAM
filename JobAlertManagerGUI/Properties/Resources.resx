@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MailPropertiesWord" xml:space="preserve">
+    <value>Other Aspects</value>
+  </data>
+  <metadata name="MailPropertiesWord" xml:space="preserve">
+    <value>guid=a62fee69552ef2444aec70c86e159694</value>
+  </metadata>
+  <data name="PlainTextWord" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <metadata name="PlainTextWord" xml:space="preserve">
+    <value>guid=9dffbf69ffba8bc38bc4e01abf4b1675</value>
+  </metadata>
+  <data name="RawTextWord" xml:space="preserve">
+    <value>Raw</value>
+  </data>
+  <metadata name="RawTextWord" xml:space="preserve">
+    <value>guid=65e65c8ab0d8609ce12fc68a03cb8e00</value>
+  </metadata>
+  <data name="RichTextWord" xml:space="preserve">
+    <value>Multimedia Text</value>
+  </data>
+  <metadata name="RichTextWord" xml:space="preserve">
+    <value>guid=3135f4019bee015e2d1ae7f77f9f3f64</value>
+  </metadata>
+  <data name="BriefViewWord" xml:space="preserve">
+    <value>Brief View</value>
+  </data>
+  <metadata name="BriefViewWord" xml:space="preserve">
+    <value>guid=17a4d185cc370cd9ae9f5fb59368569e</value>
+  </metadata>
+  <data name="AttachmentsWordQ" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <metadata name="AttachmentsWordQ" xml:space="preserve">
+    <value>guid=dc964a3a34a94636cd0cc04334c0debe</value>
+  </metadata>
+  <data name="AttachmentSaveDirSelWord" xml:space="preserve">
+    <value>Attachment Save Directory Selector</value>
+  </data>
+  <metadata name="AttachmentSaveDirSelWord" xml:space="preserve">
+    <value>guid=8fcc8bd2f2ef5161a4e58fe59ddc348f</value>
+  </metadata>
+  <data name="FileExistWarningWords" xml:space="preserve">
+    <value>The file specified already exists, do you wish to overwrite it?</value>
+  </data>
+  <metadata name="FileExistWarningWords" xml:space="preserve">
+    <value>guid=13721617f8a6508cb9fbacec9617da45</value>
+  </metadata>
+  <data name="WarningWord" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <metadata name="WarningWord" xml:space="preserve">
+    <value>guid=0eaadb4fcb48a0a0ed7bc9868be9fbaa</value>
+  </metadata>
+  <data name="OtherInfoWord" xml:space="preserve">
+    <value>Other Information</value>
+  </data>
+  <metadata name="OtherInfoWord" xml:space="preserve">
+    <value>guid=3bf6a0facffe3fd925a1be386b6aab87</value>
+  </metadata>
+  <data name="RoutingInfoWord" xml:space="preserve">
+    <value>Routing Information</value>
+  </data>
+  <metadata name="RoutingInfoWord" xml:space="preserve">
+    <value>guid=306971af3c5701fc47274333af5932cb</value>
+  </metadata>
+  <data name="ReplyToWord" xml:space="preserve">
+    <value>Reply Address</value>
+  </data>
+  <metadata name="ReplyToWord" xml:space="preserve">
+    <value>guid=84c4dfc8fccf9350a9610e366ae769a5</value>
+  </metadata>
+  <data name="DispositionNotificationWord" xml:space="preserve">
+    <value>Disposition Notification</value>
+  </data>
+  <metadata name="DispositionNotificationWord" xml:space="preserve">
+    <value>guid=a927d82856c3de5786d8d716af7e918f</value>
+  </metadata>
+  <data name="NameWord" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <metadata name="NameWord" xml:space="preserve">
+    <value>guid=49ee3087348e8d44e1feda1917443987</value>
+  </metadata>
+  <data name="SaveAttachmentWord" xml:space="preserve">
+    <value>Save the Attachment ...</value>
+  </data>
+  <metadata name="SaveAttachmentWord" xml:space="preserve">
+    <value>guid=751e01e2e066b5ef28a0311da71a5785</value>
+  </metadata>
+  <data name="SaveWord" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <metadata name="SaveWord" xml:space="preserve">
+    <value>guid=c9cc8cce247e49bae79f15173ce97354</value>
+  </metadata>
+  <data name="CGWEMailReaderTitleWord" xml:space="preserve">
+    <value>CryptoGateway Electronic Mail Reader</value>
+  </data>
+  <metadata name="CGWEMailReaderTitleWord" xml:space="preserve">
+    <value>guid=639538d42ec79b8dd689f1ecd8ae4d14</value>
+  </metadata>
+  <data name="MsgSubjectQWord" xml:space="preserve">
+    <value>Subject:</value>
+  </data>
+  <metadata name="MsgSubjectQWord" xml:space="preserve">
+    <value>guid=47a0be8d1015d526a1fbaa56c3102135</value>
+  </metadata>
+  <data name="ReceivedDateTimeQWord" xml:space="preserve">
+    <value>Received:</value>
+  </data>
+  <metadata name="ReceivedDateTimeQWord" xml:space="preserve">
+    <value>guid=34d3e95b7df44d62f685eaf95d823c92</value>
+  </metadata>
+  <data name="MsgBccQWord" xml:space="preserve">
+    <value>Bcc:</value>
+  </data>
+  <metadata name="MsgBccQWord" xml:space="preserve">
+    <value>guid=85a931025818c854abbddbb5484e3d91</value>
+  </metadata>
+  <data name="MsgFromQWord" xml:space="preserve">
+    <value>From:</value>
+  </data>
+  <metadata name="MsgFromQWord" xml:space="preserve">
+    <value>guid=1e6d57e813355689e9c77e947d73ad8f</value>
+  </metadata>
+  <data name="MsgToQWord" xml:space="preserve">
+    <value>To:</value>
+  </data>
+  <metadata name="MsgToQWord" xml:space="preserve">
+    <value>guid=33caa076f23f453dd4061726f3706325</value>
+  </metadata>
+  <data name="MsgCcQWord" xml:space="preserve">
+    <value>Cc:</value>
+  </data>
+  <metadata name="MsgCcQWord" xml:space="preserve">
+    <value>guid=82e9ef5cbcf6244917358e3b56a24cab</value>
+  </metadata>
+  <data name="SubMessageFoundDDDTip" xml:space="preserve">
+    <value>Sub-message found ...</value>
+  </data>
+  <metadata name="SubMessageFoundDDDTip" xml:space="preserve">
+    <value>guid=71652f454a93fb8a35628c1b21134338</value>
+  </metadata>
+  <data name="SubMessagesWord" xml:space="preserve">
+    <value>Sub-Messages</value>
+  </data>
+  <metadata name="SubMessagesWord" xml:space="preserve">
+    <value>guid=c2b434398baf306cf5bc84a4e697d7dc</value>
+  </metadata>
+  <data name="ShowMessageThreadDDDToolTip" xml:space="preserve">
+    <value>Show conversation thread ...</value>
+  </data>
+  <metadata name="ShowMessageThreadDDDToolTip" xml:space="preserve">
+    <value>guid=bc7234d92dd874189421dad4b7ceabf0</value>
+  </metadata>
+  <data name="OpenViewWindowDDDToolTip" xml:space="preserve">
+    <value>Open view window ...</value>
+  </data>
+  <metadata name="OpenViewWindowDDDToolTip" xml:space="preserve">
+    <value>guid=4aca7c877c2dc5f6ba3d9e6cd1e61739</value>
+  </metadata>
+  <data name="EMailThreadViewerWord" xml:space="preserve">
+    <value>Electronic Mail Thread Viewer</value>
+  </data>
+  <metadata name="EMailThreadViewerWord" xml:space="preserve">
+    <value>guid=28a6b3b8b5f326fbacb9cf1a184541d6</value>
+  </metadata>
+  <data name="ConversationThreadWord" xml:space="preserve">
+    <value>Conversation Thread</value>
+  </data>
+  <metadata name="ConversationThreadWord" xml:space="preserve">
+    <value>guid=5fff2435440986880b9d0a7ffa4345a9</value>
+  </metadata>
+  <data name="ContentWord" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <metadata name="ContentWord" xml:space="preserve">
+    <value>guid=f15c1cae7882448b3fb0404682e17e61</value>
+  </metadata>
+  <data name="ShowSequenceNumWord" xml:space="preserve">
+    <value>Show temporal sequence number ...</value>
+  </data>
+  <metadata name="ShowSequenceNumWord" xml:space="preserve">
+    <value>guid=5e51256d7e4970f95cef0aa4fcdadbf9</value>
+  </metadata>
+  <data name="PreviewWord" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <metadata name="PreviewWord" xml:space="preserve">
+    <value>guid=31fde7b05ac8952dacf4af8a704074ec</value>
+  </metadata>
+</root>

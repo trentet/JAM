@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Message UID="21727">
+  <Part ID="0">
+    <Delivered-To>trentfromrid@gmail.com</Delivered-To>
+    <Received>by 10.55.148.4 with SMTP id w4csp1933588qkd; Wed, 4 Oct 201715:21:15 -0700 (PDT)</Received>
+    <X-Google-Smtp-Source>AOwi7QAJWXmOgHXWN//+cOwv91s+BI15Odw2WSur6yGqurIFwNawJ5EkOMrvueJcpn4O3w3DfxEY</X-Google-Smtp-Source>
+    <X-Received>by 10.80.167.34 with SMTP id h31mr31357501edc.43.1507155675912;Wed, 04 Oct 2017 15:21:15 -0700 (PDT)</X-Received>
+    <ARC-Seal>i=1; a=rsa-sha256; t=1507155675; cv=none; d=google.com;s=arc-20160816;b=IDXbmWsoGmM+gNwpaX4jpurf5f0+zaRCKp6gMUaPPfoocgPUxhTdQ/z0Gs/VtYj0vx+rBBz/tqbLtskxItDUl7ULbsvOQfXsMn2RqXbl8S4VHmC9FapayjbNhqykiQFn1T1n+44jwpXAbkYY7yuYdpW/h4QXY0aEfcrgSYbmLmFPYJS5YpI/NrGL2M/6fvUrx5LUgGSTGl70A17RDCrmsq2vDCYvpq64Db3qqVJ4XOK4xAtCiic7ZVqWxfshBEK64d5KYvu4oGYr2nhfe2WLsUM/RBrt4nxwFRkRluP7vWEv4jtOq/bqZjNAapz0lb+wuZH1ijy44x/9BDYQ4i fWfg==</ARC-Seal>
+    <ARC-Message-Signature>i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;s=arc-20160816; h=date:message-id:mime-version:from:subject:to:dkim-signature:arc-authentication-results; bh=E4XfIfClYYjkGDI6bs90aR0je3Rd4t4NtHqyqvR4OSc=;b=ZD/emS0ORr9a96+GY599F2u0JGGMrm3oXc7/+yLJ4KMdGJwKAq42VD8vGABuxxDbtxCtfEVrGMIz84gx4niAxzJ7ECvLAaz+f2Qcxbza120SZALYIVxN9czudW+4qadBix7XfnsVimGRbVBebvOfcqfbOr2+oM9eRcBEVN/aPv6BYYZUdJfyPt4c38SrmVh0IbLxNEMEBCrwgIGnjWSNON/lhYCxHbNPEcM7FTZxA/cIDyDeWZZgPP6KmUgUDHkhG8xQEcTO91FAh98J/2fBbCdzLbjv9vbunOjrOw3gU8IUvImjFWyazGO1L+Ya9Xe62eOy30CKz/aEaXQKvU Cyew==</ARC-Message-Signature>
+    <ARC-Authentication-Results>i=1; mx.google.com; dkim=passheader.i=@avangate.com header.s=ams1 header.b=eRU1N3v6; spf=pass (google.com:domain of noreply-ae7babbb5c4d@avangate.com designates 85.17.14.131 aspermitted sender) smtp.mailfrom=noreply-ae7babbb5c4d@avangate.com</ARC-Authentication-Results>
+    <Return-Path>&lt;noreply-ae7babbb5c4d@avangate.com&gt;</Return-Path>
+    <Received>from mail01ams.avangate.com (mail01ams.avangate.com. [85.17.14.131])by mx.google.com with ESMTPS id s30si2165605edd.112.2017.10.04.15.21.15 for&lt;trentfromrid@gmail.com&gt; (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256bits=128/128); Wed, 04 Oct 2017 15:21:15 -0700 (PDT)</Received>
+    <Received-SPF>pass (google.com: domain of noreply-ae7babbb5c4d@avangate.comdesignates 85.17.14.131 as permitted sender) client-ip=85.17.14.131;</Received-SPF>
+    <Authentication-Results>mx.google.com; dkim=pass header.i=@avangate.comheader.s=ams1 header.b=eRU1N3v6; spf=pass (google.com: domain ofnoreply-ae7babbb5c4d@avangate.com designates 85.17.14.131 as permittedsender) smtp.mailfrom=noreply-ae7babbb5c4d@avangate.com</Authentication-Results>
+    <Received>from cron01.ams.avangate.local (cron01.ams.avangate.local[192.168.31.71]) by infra01.ams.avangate.local (Postfix) with ESMTPS id90A19CB27C; Thu,  5 Oct 2017 01:21:15 +0300 (EEST)</Received>
+    <DKIM-Signature>v=1; a=rsa-sha256; c=relaxed/simple; d=avangate.com; s=ams1;t=1507155675; bh=vHe0/LMreDEdFRfj+0+gqiiFMgduAfc/VaSHfFv+W7k=;h=To:Subject:From:Date;b=eRU1N3v6qV627up3ymsl70MGZgu1yXnFilJIKxx3sBm8VjbZMJalQWokrCpG84QGKprmGD/E59LVCst4c02dV3vjyfR/fboFkLM+GWxPn8PvQ0u+WQjJote2hElNz98P7rz2qXbtuwqNrzwj3wBJwLBdfTcH1yLL5XH/DG92Yzc=</DKIM-Signature>
+    <Received>by cron01.ams.avangate.local (Postfix, from userid 81) id85615CB60B; Thu,  5 Oct 2017 01:21:15 +0300 (EEST)</Received>
+    <To>trentfromrid@gmail.com</To>
+    <Subject>=?UTF-8?Q?Your=20order=20on=20www.ntlite.com:=20Payment=20received?=</Subject>
+    <From>"Avangate Support" &lt;support@avangate.com&gt;</From>
+    <MIME-Version>1.0</MIME-Version>
+    <Content-Type>multipart/alternative;boundary="------------63bdf4684aee275e303fff61c9c65796"</Content-Type>
+    <X-Avangate-UUID>ae7babbb5c4d</X-Avangate-UUID>
+    <Message-Id>&lt;20171004222115.85615CB60B@cron01.ams.avangate.local&gt;</Message-Id>
+    <Date>Thu,  5 Oct 2017 01:21:15 +0300 (EEST)</Date>
+    <Part ID="1">
+      <DATA>Dear Trent Thomas,
+
+Thank you for your order on 2017-10-05 from https://www.ntlite.com!
+We received your 23.57 USD payment (Visa/MasterCard - 6097) for order 64521=
+427.
+
+The charge on your bank statement will appear as ntlite.com. Avangate Inc a=
+cts as authorized reseller of Nlitesoft online products and services.
+
+Payment/Order information
+
+Billing Information
+Trent Thomas=20
+5706 St James Place, Holladay, Utah 84121, United States of America
+--------------------------------------------------
+Ordered item(s)
+--------------------------------------------------
+
+1 x NTLite Home License Renewal=20
+Unit Price:23.57 USD
+Total:23.57 USD
+
+--------------------------------------------------
+Sales Tax / VAT:  0.00 USD
+Grand Total: 23.57 USD
+--------------------------------------------------
+You can access your products according to the terms and conditions you acce=
+pted during purchase.
+
+Support information
+
+Need technical support? For product installation, activation and other tech=
+nical support issues, please contact Nlitesoft on  support@ntlite.com
+
+Need order support? Use myAccount to easily manage your order, subscription=
+, invoice and payment details. https://secure.avangate.com/myaccount/ using=
+ your email address trentfromrid@gmail.com =20
+
+Avangate has processed your order as the authorized reseller of Nlitesoft.
+
+Thank you,
+The Avangate Team
+http://www.avangate.com</DATA>
+      <content-type>TEXT/PLAIN; CHARSET="UTF-8"</content-type>
+      <content-transfer-encoding>QUOTED-PRINTABLE</content-transfer-encoding>
+      <content-size>1435</content-size>
+    </Part>
+    <Part ID="2">
+      <DATA>&lt;table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"width:100%=
+"&gt;&lt;tr&gt;&lt;td style=3D"padding:20px"&gt;
+    &lt;!-- Email Body : BEGIN --&gt;
+&lt;table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center" bg=
+color=3D"#ffffff" width=3D"100%" style=3D"max-width: 600px;"&gt;
+  &lt;!-- Hero Image, Flush : BEGIN --&gt;
+  &lt;tr&gt;
+    &lt;td style=3D"padding: 20px 20px 15px; font-family: arial; font-size:12p=
+x; mso-height-rule: exactly; line-height: 20px; color: #333333; "&gt;
+      Dear Trent Thomas,
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr style=3D"border-bottom:10px solid #eeeeee"&gt;
+    &lt;td style=3D"padding: 0 20px 20px; font-family: arial; font-size:12px; =
+mso-height-rule: exactly; line-height: 20px; color: #333333;  border-bottom=
+:10px solid #eeeeee"&gt;
+      Thank you for your order on 2017-10-05 from &lt;a href=3D"https://www.nt=
+lite.com" style=3D"text-decoration: none!important; text-decoration:none; c=
+olor: #0064c8;"&gt;https://www.ntlite.com&lt;/a&gt;!
+      We received your &lt;strong &gt;23.57 USD&lt;/strong&gt; payment &lt;strong &gt;(Visa/M=
+asterCard - 6097)&lt;/strong&gt; for order &lt;strong &gt;64521427&lt;/strong&gt;.
+            &lt;br /&gt;&lt;br /&gt;
+      The charge on your bank statement will appear as ntlite.com. Avangate=
+ Inc acts as authorized reseller of Nlitesoft online products and services.
+      &lt;br /&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=3D"padding: 20px 20px 0px; font-family: arial; font-size:18px=
+; mso-height-rule: exactly; line-height: 20px; color: #333333; " class=3D"h=
+eadline support-info-headline"&gt;
+      Payment/Order information
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=3D"padding: 20px; font-family: arial; font-size:12px; mso-hei=
+ght-rule: exactly; line-height: 20px; color: #333333;  "&gt;
+            &lt;strong&gt;Billing Information&lt;/strong&gt;
+      		            &lt;br&gt; Trent Thomas
+            &lt;br&gt; 5706 St James Place, Holladay, Utah 84121, United States o=
+f America      &lt;!-- Ordered Items table : Begin --&gt;
+      &lt;table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"left=
+" style=3D"Margin: auto; font-family:arial; font-size:12px;" width=3D"100%"=
+&gt;
+        &lt;tr&gt;
+          &lt;td  align=3D"left" width=3D"50%" class=3D"ordered-item-label-td"=
+ style=3D"padding-top:20px; padding-bottom:5px; font-family:arial; font-siz=
+e:12px; color: #3c3c3c; text-align: left"&gt;
+            &lt;strong&gt;Ordered item(s)&lt;/strong&gt;
+          &lt;/td&gt;
+          &lt;td align=3D"right" width=3D"25%" class=3D"ordered-item-unit-pric=
+e-td" style=3D"padding-top:20px; padding-bottom:5px; font-family:arial; fon=
+t-size:12px; color: #333333; text-align: right"&gt;
+            &lt;strong&gt;Unit Price&lt;/strong&gt;
+          &lt;/td&gt;
+          &lt;td align=3D"right" width=3D"25%" class=3D"ordered-item-cost-td" =
+style=3D"padding-top:20px; padding-bottom:5px; font-family:arial; font-size=
+:12px; color: #333333; text-align: right"&gt;
+            &lt;strong&gt;Total&lt;/strong&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+                &lt;tr&gt;
+          &lt;td width=3D"50%" class=3D"ordered-item-label-td product" style=
+=3D"padding-top:10px; padding-bottom:10px; border-top:1px solid #cccccc; bo=
+rder-bottom:1px solid #cccccc; font-family:arial; font-size:12px; color: #3=
+33333;  border-collapse: collapse;"&gt;
+            1 x NTLite Home License Renewal                                =
+    &lt;/td&gt;
+          &lt;td align=3D"right" width=3D"25%" class=3D"ordered-item-unit-pric=
+e-td" style=3D"padding-top:10px; padding-bottom:10px; border-top:1px solid =
+#cccccc; border-bottom:1px solid #cccccc; font-family:arial; font-size:12px=
+; color: #333333; border-collapse: collapse; text-align: right;"&gt;
+            23.57 USD
+          &lt;/td&gt;
+          &lt;td align=3D"right" width=3D"25%" class=3D"ordered-item-cost-td" =
+style=3D"padding-top:10px; padding-bottom:10px; border-top:1px solid #ccccc=
+c; border-bottom:1px solid #cccccc; font-family:arial; font-size:12px; colo=
+r: #333333;  border-collapse: collapse; text-align: right;"&gt;
+            23.57 USD
+          &lt;/td&gt;
+        &lt;/tr&gt;
+                                &lt;tr style=3D"line-height:1.3; font-family:a=
+rial; font-size:12px; color: #333333;"&gt;
+          &lt;td align=3D"right" width=3D"50%" class=3D"taxes-label" colspan=
+=3D"2" style=3D"padding-top:10px; font-family:arial; font-size:12px; color:=
+ #333333; text-align: right;"&gt;
+            Sales Tax / VAT
+          &lt;/td&gt;
+          &lt;td align=3D"right" width=3D"50%" class=3D"taxes-total" colspan=
+=3D"2" style=3D"padding-top:10px; font-family:arial; font-size:12px; color:=
+ #333333; text-align: right;"&gt;
+            0.00 USD
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr style=3D"line-height:1.3; font-family:arial; font-size:12px; co=
+lor: #333333;"&gt;
+          &lt;td align=3D"right" width=3D"50%" class=3D"taxes-label" colspan=
+=3D"2" style=3D"padding-top:10px; padding-bottom:10px; font-family:arial; f=
+ont-size:12px; color: #333333; text-align: right; border-bottom:1px solid #=
+cccccc;"&gt;
+            &lt;strong&gt;Grand Total&lt;/strong&gt;
+          &lt;/td&gt;
+          &lt;td align=3D"right" width=3D"50%" class=3D"order-total" style=3D"=
+padding-top:10px; padding-bottom:10px; border-bottom:1px solid #cccccc; fon=
+t-family:arial; font-size:12px; color: #333333; text-align: right;"&gt;
+            &lt;strong&gt;23.57 USD&lt;/strong&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+      &lt;!-- Ordered Items table : END --&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=3D"padding: 0 20px 15px; font-family: arial; font-size:12px; =
+mso-height-rule: exactly; line-height: 20px; color: #333333; border-bottom:=
+10px solid #eeeeee;" class=3D"terms-and-conditions"&gt;
+      You can access your products according to the terms and conditions yo=
+u accepted during purchase.
+    &lt;/td&gt;
+  &lt;/tr&gt;
+      &lt;tr&gt;
+    &lt;td style=3D"padding: 20px 20px 0px; font-family: arial; font-size:18px=
+; mso-height-rule: exactly; line-height: 20px; color: #333333; " class=3D"h=
+eadline support-info-headline"&gt;
+      Support information
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=3D"padding: 15px 20px 20px; font-family: arial; font-size:12p=
+x; mso-height-rule: exactly; line-height: 20px; color: #333333;  border-bot=
+tom:10px solid #eeeeee;" class=3D"tech-suport-section"&gt;
+            &lt;strong&gt;Need technical support?&lt;/strong&gt; For product installati=
+on, activation and other technical support issues, please contact Nlitesoft=
+ on  &lt;a href=3D"mailto:support@ntlite.com" style=3D"text-decoration: none!i=
+mportant; text-decoration:none; color: #0064c8;"&gt;support@ntlite.com&lt;/a&gt;    =
+  &lt;br /&gt;
+      &lt;br /&gt;        &lt;strong&gt;Need order support?&lt;/strong&gt; Use myAccount to e=
+asily manage your order, subscription, invoice and payment details. &lt;a href=
+=3D"https://secure.avangate.com/myaccount/" style=3D"text-decoration: none!=
+important; text-decoration:none; color: #0064c8;"&gt;Signup / Login&lt;/a&gt; using =
+your email address &lt;a href=3D"mailto:trentfromrid@gmail.com" style=3D"text-=
+decoration: none!important; text-decoration:none; color: #0064c8;"&gt;trentfro=
+mrid@gmail.com&lt;/a&gt;     &lt;/td&gt;
+  &lt;/tr&gt;
+    &lt;!-- Email Body : END --&gt;
+  &lt;!-- Email Footer : BEGIN --&gt;
+  &lt;tr&gt;
+    &lt;td style=3D"padding: 15px 20px 15px; font-family: arial; font-size:12p=
+x; mso-height-rule: exactly; line-height: 20px; color: #333333;  border-bot=
+tom:10px solid #eeeeee;" class=3D"footer signature"&gt;
+      Avangate has processed your order as the authorized reseller of Nlite=
+soft.
+      &lt;br /&gt;
+      &lt;br /&gt; Thank you,
+      &lt;br&gt;
+      &lt;strong&gt;The Avangate Team&lt;/strong&gt;
+      &lt;br&gt;
+      &lt;a href=3D"http://www.avangate.com" style=3D"text-decoration: none!im=
+portant; text-decoration:none; color: #0064c8;"&gt;http://www.avangate.com&lt;/a&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;!-- Email Footer : END --&gt;
+&lt;/table&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;img src=3D"https://secure.avangate.com/l.php?image=3Dae7=
+babbb5c4d"/&gt;&lt;/body&gt;</DATA>
+      <content-type>TEXT/HTML; CHARSET="UTF-8"</content-type>
+      <content-transfer-encoding>QUOTED-PRINTABLE</content-transfer-encoding>
+      <content-size>7763</content-size>
+    </Part>
+  </Part>
+</Message>

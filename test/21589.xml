@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Message UID="21589">
+  <Part ID="0">
+    <Delivered-To>trentfromrid@gmail.com</Delivered-To>
+    <Received>by 10.55.31.132 with SMTP id n4csp2865392qkh; Mon, 25 Sep 201714:24:22 -0700 (PDT)</Received>
+    <X-Google-Smtp-Source>AOwi7QAnLuPbkqDSWYaLNJYQ9f68/xdemoYZ0NQ68JRbh/Q548x+kBmFVRjKHz/+oEG1MiEDUeph</X-Google-Smtp-Source>
+    <X-Received>by 10.84.229.71 with SMTP id d7mr8655225pln.417.1506374662706;Mon, 25 Sep 2017 14:24:22 -0700 (PDT)</X-Received>
+    <ARC-Seal>i=1; a=rsa-sha256; t=1506374662; cv=none; d=google.com;s=arc-20160816;b=DD/Mf3bB7TUBvKiMUv//WfSiRb+H9NqNZxBKyT7/RiT3f/8iHwAKlglHACw4/3cOY9rCmLWxUp3X70fQDPeJauS7bDJppPvx/QA6cVec26uNc/ygGureT8et9P/4QRkqGR5wdfCyOcOiLWkH9K+bebjWpTOzqlPskauTUKqlovmi7ocFBDsiat684+HuLJKyC/WplcBitIEhf42p89kFh78el22SIwDCJTnnBfGLWSpZ1zsxMa6aL133MX5XvP3SBXRfSUa1xjh6tqzMQM8l4ic6gJG/fWABNoWDI3U+NYCtDZTv4RMbpBoesUIlg8+QCLosTeBR910qYh2hsf 4N4w==</ARC-Seal>
+    <ARC-Message-Signature>i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;s=arc-20160816; h=mime-version:subject:message-id:to:from:date:dkim-signature:dkim-filter:arc-authentication-results;bh=qB/iTpUjYhFLL4rQJVyd/rn+DoLc6UTmy9rYzPBQ3Qw=;b=ZlZPd8zT1xpxmsfLe6gBSxOartAB23jKTPLuph6rE9oC8VaYeAKn9E5gZXXmCn4nc259MVzMYwN4S9AieJTfJIYVaumK3Jhm7RKScQzug9veaN88Cqe1Ze2Yqkrd0l3tIXcZ0FRs8aQ8ToW9KIczqiKahI9e+fIziV8cKnV77e2Zdkn2S0qFeHAcMJfHedlmpUJX415jm60D1XjwvEBTChaoBmX9b20y7oIeXTvkJS8R0sJOClP/XSRz0Rj5ScdbSvmtBTLZPnjNRRVcSMR0tlGFuVKdbxPECSRkSmHXy12jD+ivOfGdRAOIekrvWbzSikRQFP8dvYgZvUkWc5 T8nA==</ARC-Message-Signature>
+    <ARC-Authentication-Results>i=1; mx.google.com; dkim=pass header.i=@ebay.comheader.s=dkim1k header.b=Yb/xRqcZ; spf=pass (google.com: domain ofebay@ebay.com designates 66.135.215.175 as permitted sender)smtp.mailfrom=ebay@ebay.com; dmarc=pass (p=NONE sp=NONE dis=NONE)header.from=ebay.com</ARC-Authentication-Results>
+    <Return-Path>&lt;ebay@ebay.com&gt;</Return-Path>
+    <Received>from mxslcpool73.ebay.com (mxslcpool73.ebay.com. [66.135.215.175])by mx.google.com with ESMTPS id b200si4533680pfb.487.2017.09.25.14.24.22 for&lt;trentfromrid@gmail.com&gt; (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256bits=128/128); Mon, 25 Sep 2017 14:24:22 -0700 (PDT)</Received>
+    <Received-SPF>pass (google.com: domain of ebay@ebay.com designates66.135.215.175 as permitted sender) client-ip=66.135.215.175;</Received-SPF>
+    <Authentication-Results>mx.google.com; dkim=pass header.i=@ebay.comheader.s=dkim1k header.b=Yb/xRqcZ; spf=pass (google.com: domain ofebay@ebay.com designates 66.135.215.175 as permitted sender)smtp.mailfrom=ebay@ebay.com; dmarc=pass (p=NONE sp=NONE dis=NONE)header.from=ebay.com</Authentication-Results>
+    <Received>from slc07-1335621.stratus.slc.ebay.com(slc07-1335621.stratus.slc.ebay.com [10.188.90.72]) by mxslcpool73.ebay.com(8.14.7/8.14.7) with ESMTP id v8PLOEuZ025094 for &lt;trentfromrid@gmail.com&gt;;Mon, 25 Sep 2017 14:24:21 -0700</Received>
+    <DKIM-Filter>OpenDKIM Filter v2.10.3 mxslcpool73.ebay.com v8PLOEuZ025094</DKIM-Filter>
+    <DKIM-Signature>v=1; a=rsa-sha1; c=relaxed/relaxed; d=ebay.com; s=dkim1k;t=1506374661; bh=+nV0XA6bMea+PtYBWHL/8cP7qnw=; h=From:To:Subject;b=Yb/xRqcZp375OY6EbjWyfXe52fBN5l4V2gU0hEOc4Q7767mPn+K3KNnhv8fDP/QupbfZ4oBN5s3DkF9YV40RkjfstqneQSwvX4bUDIWPJziclubDx9+SKoHzv9VX4H98Z1RDet18luTGdrK4bposLikEucnIM46MBToC5LPqCLA=</DKIM-Signature>
+    <Date>Mon, 25 Sep 2017 14:24:21 -0700</Date>
+    <From>eBay &lt;ebay@ebay.com&gt;</From>
+    <To>trentfromrid@gmail.com</To>
+    <Message-ID>&lt;82876d56-d8d2-43e6-82b0-ded40420519d@slc07-1335621&gt;</Message-ID>
+    <Subject>DELIVERED: Gameboy Advance SP AGS-101...</Subject>
+    <MIME-Version>1.0</MIME-Version>
+    <Content-Type>multipart/alternative;boundary="----=_Part_1325520_658450239.1506374661346"</Content-Type>
+    <X-eBay-MailTracker>11412.000.0.0.a42d5976605146f0a14afd32fd790135</X-eBay-MailTracker>
+    <Part ID="1">
+      <content-type>TEXT/HTML; CHARSET="UTF-8"</content-type>
+      <content-transfer-encoding>QUOTED-PRINTABLE</content-transfer-encoding>
+      <content-size>40097</content-size>
+    </Part>
+  </Part>
+</Message>

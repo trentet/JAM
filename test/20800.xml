@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Message UID="20800">
+  <Part ID="0">
+    <Delivered-To>trentfromrid@gmail.com</Delivered-To>
+    <Received>by 10.2.30.221 with SMTP id 90csp1247481jat; Mon, 31 Jul 201718:52:39 -0700 (PDT)</Received>
+    <X-Received>by 10.36.181.23 with SMTP id v23mr165317ite.163.1501552359695;Mon, 31 Jul 2017 18:52:39 -0700 (PDT)</X-Received>
+    <ARC-Seal>i=1; a=rsa-sha256; t=1501552359; cv=none; d=google.com;s=arc-20160816;b=HR3jJwnrUmxWajFjceM2mWcj9iBAzjyt4lBETngNxBrZ6AmHh3wlXe0VzbrWAQV2Uu16pSeXrLm+U4jVfHBQ4g+iYWTgdrElubODMfbs+3YlnugSEbBI8Ms4GqbqqAT0iSKQUwyuX2l9retOqYGIv0cCGNRstyc84NCUE7FcLQoyC+M1dBIJmYH7SzWYOOccJ5DRn8afnUKoGs2o0XwWPYEmcqMxgpiC3WSE/oOosTu1h8+/4AAwSZraOVEirYkdNVhBJnY6jqekmy4xcZGJ+L+nA4Ty0XE8IoETxmsAGAbSIWLmguFSTEfDFtR0B+K3KX2YIrN2gdGEPhQdh8 XjtQ==</ARC-Seal>
+    <ARC-Message-Signature>i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;s=arc-20160816; h=message-id:content-transfer-encoding:subject:date:to:from:mime-version:dkim-signature:arc-authentication-results;bh=TYJNsXAj3//N4Hdqt55wD47zeotlAwfsnlXJkCrdwt0=;b=nwS+mFWmGWvg1woFN6qiKZ9c5YNAfbRSTjApuLgg3As4IwmfpMWcjfHByD6XVZG1R7ypWBPcOIJXNDYFQ5oqlfBj9zSBlfr4UHCgX9Q1KxwzVx2WuZjifn5jYHI82OoQZ7IZvorIMo6ux5rjeJycExqA2BbRmt3VkulhlIetOY8y9BzAmPt+NGo/EBM34zpRn34vi4b6wMvWof82roN+xKcJnd6qPbV+x/i2bGPXHJ6OXnB/mq1LuV3nGTRKEvnVnWK05WkZCNGuYdUnCqV0Cc1fCkDu//XVJvVbWt2gTBA0XRa+yBlj4jj5p/bt6vFWrrY0m7L/Z5SAUqBbHa nCKA==</ARC-Message-Signature>
+    <ARC-Authentication-Results>i=1; mx.google.com; dkim=passheader.i=@sendgrid.net header.b=xHpa0wS3; spf=pass (google.com: domain ofbounces+2800991-ed83-trentfromrid=gmail.com@sendgrid.net designates167.89.84.56 as permitted sender)smtp.mailfrom=bounces+2800991-ed83-trentfromrid=gmail.com@sendgrid.net;dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com</ARC-Authentication-Results>
+    <Return-Path>&lt;bounces+2800991-ed83-trentfromrid=gmail.com@sendgrid.net&gt;</Return-Path>
+    <Received>from o1678984x56.outbound-mail.sendgrid.net(o1678984x56.outbound-mail.sendgrid.net. [167.89.84.56]) by mx.google.comwith ESMTPS id z203si30657091ioz.281.2017.07.31.18.52.39 for&lt;trentfromrid@gmail.com&gt; (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256bits=128/128); Mon, 31 Jul 2017 18:52:39 -0700 (PDT)</Received>
+    <Received-SPF>pass (google.com: domain ofbounces+2800991-ed83-trentfromrid=gmail.com@sendgrid.net designates167.89.84.56 as permitted sender) client-ip=167.89.84.56;</Received-SPF>
+    <Authentication-Results>mx.google.com; dkim=pass header.i=@sendgrid.netheader.b=xHpa0wS3; spf=pass (google.com: domain ofbounces+2800991-ed83-trentfromrid=gmail.com@sendgrid.net designates167.89.84.56 as permitted sender)smtp.mailfrom=bounces+2800991-ed83-trentfromrid=gmail.com@sendgrid.net;dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com</Authentication-Results>
+    <DKIM-Signature>v=1; a=rsa-sha1; c=relaxed/relaxed; d=sendgrid.net;h=mime-version:from:to:subject:content-type:content-transfer-encoding:x-feedback-id;s=smtpapi; bh=mAVS78XDwBmBdambOatSbzrLtAo=; b=xHpa0wS3bI5LAVoe0WMzJDfgaMdOpEgysjkEgEDL5Y4mY9D81u1EWFLOHf4mkIYVnYYui/94sIBYHmUwKrFx6pG7ovQ6V3mBIfukgnmSRkNv1df8vXvJZqYDalv19zq6i7LDiD+O8/dHMJwSy/mHEh0vRMsuq94i/XLYcTYHAdE=</DKIM-Signature>
+    <Received>by filter1111p1mdw1.sendgrid.net with SMTP idfilter1111p1mdw1-14809-597FDEE6-11 2017-08-01 01:52:38.410861883 +0000 UTC</Received>
+    <Received>from WIN-KF3LTJD2J6O (ec2-54-164-227-97.compute-1.amazonaws.com[54.164.227.97]) by ismtpd0006p1iad1.sendgrid.net (SG) with ESMTP ideM25G2M2TOequBhcoKYiaw for &lt;trentfromrid@gmail.com&gt;; Tue, 01 Aug 201701:52:38.330 +0000 (UTC)</Received>
+    <MIME-Version>1.0</MIME-Version>
+    <From>"nintendoplayerschoice" &lt;customerservicenpc@gmail.com&gt;</From>
+    <To>"thomatretren" &lt;trentfromrid@gmail.com&gt;</To>
+    <Date>Tue, 01 Aug 2017 01:52:38 +0000 (UTC)</Date>
+    <Subject>Your item(s) have shipped</Subject>
+    <Content-Type>text/html; charset=us-ascii</Content-Type>
+    <Content-Transfer-Encoding>quoted-printable</Content-Transfer-Encoding>
+    <Message-ID>&lt;eM25G2M2TOequBhcoKYiaw@ismtpd0006p1iad1.sendgrid.net&gt;</Message-ID>
+    <X-SG-EID>eVWBpl+mN3dyIHWAyjVppPoWm673lTMXlDUFnqym3WxaSr7YgOtwTr1ld7rsrsq0lmcXY9eHcSYa92MO6O8SgKEbSrSmsAsvm03vx4ivEw0xcvJWtJytrSAxULDLv/1j8jZe3V8R+DuN9WL9iMbAL2MmTpuxP+m5UMYNx3JcL08e6bxNGqlVavMDHQozO4Cx2URt1/ZegsJRqjFZiROjPugd6LYXcjvLiQp+5tyAzwAaEDsL7D6AVIGMP2sYZhx0</X-SG-EID>
+    <X-Feedback-ID>2800991:wSKOGR1XHi+5QzFe4H4ibHiABFmdVt+a0Fn84kycPKM=:wSKOGR1XHi+5QzFe4H4ibHiABFmdVt+a0Fn84kycPKM=:SG</X-Feedback-ID>
+    <Part ID="1">
+      <content-type>TEXT/HTML; CHARSET="us-ascii"</content-type>
+      <content-transfer-encoding>QUOTED-PRINTABLE</content-transfer-encoding>
+      <content-size>84012</content-size>
+    </Part>
+  </Part>
+</Message>

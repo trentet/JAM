@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Message UID="21933">
+  <Part ID="0">
+    <Delivered-To>trentfromrid@gmail.com</Delivered-To>
+    <Received>by 10.55.167.146 with SMTP id q140csp4600954qke; Thu, 19 Oct 201707:34:47 -0700 (PDT)</Received>
+    <X-Google-Smtp-Source>ABhQp+R+FZcNB4jVmxblpRkMEoU6Z+Oe10hEcv6vJe/fyY2OpzCNMCGTfowXsZhveOpMpCnNkwC8</X-Google-Smtp-Source>
+    <X-Received>by 10.98.147.23 with SMTP id b23mr1757062pfe.5.1508423687227; Thu,19 Oct 2017 07:34:47 -0700 (PDT)</X-Received>
+    <ARC-Seal>i=1; a=rsa-sha256; t=1508423687; cv=none; d=google.com;s=arc-20160816;b=qTsUaJF5Vq5r9T0+6oT06cVA2UNzbK15HiO92LgEgf8PU8Tl2XJB7CzjpKQmzeMkpGS043Klf+80px4wBvvznN/8ufkxN+k6eoX3bM3obyZYOttKol4Mu2e+C12H/7nS3vDErNFM38uisCs3tR35SvTilYGBabYJ4QdQlm1UbA4S0hUM7lNdOjPzvVOmwVOSXKn3k78vLwMdU/iqSJr9mQJkvJvVBiZjST+mZMcralU9Lt/ahVZ3cp8ZS0THSBbn+6pper8SjXlT6OqwAuZ2RdtsajnkDCYtbCYoHOXn49jj0p1MqU5nC1qDf5PxX88Dvr0KsDao2xnnSGdQ3y Rv0w==</ARC-Seal>
+    <ARC-Message-Signature>i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;s=arc-20160816; h=mime-version:subject:date:message-id:to:reply-to:from:domainkey-signature:dkim-signature:arc-authentication-results;bh=2vlLKz5ACeNdWk1F6krToq2p5D1BEDwwewu+CdTYG60=;b=0P8O9HbcYVyA1VOPX8nYprv8q+Fu/0Hxx4c9EWMl9ZcjpZI6y9/pBb39vPMgIg7x/a0caj/OFWrbICdmlEZkLoGHh3UXxE95oOh2ZO6eouvWajIld1698fCEkH5Z2NRuU/WVIdzmIGlJtl+rtq+oMUT2f/jXIRF1g6sjqDRl3mAC4oIIbQLcjJDsmAnJ2QSyNawaW6XDEOYEkcKT1acKF4lXGgbNrIzGRH20stclwbX9rG1mbbIxwxvq/tFcr2WAGWvhd4ehaUscmgFlBs15bDwcgqFiYlTZMAR5353t3aOBtBOgSnrTCFbstaT4LakskUcUJPb32e6Te7+/cE e1Qg==</ARC-Message-Signature>
+    <ARC-Authentication-Results>i=1; mx.google.com; dkim=passheader.i=@esurance.com header.s=publickey header.b=Dx+OGKG3; spf=pass(google.com: domain of bounce@bounce.esurance.com designates 63.83.4.220 aspermitted sender) smtp.mailfrom=bounce@bounce.esurance.com; dmarc=pass(p=NONE sp=NONE dis=NONE) header.from=esurance.com</ARC-Authentication-Results>
+    <Return-Path>&lt;bounce@bounce.esurance.com&gt;</Return-Path>
+    <Received>from PMTA1.esurance.com (pmta1.esurance.com. [63.83.4.220]) bymx.google.com with ESMTP id n71si6463171pfk.544.2017.10.19.07.34.46 for&lt;TrentFromRiD@gmail.com&gt;; Thu, 19 Oct 2017 07:34:47 -0700 (PDT)</Received>
+    <Received-SPF>pass (google.com: domain of bounce@bounce.esurance.comdesignates 63.83.4.220 as permitted sender) client-ip=63.83.4.220;</Received-SPF>
+    <Authentication-Results>mx.google.com; dkim=pass header.i=@esurance.comheader.s=publickey header.b=Dx+OGKG3; spf=pass (google.com: domain ofbounce@bounce.esurance.com designates 63.83.4.220 as permitted sender)smtp.mailfrom=bounce@bounce.esurance.com; dmarc=pass (p=NONE sp=NONEdis=NONE) header.from=esurance.com</Authentication-Results>
+    <DKIM-Signature>v=1; a=rsa-sha1; c=relaxed/relaxed; s=publickey;d=esurance.com;h=From:Reply-To:To:Message-ID:Date:Subject:MIME-Version:Content-Type;i=claims@csr.esurance.com; bh=4cXyhrXQuiYd6eKiezeY1lR9lck=;b=Dx+OGKG3JNebgcYCTeg3cC40GKWKC4yJMVhPrLRjKhtcazjodNJWEnFb0Oq0y7S01vMP0Xl4IBIRBb+8yA+7cHkECI1j/DysAIbnh6yUsW7c6ZPp2AISwAbGasj6C1qFGVtS9Nqwi0OIY0lz7n7DIsYpqWi2fB3R/WDz+bWyV40=</DKIM-Signature>
+    <DomainKey-Signature>a=rsa-sha1; c=nofws; q=dns; s=publickey; d=esurance.com;b=a0GIVd6rR4S5o9Vbd6GPUUz/E3DMiLYi/hXunmoxsA2SAMRdWnpXm4ZO+JiQDq4I2cgoQTJ5NJHsSjczQrvMrKnL+Xhv/FOvbIN9W32y/XaxkAk7oV8rVNuKbdNMENJi/YV1up86uzrR2Wu+b9PLOdPbi12q+j1yWw8BZk6YOhU=;</DomainKey-Signature>
+    <Received>by PMTA1.esurance.com (PowerMTA(TM) v3.5r11) id ht2s0q0ivakr for&lt;TrentFromRiD@gmail.com&gt;; Thu, 19 Oct 2017 07:34:53 -0700 (envelope-from&lt;bounce@bounce.esurance.com&gt;)</Received>
+    <From>"Esurance Claims" &lt;claims@csr.esurance.com&gt;</From>
+    <Return-path>&lt;bounce@bounce.esurance.com&gt;</Return-path>
+    <Reply-To>"Esurance" &lt;noreply@esurance.com&gt;</Reply-To>
+    <To>TrentFromRiD@gmail.com</To>
+    <Message-ID>&lt;2425ba9264794b85910bb4d27f676fe0RequestId768588545@esurance.com&gt;</Message-ID>
+    <Date>Thu, 19 Oct 2017 07:34:46 -0700</Date>
+    <X-Priority>3</X-Priority>
+    <Subject>Information about your Claim, #DEN-0079070</Subject>
+    <MIME-Version>1.0</MIME-Version>
+    <Content-Type>multipart/alternative;boundary="----=_NextPart_2dcf0ed5_aebe_4c3f_b2f4_3486fba8c5d9"</Content-Type>
+    <Part ID="1">
+      <DATA>Dear Trent Thomas,
+
+Thanks for contacting Esurance=2E We've found an E-star=C2=AE repair=20
+facility in your area=2E=20
+    https://www=2Eesurance=2Ecom/claims-popup?No=3Dfive&amp;PromoID=3DP1471=
+101917XBAT
+
+Please call them at the number below to set up an inspection=2E
+
+E-star=C2=AE repair facility:    ABRA - MURRAY
+Address:                    4600 SOUTH MAIN, MURRAY, UT 84107
+Phone number:               801-266-9526
+
+Here's your claim info
+
+Claim Number:               DEN-0079070
+Car Details:                2001 Toyota Camry Solara
+Claim Representative:       Thomas Kaminski, Denver Claims Office
+
+If you have any questions about your claim, don't hesitate=20
+to call me=2E And of course, if you need immediate assistance, you=20
+can call 1-800-ESURANCE (1-800-378-7262) anytime=2E
+
+Sincerely,
+Thomas Kaminski
+
+Representative: Thomas Kaminski
+Email: TKaminski@esurance=2Ecom
+Phone: 720-852-6584
+Fax: 866-691-1904
+
+***********************************************************************
+
+Esurance Denver Claims Office
+Esurance Insurance Company
+Address: PO Box 4954, Greenwood Village, CO 80155
+
+We're here for you with easy online and mobile access and
+24/7 claims service, we're available anytime=2E
+Plus, with Allstate behind us, you can feel confident we'll be
+here when you need us most=2E
+Allstate products are not available through Esurance=2E</DATA>
+      <content-type>TEXT/PLAIN; CHARSET="utf-8"</content-type>
+      <content-transfer-encoding>QUOTED-PRINTABLE</content-transfer-encoding>
+      <content-size>1397</content-size>
+    </Part>
+    <Part ID="2">
+      <content-type>TEXT/HTML; CHARSET="utf-8"</content-type>
+      <content-transfer-encoding>QUOTED-PRINTABLE</content-transfer-encoding>
+      <content-size>16260</content-size>
+    </Part>
+  </Part>
+</Message>

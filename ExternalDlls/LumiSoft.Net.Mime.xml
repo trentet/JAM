@@ -1,0 +1,2706 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LumiSoft.Net.Mime</name>
+    </assembly>
+    <members>
+        <member name="T:LumiSoft.Net.AuthType">
+            <summary>
+            Authentication type.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.AuthType.Plain">
+            <summary>
+            Plain username/password authentication.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.AuthType.APOP">
+            <summary>
+            APOP
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.AuthType.LOGIN">
+            <summary>
+            Not implemented.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.AuthType.CRAM_MD5">
+            <summary>
+            Cram-md5 authentication.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.AuthType.DIGEST_MD5">
+            <summary>
+            DIGEST-md5 authentication.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Core">
+            <summary>
+            Provides net core utility methods.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Core.ScanInvalid_CR_or_LF(System.IO.Stream)">
+            <summary>
+            Scans invalid CR or LF combination in stream. Returns true if contains invalid CR or LF combination.
+            </summary>
+            <param name="strm">Stream which to check.</param>
+            <returns>Returns true if contains invalid CR or LF combination.</returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.GetHostName(System.Net.IPAddress)">
+            <summary>
+            Gets host name. If fails returns 'UnkownHost'.
+            </summary>
+            <param name="IP"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.GetArgsText(System.String,System.String)">
+            <summary>
+            Gets argument part of command text.
+            </summary>
+            <param name="input">Input srting from where to remove value.</param>
+            <param name="cmdTxtToRemove">Command text which to remove.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.IsNumber(System.String)">
+            <summary>
+            Checks if specified string is number(long).
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.Base64Encode(System.Byte[])">
+            <summary>
+            Encodes specified data with base64 encoding.
+            </summary>
+            <param name="data">Data to encode.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.Base64EncodeEx(System.Byte[],System.Char[],System.Boolean)">
+            <summary>
+            Encodes specified data with bas64 encoding.
+            </summary>
+            <param name="data">Data to to encode.</param>
+            <param name="base64Chars">Custom base64 chars (64 chars) or null if default chars used.</param>
+            <param name="padd">Padd missing block chars. Normal base64 must be 4 bytes blocks, if not 4 bytes in block, 
+            missing bytes must be padded with '='. Modified base64 just skips missing bytes.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.Base64Decode(System.Byte[])">
+            <summary>
+            Decodes base64 data. Defined in RFC 2045 6.8.  Base64 Content-Transfer-Encoding.
+            </summary>
+            <param name="base64Data">Base64 decoded data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.Base64DecodeEx(System.Byte[],System.Char[])">
+            <summary>
+            Decodes base64 data. Defined in RFC 2045 6.8.  Base64 Content-Transfer-Encoding.
+            </summary>
+            <param name="base64Data">Base64 decoded data.</param>
+            <param name="base64Chars">Custom base64 chars (64 chars) or null if default chars used.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.QuotedPrintableEncode(System.Byte[])">
+            <summary>
+            Encodes data with quoted-printable encoding.
+            </summary>
+            <param name="data">Data to encode.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.QuotedPrintableDecode(System.Byte[])">
+            <summary>
+            quoted-printable decoder. Defined in RFC 2045 6.7.
+            </summary>
+            <param name="data">Data which to encode.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.QDecode(System.Text.Encoding,System.String)">
+            <summary>
+            "Q" decoder. This is same as quoted-printable, except '_' is converted to ' '.
+            Defined in RFC 2047 4.2.
+            </summary>
+            <param name="encoding">Input string encoding.</param>
+            <param name="data">String which to encode.</param>
+            <returns>Returns decoded string.</returns>		
+        </member>
+        <member name="M:LumiSoft.Net.Core.CanonicalDecode(System.String)">
+            <summary>
+            Canonical decoding. Decodes all canonical encoding occurences in specified text.
+            Usually mime message header unicode/8bit values are encoded as Canonical.
+            Format: =?charSet?type[Q or B]?encoded_string?= .
+            Defined in RFC 2047.
+            </summary>
+            <param name="text">Text to decode.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.CanonicalEncode(System.String,System.String)">
+            <summary>
+            Canonical encoding.
+            </summary>
+            <param name="str">String to encode.</param>
+            <param name="charSet">With what charset to encode string. If you aren't sure about it, utf-8 is suggested.</param>
+            <returns>Returns encoded text.</returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.Encode_IMAP_UTF7_String(System.String)">
+            <summary>
+            Encodes specified data with IMAP modified UTF7 encoding. Defined in RFC 3501 5.1.3.  Mailbox International Naming Convention.
+            Example: 鲻 is encoded to &amp;APYA9g-.
+            </summary>
+            <param name="text">Text to encode.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.Decode_IMAP_UTF7_String(System.String)">
+            <summary>
+            Decodes IMAP modified UTF7 encoded data. Defined in RFC 3501 5.1.3.  Mailbox International Naming Convention.
+            Example: &amp;APYA9g- is decoded to 鲻.
+            </summary>
+            <param name="text">Text to encode.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.IsAscii(System.String)">
+            <summary>
+            Checks if specified string data is acii data.
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.GetFileNameFromPath(System.String)">
+            <summary>
+            Gets file name from path.
+            </summary>
+            <param name="filePath">File file path with file name. For examples: c:\fileName.xxx, aaa\fileName.xxx.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.IsIP(System.String)">
+            <summary>
+            Gets if specified value is IP address.
+            </summary>
+            <param name="value">String value.</param>
+            <returns>Returns true if specified value is IP address.</returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.CompareIP(System.Net.IPAddress,System.Net.IPAddress)">
+            <summary>
+            Compares 2 IP addresses. Returns 0 if IPs are equal, 
+            returns positive value if destination IP is bigger than source IP,
+            returns negative value if destination IP is smaller than source IP.
+            </summary>
+            <param name="source">Source IP address.</param>
+            <param name="destination">Destination IP address.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.IsPrivateIP(System.String)">
+            <summary>
+            Gets if specified IP address is private LAN IP address. For example 192.168.x.x is private ip.
+            </summary>
+            <param name="ip">IP address to check.</param>
+            <returns>Returns true if IP is private IP.</returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.ToHexString(System.String)">
+            <summary>
+            Converts string to hex string.
+            </summary>
+            <param name="data">String to convert.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.ToHex(System.Byte)">
+            <summary>
+            Convert byte to hex data.
+            </summary>
+            <param name="byteValue">Byte to convert.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.ToHex(System.Byte[])">
+            <summary>
+            Converts data to hex data.
+            </summary>
+            <param name="data">Data to convert.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.FromHex(System.Byte[])">
+            <summary>
+            Converts hex byte data to normal byte data. Hex data must be in two bytes pairs, for example: 0F,FF,A3,... .
+            </summary>
+            <param name="hexData">Hex data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Core.ComputeMd5(System.String)">
+            <summary>
+            Computes md5 hash. Value is 32 char hex string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.ContentTransferEncoding_enum">
+            <summary>
+            Rfc 2045 6. Content-Transfer-Encoding. Specified how entity data is encoded.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.ContentTransferEncoding_enum._7bit">
+            <summary>
+            Rfc 2045 2.7. 7bit data.
+            "7bit data" refers to data that is all represented as relatively
+            short lines with 998 octets or less between CRLF line separation
+            sequences [RFC-821].  No octets with decimal values greater than 127
+            are allowed and neither are NULs (octets with decimal value 0).  CR
+            (decimal value 13) and LF (decimal value 10) octets only occur as
+            part of CRLF line separation sequences.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.ContentTransferEncoding_enum._8bit">
+            <summary>
+            Rfc 2045 2.8. 8bit data.
+            "8bit data" refers to data that is all represented as relatively
+            short lines with 998 octets or less between CRLF line separation
+            sequences [RFC-821]), but octets with decimal values greater than 127
+            may be used.  As with "7bit data" CR and LF octets only occur as part
+            of CRLF line separation sequences and no NULs are allowed.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.ContentTransferEncoding_enum.Binary">
+            <summary>
+            Rfc 2045 2.9. Binary data.
+            "Binary data" refers to data where any sequence of octets whatsoever is allowed.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.ContentTransferEncoding_enum.QuotedPrintable">
+            <summary>
+            Rfc 2045 6.7 Quoted-Printable Content-Transfer-Encoding.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.ContentTransferEncoding_enum.Base64">
+            <summary>
+            Rfc 2045 6.8 Base64 Content-Transfer-Encoding.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.ContentTransferEncoding_enum.NotSpecified">
+            <summary>
+            Content-Transfer-Encoding field isn't available(doesn't exist).
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.ContentTransferEncoding_enum.Unknown">
+            <summary>
+            Content transfer encoding is unknown.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.vCard.PhoneNumberCollection">
+            <summary>
+            vCard phone number collection implementation.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.PhoneNumberCollection.#ctor(LumiSoft.Net.Mime.vCard.vCard)">
+            <summary>
+            Default constructor.
+            </summary>
+            <param name="owner">Owner vCard.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.PhoneNumberCollection.Add(LumiSoft.Net.Mime.vCard.PhoneNumberType_enum,System.String)">
+            <summary>
+            Add new phone number to the collection.
+            </summary>
+            <param name="type">Phone number type. Note: This value can be flagged value !</param>
+            <param name="number">Phone number.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.PhoneNumberCollection.Remove(LumiSoft.Net.Mime.vCard.PhoneNumber)">
+            <summary>
+            Removes specified item from the collection.
+            </summary>
+            <param name="item">Item to remove.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.PhoneNumberCollection.Clear">
+            <summary>
+            Removes all items from the collection.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.PhoneNumberCollection.GetEnumerator">
+            <summary>
+            Gets enumerator.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.PhoneNumberCollection.Count">
+            <summary>
+            Gets number of items in the collection.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.vCard.PhoneNumber">
+            <summary>
+            vCard phone number implementation.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.PhoneNumber.#ctor(LumiSoft.Net.Mime.vCard.Item,LumiSoft.Net.Mime.vCard.PhoneNumberType_enum,System.String)">
+            <summary>
+            Default constructor.
+            </summary>
+            <param name="item">Owner vCard item.</param>
+            <param name="type">Phone number type. Note: This value can be flagged value !</param>
+            <param name="number">Phone number.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.PhoneNumber.Changed">
+            <summary>
+            This method is called when some property has changed, wee need to update underlaying vCard item.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.PhoneNumber.Parse(LumiSoft.Net.Mime.vCard.Item)">
+            <summary>
+            Parses phone from vCard TEL structure string.
+            </summary>
+            <param name="item">vCard TEL item.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.PhoneNumber.PhoneTypeToString(LumiSoft.Net.Mime.vCard.PhoneNumberType_enum)">
+            <summary>
+            Converts PhoneNumberType_enum to vCard item parameters string.
+            </summary>
+            <param name="type">Value to convert.</param>
+            <returns></returns>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.PhoneNumber.Item">
+            <summary>
+            Gets underlaying vCrad item.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.PhoneNumber.NumberType">
+            <summary>
+            Gets or sets phone number type. Note: This property can be flagged value !
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.PhoneNumber.Number">
+            <summary>
+            Gets or sets phone number.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.HeaderFieldParameterCollection">
+            <summary>
+            Header field parameters collection.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldParameterCollection.#ctor(LumiSoft.Net.Mime.ParametizedHeaderField)">
+            <summary>
+            Default constructor.
+            </summary>
+            <param name="headerField">Header field.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldParameterCollection.Add(System.String,System.String)">
+            <summary>
+            Adds a new header field parameter with specified name and value to the end of the collection.
+            </summary>
+            <param name="parameterName">Parameter name.</param>
+            <param name="parameterValue">Parameter value.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldParameterCollection.Remove(System.String)">
+            <summary>
+            Removes specified header field parameter from the collection.
+            </summary>
+            <param name="parameterName">The name of the header field parameter to remove.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldParameterCollection.Clear">
+            <summary>
+            Clears the collection of all header field parameters.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldParameterCollection.Contains(System.String)">
+            <summary>
+            Gets if collection contains specified parameter.
+            </summary>
+            <param name="parameterName">Parameter name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldParameterCollection.GetEnumerator">
+            <summary>
+            Gets enumerator.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.HeaderFieldParameterCollection.Item(System.String)">
+            <summary>
+            Gets or sets specified parameter value.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.HeaderFieldParameterCollection.Count">
+            <summary>
+            Gets header field parameters count in the collection.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.GroupAddress">
+            <summary>
+            RFC 2822 3.4. (Address Specification) Group address.
+            <p/>
+            Syntax: display-name':'[mailbox *(',' mailbox)]';'
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.Address">
+            <summary>
+            Rfc 2822 3.4 Address class. This class is base class for MailboxAddress and GroupAddress.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.Address.#ctor(System.Boolean)">
+            <summary>
+            Default constructor.
+            </summary>
+            <param name="groupAddress">Spcified is address is group or mailbox address.</param>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.Address.IsGroupAddress">
+            <summary>
+            Gets if address is group address or mailbox address.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.Address.Owner">
+            <summary>
+            Gets or sets owner of this address.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.GroupAddress.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.GroupAddress.Parse(System.String)">
+            <summary>
+            Parses Rfc 2822 3.4 group address from group address string. Syntax: display-name':'[mailbox *(',' mailbox)]';'
+            </summary>
+            <param name="group">Group address string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.GroupAddress.OnChanged">
+            <summary>
+            This called when group address has changed.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.GroupAddress.GroupString">
+            <summary>
+            Gets Group as RFC 2822(3.4. Address Specification) string. Syntax: display-name':'[mailbox *(',' mailbox)]';'
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.GroupAddress.DisplayName">
+            <summary>
+            Gets or sets display name.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.GroupAddress.GroupMembers">
+            <summary>
+            Gets group members collection.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.AddressList">
+            <summary>
+            Rfc 2822 3.4 address-list. Rfc defines two types of addresses mailbox and group.
+            <p/>
+            <p style="margin-top: 0; margin-bottom: 0"/><b>address-list</b> syntax: address *("," address).
+            <p style="margin-top: 0; margin-bottom: 0"/><b>address</b> syntax: mailbox / group.
+            <p style="margin-top: 0; margin-bottom: 0"/><b>mailbox</b> syntax: ['"'dispaly-name'"' ]&lt;localpart@domain&gt;.
+            <p style="margin-top: 0; margin-bottom: 0"/><b>group</b> syntax: '"'dispaly-name'":' [mailbox *(',' mailbox)]';'.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.AddressList.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.AddressList.Add(LumiSoft.Net.Mime.Address)">
+            <summary>
+            Adds a new address to the end of the collection.
+            </summary>
+            <param name="address">Address to add.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.AddressList.Insert(System.Int32,LumiSoft.Net.Mime.Address)">
+            <summary>
+            Inserts a new address into the collection at the specified location.
+            </summary>
+            <param name="index">The location in the collection where you want to add the address.</param>
+            <param name="address">Address to add.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.AddressList.Remove(System.Int32)">
+            <summary>
+            Removes address at the specified index from the collection.
+            </summary>
+            <param name="index">Index of the address which to remove.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.AddressList.Remove(LumiSoft.Net.Mime.Address)">
+            <summary>
+            Removes specified address from the collection.
+            </summary>
+            <param name="address">Address to remove.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.AddressList.Clear">
+            <summary>
+            Clears the collection of all addresses.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.AddressList.Parse(System.String)">
+            <summary>
+            Parses address-list from string.
+            </summary>
+            <param name="addressList">Address list string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.AddressList.ToAddressListString">
+            <summary>
+            Convert addresses to Rfc 2822 address-list string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.AddressList.OnCollectionChanged">
+            <summary>
+            This called when collection has changed. Item is added,deleted,changed or collection cleared.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.AddressList.GetEnumerator">
+            <summary>
+            Gets enumerator.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.AddressList.Mailboxes">
+            <summary>
+            Gets all mailbox addresses. Note: group address mailbox addresses are also included.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.AddressList.Item(System.Int32)">
+            <summary>
+            Gets address from specified index.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.AddressList.Count">
+            <summary>
+            Gets address count in the collection.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.AddressList.BoundedHeaderField">
+            <summary>
+            Bound address-list to specified header field.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.vCard.DeliveryAddress">
+            <summary>
+            vCard delivery address implementation.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.DeliveryAddress.#ctor(LumiSoft.Net.Mime.vCard.Item,LumiSoft.Net.Mime.vCard.DeliveryAddressType_enum,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Default constructor.
+            </summary>
+            <param name="item">Owner vCard item.</param>
+            <param name="addressType">Address type. Note: This value can be flagged value !</param>
+            <param name="postOfficeAddress">Post office address.</param>
+            <param name="extendedAddress">Extended address.</param>
+            <param name="street">Street name.</param>
+            <param name="locality">Locality(city).</param>
+            <param name="region">Region.</param>
+            <param name="postalCode">Postal code.</param>
+            <param name="country">Country.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.DeliveryAddress.Changed">
+            <summary>
+            This method is called when some property has changed, we need to update underlaying vCard item.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.DeliveryAddress.Parse(LumiSoft.Net.Mime.vCard.Item)">
+            <summary>
+            Parses delivery address from vCard ADR structure string.
+            </summary>
+            <param name="item">vCard ADR item.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.DeliveryAddress.AddressTypeToString(LumiSoft.Net.Mime.vCard.DeliveryAddressType_enum)">
+            <summary>
+            Converts DeliveryAddressType_enum to vCard item parameters string.
+            </summary>
+            <param name="type">Value to convert.</param>
+            <returns></returns>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.DeliveryAddress.Item">
+            <summary>
+            Gets underlaying vCrad item.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.DeliveryAddress.AddressType">
+            <summary>
+            Gets or sets address type. Note: This property can be flagged value !
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.DeliveryAddress.PostOfficeAddress">
+            <summary>
+            Gets or sets post office address.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.DeliveryAddress.ExtendedAddress">
+            <summary>
+            Gests or sets extended address.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.DeliveryAddress.Street">
+            <summary>
+            Gets or sets street.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.DeliveryAddress.Locality">
+            <summary>
+            Gets or sets locality(city).
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.DeliveryAddress.Region">
+            <summary>
+            Gets or sets region.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.DeliveryAddress.PostalCode">
+            <summary>
+            Gets or sets postal code.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.DeliveryAddress.Country">
+            <summary>
+            Gets or sets country.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.vCard.EmailAddressType_enum">
+            <summary>
+            vCal email address type. Note this values may be flagged !
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.EmailAddressType_enum.NotSpecified">
+            <summary>
+            Email address type not specified.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.EmailAddressType_enum.Preferred">
+            <summary>
+            Preferred email address.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.EmailAddressType_enum.Internet">
+            <summary>
+            Internet addressing type.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.EmailAddressType_enum.X400">
+            <summary>
+            X.400 addressing type.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.vCard.DeliveryAddressType_enum">
+            <summary>
+            vCal delivery address type. Note this values may be flagged !
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.DeliveryAddressType_enum.NotSpecified">
+            <summary>
+            Delivery address type not specified.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.DeliveryAddressType_enum.Preferred">
+            <summary>
+            Preferred delivery address.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.DeliveryAddressType_enum.Domestic">
+            <summary>
+            Domestic delivery address.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.DeliveryAddressType_enum.Ineternational">
+            <summary>
+            International delivery address.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.DeliveryAddressType_enum.Postal">
+            <summary>
+            Postal delivery address.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.DeliveryAddressType_enum.Parcel">
+            <summary>
+            Parcel delivery address.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.DeliveryAddressType_enum.Home">
+            <summary>
+            Delivery address for a residence.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.DeliveryAddressType_enum.Work">
+            <summary>
+            Address for a place of work.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.ContentDisposition_enum">
+            <summary>
+            Rfc 2183 Content-Disposition.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.ContentDisposition_enum.Attachment">
+            <summary>
+            Content is attachment.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.ContentDisposition_enum.Inline">
+            <summary>
+            Content is embbed resource.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.ContentDisposition_enum.NotSpecified">
+            <summary>
+            Content-Disposition header field isn't available or isn't written to mime message.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.ContentDisposition_enum.Unknown">
+            <summary>
+            Content is unknown.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.vCard.vCard">
+            <summary>
+            Rfc 2426 vCard implementation.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.vCard.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.vCard.ToByte">
+            <summary>
+            Stores vCard structure to byte[].
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.vCard.ToFile(System.String)">
+            <summary>
+            Stores vCard to the specified file.
+            </summary>
+            <param name="file">File name with path where to store vCard.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.vCard.ToStream(System.IO.Stream)">
+            <summary>
+            Stores vCard structure to the specified stream.
+            </summary>
+            <param name="stream">Stream where to store vCard structure.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.vCard.Parse(System.String)">
+            <summary>
+            Parses vCard from the specified file.
+            </summary>
+            <param name="file">vCard file with path.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.vCard.Parse(System.IO.Stream)">
+            <summary>
+            Parses vCard from the specified stream.
+            </summary>
+            <param name="stream">Stream what contains vCard.</param>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.vCard.Items">
+            <summary>
+            Gets reference to vCard items.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.vCard.Version">
+            <summary>
+            Gets or sets vCard version. Returns null if VERSION: item doesn't exist.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.vCard.Name">
+            <summary>
+            Gets or sets name info.  Returns null if N: item doesn't exist.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.vCard.FormattedName">
+            <summary>
+            Gets or sets formatted(Display name) name.  Returns null if FN: item doesn't exist.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.vCard.NickName">
+            <summary>
+            Gets or sets nick name. Returns null if NICKNAME: item doesn't exist.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.vCard.Photo">
+            <summary>
+            Gets or sets person photo. Returns null if PHOTO: item doesn't exist.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.vCard.BirthDate">
+            <summary>
+            Gets or sets birth date. Returns DateTime.MinValue if not set.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.vCard.Addresses">
+            <summary>
+            Gets addresses collection.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.vCard.PhoneNumbers">
+            <summary>
+            Gets phone number collection.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.vCard.EmailAddresses">
+            <summary>
+            Gets email addresses collection.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.vCard.Title">
+            <summary>
+            Gets or sets job title. Returns null if TITLE: item doesn't exist.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.vCard.Role">
+            <summary>
+            Gets or sets role. Returns null if ROLE: item doesn't exist.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.vCard.Organization">
+            <summary>
+            Gets or sets organization name. Usually this value is: comapny;department;office. Returns null if ORG: item doesn't exist.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.vCard.NoteText">
+            <summary>
+            Gets or sets note text. Returns null if NOTE: item doesn't exist.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.vCard.UID">
+            <summary>
+            Gets or sets vCard unique ID. Returns null if UID: item doesn't exist.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.vCard.HomeURL">
+            <summary>
+            Gets or sets vCard home URL.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.vCard.WorkURL">
+            <summary>
+            Gets or sets vCard Work URL.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.vCard.Item">
+            <summary>
+            vCard structure item.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.Item.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Default constructor.
+            </summary>
+            <param name="name">Item name.</param>
+            <param name="parameters">Item parameters.</param>
+            <param name="value">Item encoded value value.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.Item.SetDecodedValue(System.String)">
+            <summary>
+            Sets item decoded value. Value will be encoded as needed and stored to item.Value property.
+            Also property item.ParametersString is updated to reflect right encoding(always base64, required by rfc) and charset (utf-8).
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.Item.ToItemString">
+            <summary>
+            Converts item to vCal item string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.Item.Name">
+            <summary>
+            Gest item name.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.Item.ParametersString">
+            <summary>
+            Gets or sets item parameters.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.Item.Value">
+            <summary>
+            Gets or sets item encoded value. NOTE: If you set this property value, you must encode data 
+            by yourself and also set right ENCODING=encoding; and CHARSET=charset; prameter in item.ParametersString !!!
+            Normally use method item.SetDecodedStringValue method instead, this does all you need.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.Item.DecodedValue">
+            <summary>
+            Gets item decoded value. If param string specifies Encoding and/or Charset, 
+            item.Value will be decoded accordingly.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.vCard.PhoneNumberType_enum">
+            <summary>
+            vCal phone number type. Note this values may be flagged !
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.PhoneNumberType_enum.NotSpecified">
+            <summary>
+            Phone number type not specified.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.PhoneNumberType_enum.Preferred">
+            <summary>
+            Preferred phone number.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.PhoneNumberType_enum.Home">
+            <summary>
+            Telephone number associated with a residence.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.PhoneNumberType_enum.Msg">
+            <summary>
+            Telephone number has voice messaging support.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.PhoneNumberType_enum.Work">
+            <summary>
+            Telephone number associated with a place of work.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.PhoneNumberType_enum.Voice">
+            <summary>
+            Voice telephone number.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.PhoneNumberType_enum.Fax">
+            <summary>
+            Fax number.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.PhoneNumberType_enum.Cellular">
+            <summary>
+            Cellular phone number.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.PhoneNumberType_enum.Video">
+            <summary>
+            Video conferencing telephone number.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.PhoneNumberType_enum.Pager">
+            <summary>
+            Paging device telephone number.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.PhoneNumberType_enum.BBS">
+            <summary>
+            Bulletin board system telephone number.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.PhoneNumberType_enum.Modem">
+            <summary>
+            Modem connected telephone number.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.PhoneNumberType_enum.Car">
+            <summary>
+            Car-phone telephone number.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.PhoneNumberType_enum.ISDN">
+            <summary>
+            ISDN service telephone number.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.vCard.PhoneNumberType_enum.PCS">
+            <summary>
+            Personal communication services telephone number.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.MimeEntityCollection">
+            <summary>
+            Mime entity collection.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntityCollection.#ctor(LumiSoft.Net.Mime.MimeEntity)">
+            <summary>
+            Default constructor.
+            </summary>
+            <param name="ownerEntity">Mime entity what owns this collection.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntityCollection.Add">
+            <summary>
+            Creates a new mime entity to the end of the collection.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntityCollection.Add(LumiSoft.Net.Mime.MimeEntity)">
+            <summary>
+            Adds specified mime entity to the end of the collection.
+            </summary>
+            <param name="entity">Mime entity to add to the collection.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntityCollection.Insert(System.Int32,LumiSoft.Net.Mime.MimeEntity)">
+            <summary>
+            Inserts a new mime entity into the collection at the specified location.
+            </summary>
+            <param name="index">The location in the collection where you want to add the mime entity.</param>
+            <param name="entity">Mime entity.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntityCollection.Remove(System.Int32)">
+            <summary>
+            Removes mime entity at the specified index from the collection.
+            </summary>
+            <param name="index">Index of mime entity to remove.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntityCollection.Remove(LumiSoft.Net.Mime.MimeEntity)">
+            <summary>
+            Removes specified mime entity from the collection.
+            </summary>
+            <param name="entity">Mime entity to remove.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntityCollection.Clear">
+            <summary>
+            Clears the collection of all mome entities.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntityCollection.Contains(LumiSoft.Net.Mime.MimeEntity)">
+            <summary>
+            Gets if collection contains specified mime entity.
+            </summary>
+            <param name="entity">Mime entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntityCollection.GetEnumerator">
+            <summary>
+            Gets enumerator.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntityCollection.Item(System.Int32)">
+            <summary>
+            Gets mime entity at specified index.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntityCollection.Count">
+            <summary>
+            Gets mime entities count in the collection.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.MediaType_enum">
+            <summary>
+            Rfc 2046,2387 Media Types.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Text">
+            <summary>
+            Text data.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Text_plain">
+            <summary>
+            Simple text data. Defined in Rfc 1521.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Text_html">
+            <summary>
+            Html data. Defined in Rfc 2854.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Text_xml">
+            <summary>
+            Xml data. Defined in Rfc 3023 3.1.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Text_rtf">
+            <summary>
+            Rich text (RTF) data.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Image">
+            <summary>
+            Image data.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Image_gif">
+            <summary>
+            Gif image. Defined in Rfc 1521.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Image_tiff">
+            <summary>
+            Tiff image.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Image_jpeg">
+            <summary>
+            Jpeg image. Defined in Rfc 1521.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Audio">
+            <summary>
+            Audio data.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Video">
+            <summary>
+            Video data.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Application">
+            <summary>
+            Some other kind of data, typically either uninterpreted binary data or information to be processed by an application.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Application_octet_stream">
+            <summary>
+            The "octet-stream" subtype is used to indicate that a body contains	arbitrary binary data. Defined in Rfc 4046 4.5.1.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Multipart">
+            <summary>
+            Data consisting of multiple entities of	independent data types.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Multipart_mixed">
+            <summary>
+            Data consisting of multiple entities of	independent data types.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Multipart_alternative">
+            <summary>
+            Data consisting of multiple entities of	independent data types.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Multipart_parallel">
+            <summary>
+            Data consisting of multiple entities of	independent data types.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Multipart_related">
+            <summary>
+            Data consisting of multiple entities of	independent data types. (Rfc 2387)
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Multipart_signed">
+            <summary>
+            Multipart signed. Defined in Rfc 1847.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Message">
+            <summary>
+            Message -- an encapsulated message.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Message_rfc822">
+            <summary>
+            Rfc 822 encapsulated message.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.NotSpecified">
+            <summary>
+            Media type isn't specified.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.Mime.MediaType_enum.Unknown">
+            <summary>
+            Media type is unknown.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.HeaderFieldCollection">
+            <summary>
+            Mime entity header fields collection.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldCollection.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldCollection.Add(System.String,System.String)">
+            <summary>
+            Adds a new header field with specified name and value to the end of the collection.
+            </summary>
+            <param name="fieldName">Header field name.</param>
+            <param name="value">Header field value.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldCollection.Add(LumiSoft.Net.Mime.HeaderField)">
+            <summary>
+            Adds specified heade field to the end of the collection.
+            </summary>
+            <param name="headerField">Header field.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldCollection.Insert(System.Int32,System.String,System.String)">
+            <summary>
+            Inserts a new header field into the collection at the specified location.
+            </summary>
+            <param name="index">The location in the collection where you want to add the header field.</param>
+            <param name="fieldName">Header field name.</param>
+            <param name="value">Header field value.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldCollection.Remove(System.Int32)">
+            <summary>
+            Removes header field at the specified index from the collection.
+            </summary>
+            <param name="index">The index of the header field to remove.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldCollection.Remove(LumiSoft.Net.Mime.HeaderField)">
+            <summary>
+            Removes specified header field from the collection.
+            </summary>
+            <param name="field">Header field to remove.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldCollection.RemoveAll(System.String)">
+            <summary>
+            Removes all header fields with specified name from the collection.
+            </summary>
+            <param name="fieldName">Header field name.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldCollection.Clear">
+            <summary>
+            Clears the collection of all header fields.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldCollection.Contains(System.String)">
+            <summary>
+            Gets if collection contains specified header field.
+            </summary>
+            <param name="fieldName">Header field name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldCollection.Contains(LumiSoft.Net.Mime.HeaderField)">
+            <summary>
+            Gets if collection contains specified header field.
+            </summary>
+            <param name="headerField">Header field.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldCollection.GetFirst(System.String)">
+            <summary>
+            Gets first header field with specified name, returns null if specified field doesn't exist.
+            </summary>
+            <param name="fieldName">Header field name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldCollection.Get(System.String)">
+            <summary>
+            Gets header fields with specified name, returns null if specified field doesn't exist.
+            </summary>
+            <param name="fieldName">Header field name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldCollection.Parse(System.String)">
+            <summary>
+            Parses header fields from string.
+            </summary>
+            <param name="headerString">Header string.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldCollection.Parse(System.IO.Stream)">
+            <summary>
+            Parses header fields from stream. Stream position stays where header reading ends.
+            </summary>
+            <param name="stream">Stream from where to parse.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldCollection.ToHeaderString(System.String)">
+            <summary>
+            Converts header fields to rfc 2822 message header string.
+            </summary>
+            <param name="encodingCharSet">CharSet to use for non ASCII header field values. Utf-8 is recommended value, if you explicity don't need other.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldCollection.GetEnumerator">
+            <summary>
+            Gets enumerator.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.HeaderFieldCollection.Item(System.Int32)">
+            <summary>
+            Gets header field from specified index.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.HeaderFieldCollection.Count">
+            <summary>
+            Gets header fields count in the collection.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.vCard.DeliveryAddressCollection">
+            <summary>
+            vCard delivery address collection implementation.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.DeliveryAddressCollection.#ctor(LumiSoft.Net.Mime.vCard.vCard)">
+            <summary>
+            Default constructor.
+            </summary>
+            <param name="owner">Owner vCard.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.DeliveryAddressCollection.Add(LumiSoft.Net.Mime.vCard.DeliveryAddressType_enum,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Add new delivery address to the collection.
+            </summary>
+            <param name="type">Delivery address type. Note: This value can be flagged value !</param>
+            <param name="postOfficeAddress">Post office address.</param>
+            <param name="extendedAddress">Extended address.</param>
+            <param name="street">Street name.</param>
+            <param name="locality">Locality(city).</param>
+            <param name="region">Region.</param>
+            <param name="postalCode">Postal code.</param>
+            <param name="country">Country.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.DeliveryAddressCollection.Remove(LumiSoft.Net.Mime.vCard.DeliveryAddress)">
+            <summary>
+            Removes specified item from the collection.
+            </summary>
+            <param name="item">Item to remove.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.DeliveryAddressCollection.Clear">
+            <summary>
+            Removes all items from the collection.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.DeliveryAddressCollection.GetEnumerator">
+            <summary>
+            Gets enumerator.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.DeliveryAddressCollection.Count">
+            <summary>
+            Gets number of items in the collection.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.DeliveryAddressCollection.Item(System.Int32)">
+            <summary>
+            Gets item at the specified index.
+            </summary>
+            <param name="index">Index of item which to get.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.MailboxAddress">
+            <summary>
+            RFC 2822 3.4. (Address Specification) Mailbox address. 
+            <p/>
+            Syntax: ["display-name"&lt;SP&gt;]&lt;local-part@domain&gt;.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MailboxAddress.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MailboxAddress.#ctor(System.String)">
+            <summary>
+            Creates new mailbox from specified email address.
+            </summary>
+            <param name="emailAddress">Email address.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MailboxAddress.#ctor(System.String,System.String)">
+            <summary>
+            Creates new mailbox from specified name and email address.
+            </summary>
+            <param name="displayName">Display name.</param>
+            <param name="emailAddress">Email address.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MailboxAddress.Parse(System.String)">
+            <summary>
+            Parses mailbox from mailbox address string.
+            </summary>
+            <param name="mailbox">Mailbox string. Format: ["diplay-name"&lt;SP&gt;]&lt;local-part@domain&gt;.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MailboxAddress.ToMailboxAddressString">
+            <summary>
+            Converts this to valid mailbox address string.
+            Defined in RFC 2822(3.4. Address Specification) string. Format: ["display-name"&lt;SP&gt;]&lt;local-part@domain&gt;.
+            For example, "Ivar Lumi" &lt;ivar@lumisoft.ee&gt;.
+            If display name contains unicode chrs, display name will be encoded with canonical encoding in utf-8 charset.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MailboxAddress.OnChanged">
+            <summary>
+            This called when mailox address has changed.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MailboxAddress.MailboxString">
+            <summary>
+            Gets Mailbox as RFC 2822(3.4. Address Specification) string. Format: ["display-name"&lt;SP&gt;]&lt;local-part@domain&gt;.
+            For example, "Ivar Lumi" &lt;ivar@lumisoft.ee&gt;.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MailboxAddress.DisplayName">
+            <summary>
+            Gets or sets display name. 
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MailboxAddress.EmailAddress">
+            <summary>
+            Gets or sets email address. For example ivar@lumisoft.ee.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MailboxAddress.LocalPart">
+            <summary>
+            Gets local-part from email address. For example mailbox is "ivar" from "ivar@lumisoft.ee".
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MailboxAddress.Domain">
+            <summary>
+            Gets domain from email address. For example domain is "lumisoft.ee" from "ivar@lumisoft.ee".
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.HeaderFieldParameter">
+            <summary>
+            Header field parameter.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderFieldParameter.#ctor(System.String,System.String)">
+            <summary>
+            Default constructor.
+            </summary>
+            <param name="parameterName">Header field parameter name.</param>
+            <param name="parameterValue">Header field parameter value.</param>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.HeaderFieldParameter.Name">
+            <summary>
+            Gets header field parameter name.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.HeaderFieldParameter.Value">
+            <summary>
+            Gets header field parameter name.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.TextUtils">
+            <summary>
+            This class provides usefull text methods.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.TextUtils.QuoteString(System.String)">
+            <summary>
+            Qoutes and escapes fishy(\") chars.
+            </summary>
+            <param name="text">Text to quote.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.TextUtils.UnQuoteString(System.String)">
+            <summary>
+            Unquotes and unescapes escaped chars specified text. For example "xxx" will become to 'xxx', "escaped quote \"", will become to escaped 'quote "'.
+            </summary>
+            <param name="text">Text to unquote.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.TextUtils.EscapeString(System.String,System.Char[])">
+            <summary>
+            Escapes specified chars in the specified string.
+            </summary>
+            <param name="text">Text to escape.</param>
+            <param name="charsToEscape">Chars to escape.</param>
+        </member>
+        <member name="M:LumiSoft.Net.TextUtils.UnEscapeString(System.String)">
+            <summary>
+            Unescapes all escaped chars.
+            </summary>
+            <param name="text">Text to unescape.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.TextUtils.SplitQuotedString(System.String,System.Char)">
+            <summary>
+            Splits string into string arrays. This split method won't split qouted strings, but only text outside of qouted string.
+            For example: '"text1, text2",text3' will be 2 parts: "text1, text2" and text3.
+            </summary>
+            <param name="text">Text to split.</param>
+            <param name="splitChar">Char that splits text.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.TextUtils.SplitQuotedString(System.String,System.Char,System.Boolean)">
+            <summary>
+            Splits string into string arrays. This split method won't split qouted strings, but only text outside of qouted string.
+            For example: '"text1, text2",text3' will be 2 parts: "text1, text2" and text3.
+            </summary>
+            <param name="text">Text to split.</param>
+            <param name="splitChar">Char that splits text.</param>
+            <param name="unquote">If true, splitted parst will be unqouted if they are qouted.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.TextUtils.QuotedIndexOf(System.String,System.Char)">
+            <summary>
+            Gets first index of specified char. The specified char in quoted string is skipped.
+            Returns -1 if specified char doesn't exist.
+            </summary>
+            <param name="text">Text in what to check.</param>
+            <param name="indexChar">Char what index to get.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.TextUtils.SplitString(System.String,System.Char)">
+            <summary>
+            Splits string into string arrays.
+            </summary>
+            <param name="text">Text to split.</param>
+            <param name="splitChar">Char Char that splits text.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.TextUtils.IsToken(System.String)">
+            <summary>
+            Gets if specified string is valid "token" value.
+            </summary>
+            <param name="value">String value to check.</param>
+            <returns>Returns true if specified string value is valid "token" value.</returns>
+            <exception cref="T:System.ArgumentNullException">Is raised if <b>value</b> is null.</exception>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.vCard.Name">
+            <summary>
+            vCard name implementation.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.Name.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Default constructor.
+            </summary>
+            <param name="lastName">Last name.</param>
+            <param name="firstName">First name.</param>
+            <param name="additionalNames">Comma separated additional names.</param>
+            <param name="honorificPrefix">Honorific prefix.</param>
+            <param name="honorificSuffix">Honorific suffix.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.Name.#ctor">
+            <summary>
+            Internal parse constructor.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.Name.ToValueString">
+            <summary>
+            Converts item to vCard N structure string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.Name.Parse(LumiSoft.Net.Mime.vCard.Item)">
+            <summary>
+            Parses name info from vCard N item.
+            </summary>
+            <param name="item">vCard N item.</param>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.Name.LastName">
+            <summary>
+            Gets last name.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.Name.FirstName">
+            <summary>
+            Gets first name.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.Name.AdditionalNames">
+            <summary>
+            Gets comma separated additional names.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.Name.HonorificPerfix">
+            <summary>
+            Gets honorific prefix.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.Name.HonorificSuffix">
+            <summary>
+            Gets honorific suffix.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.MimeUtils">
+            <summary>
+            Provides mime related utility methods.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeUtils.ParseDate(System.String)">
+            <summary>
+            Parses rfc 2822 datetime.
+            </summary>
+            <param name="date">Date string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeUtils.DateTimeToRfc2822(System.DateTime)">
+            <summary>
+            Converts date to rfc 2822 date time string.
+            </summary>
+            <param name="dateTime">Date time value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeUtils.ParseHeaders(System.IO.Stream)">
+            <summary>
+            Parses headers from message or mime entry.
+            </summary>
+            <param name="entryStrm">Stream from where to read headers.</param>
+            <returns>Returns header lines.</returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeUtils.ParseHeaderField(System.String,System.IO.Stream)">
+            <summary>
+            Parse header specified header field value.
+            
+            Use this method only if you need to get only one header field, otherwise use
+            MimeParser.ParseHeaderField(string fieldName,string headers).
+            This avoid parsing headers multiple times.
+            </summary>
+            <param name="fieldName">Header field which to parse. Eg. Subject: .</param>
+            <param name="entryStrm">Stream from where to read headers.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeUtils.ParseHeaderField(System.String,System.String)">
+            <summary>
+            Parse header specified header field value.
+            </summary>
+            <param name="fieldName">Header field which to parse. Eg. Subject: .</param>
+            <param name="headers">Full headers string. Use MimeParser.ParseHeaders() to get this value.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeUtils.ParseHeaderFiledParameter(System.String,System.String,System.String)">
+            <summary>
+            Parses header field parameter value. 
+            For example: CONTENT-TYPE: application\octet-stream; name="yourFileName.xxx",
+            fieldName="CONTENT-TYPE:" and subFieldName="name".
+            </summary>
+            <param name="fieldName">Main header field name.</param>
+            <param name="parameterName">Header field's parameter name.</param>
+            <param name="headers">Full headrs string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeUtils.ParseMediaType(System.String)">
+            <summary>
+            Parses MediaType_enum from <b>Content-Type:</b> header field value.
+            </summary>
+            <param name="headerFieldValue"><b>Content-Type:</b> header field value. This value can be null, then MediaType_enum.NotSpecified.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeUtils.MediaTypeToString(LumiSoft.Net.Mime.MediaType_enum)">
+            <summary>
+            Converts MediaType_enum to string. NOTE: Returns null for MediaType_enum.NotSpecified.
+            </summary>
+            <param name="mediaType">MediaType_enum value to convert.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeUtils.ParseContentTransferEncoding(System.String)">
+            <summary>
+            Parses ContentTransferEncoding_enum from <b>Content-Transfer-Encoding:</b> header field value.
+            </summary>
+            <param name="headerFieldValue"><b>Content-Transfer-Encoding:</b> header field value. This value can be null, then ContentTransferEncoding_enum.NotSpecified.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeUtils.ContentTransferEncodingToString(LumiSoft.Net.Mime.ContentTransferEncoding_enum)">
+            <summary>
+            Converts ContentTransferEncoding_enum to string. NOTE: Returns null for ContentTransferEncoding_enum.NotSpecified.
+            </summary>
+            <param name="encoding">ContentTransferEncoding_enum value to convert.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeUtils.ParseContentDisposition(System.String)">
+            <summary>
+            Parses ContentDisposition_enum from <b>Content-Disposition:</b> header field value.
+            </summary>
+            <param name="headerFieldValue"><b>Content-Disposition:</b> header field value. This value can be null, then ContentDisposition_enum.NotSpecified.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeUtils.ContentDispositionToString(LumiSoft.Net.Mime.ContentDisposition_enum)">
+            <summary>
+            Converts ContentDisposition_enum to string. NOTE: Returns null for ContentDisposition_enum.NotSpecified.
+            </summary>
+            <param name="disposition">ContentDisposition_enum value to convert.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeUtils.EncodeWord(System.String)">
+            <summary>
+            Encodes specified header field word if needed.
+            </summary>
+            <param name="word">Word to encode.</param>
+            <returns>Returns encoded word.</returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeUtils.EncodeHeaderField(System.String)">
+            <summary>
+            Encodes header field with quoted-printable encoding, if value contains ANSI or UNICODE chars.
+            </summary>
+            <param name="text">Text to encode.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeUtils.CreateMessageID">
+            <summary>
+            Creates Rfc 2822 3.6.4 message-id. Syntax: '&lt;' id-left '@' id-right '&gt;'.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeUtils.FoldData(System.String)">
+            <summary>
+            Folds long data line to folded lines.
+            </summary>
+            <param name="data">Data to fold.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.HeaderField">
+            <summary>
+            Mime entity header field.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderField.#ctor">
+            <summary>
+            Default construtor.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.HeaderField.#ctor(System.String,System.String)">
+            <summary>
+            Creates new header field with specified name and value.
+            </summary>
+            <param name="name">Header field name. Header field name must end with colon(:) and may contain US-ASCII character values between 33 and 126.</param>
+            <param name="value">Header field value.</param>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.HeaderField.Name">
+            <summary>
+            Gets or sets header field name. Header field name must end with colon(:) and may contain US-ASCII character values between 33 and 126.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.HeaderField.Value">
+            <summary>
+            Gets or sets header field value.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.HeaderField.EncodedValue">
+            <summary>
+            Gets header field encoded value.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.vCard.EmailAddressCollection">
+            <summary>
+            vCard email address collection implementation.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.EmailAddressCollection.#ctor(LumiSoft.Net.Mime.vCard.vCard)">
+            <summary>
+            Default constructor.
+            </summary>
+            <param name="owner">Owner vCard.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.EmailAddressCollection.Add(LumiSoft.Net.Mime.vCard.EmailAddressType_enum,System.String)">
+            <summary>
+            Add new email address to the collection.
+            </summary>
+            <param name="type">Email address type. Note: This value can be flagged value !</param>
+            <param name="email">Email address.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.EmailAddressCollection.Remove(LumiSoft.Net.Mime.vCard.EmailAddress)">
+            <summary>
+            Removes specified item from the collection.
+            </summary>
+            <param name="item">Item to remove.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.EmailAddressCollection.Clear">
+            <summary>
+            Removes all items from the collection.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.EmailAddressCollection.GetEnumerator">
+            <summary>
+            Gets enumerator.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.EmailAddressCollection.Count">
+            <summary>
+            Gets number of items in the collection.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.EmailAddressCollection.Item(System.Int32)">
+            <summary>
+            Gets item at the specified index.
+            </summary>
+            <param name="index">Index of item which to get.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LumiSoft.Net.StreamLineReader">
+            <summary>
+            Stream line reader.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.StreamLineReader.#ctor(System.IO.Stream)">
+            <summary>
+            Default constructor.
+            </summary>
+            <param name="strmSource">Source stream from where to read data. Reading begins from stream current position.</param>
+        </member>
+        <member name="M:LumiSoft.Net.StreamLineReader.ReadLine">
+            <summary>
+            Reads byte[] line from stream. NOTE: Returns null if end of stream reached.
+            </summary>
+            <returns>Return null if end of stream reached.</returns>
+        </member>
+        <member name="M:LumiSoft.Net.StreamLineReader.ReadLineString">
+            <summary>
+            Reads string line from stream. String is converted with specified Encoding property from byte[] line. NOTE: Returns null if end of stream reached.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:LumiSoft.Net.StreamLineReader.Encoding">
+            <summary>
+            Gets or sets charset encoding to use for string based methods. Default("") encoding is system default encoding.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.StreamLineReader.CRLF_LinesOnly">
+            <summary>
+            Gets or sets if lines must be CRLF terminated or may be only LF terminated too.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.vCard.ItemCollection">
+            <summary>
+            vCard item collection.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.ItemCollection.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.ItemCollection.Add(System.String,System.String,System.String)">
+            <summary>
+            Adds new vCard item to the collection.
+            </summary>
+            <param name="name">Item name.</param>
+            <param name="parametes">Item parameters.</param>
+            <param name="value">Item value.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.ItemCollection.Remove(System.String)">
+            <summary>
+            Removes all items with the specified name.
+            </summary>
+            <param name="name">Item name.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.ItemCollection.Remove(LumiSoft.Net.Mime.vCard.Item)">
+            <summary>
+            Removes specified item from the collection.
+            </summary>
+            <param name="item">Item to remove.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.ItemCollection.Clear">
+            <summary>
+            Clears all items in the collection.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.ItemCollection.GetFirst(System.String)">
+            <summary>
+            Gets first item with specified name. Returns null if specified item doesn't exists.
+            </summary>
+            <param name="name">Item name. Name compare is case-insensitive.</param>
+            <returns>Returns first item with specified name or null if specified item doesn't exists.</returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.ItemCollection.Get(System.String)">
+            <summary>
+            Gets items with specified name.
+            </summary>
+            <param name="name">Item name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.ItemCollection.SetDecodedValue(System.String,System.String)">
+            <summary>
+            Sets first item with specified value.  If item doesn't exist, item will be appended to the end.
+            If value is null, all items with specified name will be removed.
+            Value is encoed as needed and specified item.ParametersString will be updated accordingly.
+            </summary>
+            <param name="name">Item name.</param>
+            <param name="value">Item value.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.ItemCollection.SetValue(System.String,System.String)">
+            <summary>
+            Sets first item with specified encoded value.  If item doesn't exist, item will be appended to the end.
+            If value is null, all items with specified name will be removed.
+            </summary>
+            <param name="name">Item name.</param>
+            <param name="value">Item encoded value.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.ItemCollection.SetValue(System.String,System.String,System.String)">
+            <summary>
+            Sets first item with specified name encoded value.  If item doesn't exist, item will be appended to the end.
+            If value is null, all items with specified name will be removed.
+            </summary>
+            <param name="name">Item name.</param>
+            <param name="parametes">Item parameters.</param>
+            <param name="value">Item encoded value.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.ItemCollection.GetEnumerator">
+            <summary>
+            Gets enumerator.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.ItemCollection.Count">
+            <summary>
+            Gets number of vCard items in the collection.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.ReadReplyCode">
+            <summary>
+            Reply reading return codes.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.ReadReplyCode.Ok">
+            <summary>
+            Read completed successfully.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.ReadReplyCode.TimeOut">
+            <summary>
+            Read timed out.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.ReadReplyCode.LengthExceeded">
+            <summary>
+            Maximum allowed Length exceeded.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.ReadReplyCode.SocketClosed">
+            <summary>
+            Connected client closed connection.
+            </summary>
+        </member>
+        <member name="F:LumiSoft.Net.ReadReplyCode.UnKnownError">
+            <summary>
+            UnKnown error, eception raised.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.ReadException">
+            <summary>
+            Summary description for ReadException.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.ReadException.#ctor(LumiSoft.Net.ReadReplyCode,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="code"></param>
+            <param name="message"></param>
+        </member>
+        <member name="P:LumiSoft.Net.ReadException.ReadReplyCode">
+            <summary>
+            Gets read error.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.vCard.EmailAddress">
+            <summary>
+            vCard email address implementation.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.EmailAddress.#ctor(LumiSoft.Net.Mime.vCard.Item,LumiSoft.Net.Mime.vCard.EmailAddressType_enum,System.String)">
+            <summary>
+            Default constructor.
+            </summary>
+            <param name="item">Owner vCard item.</param>
+            <param name="type">Email type. Note: This value can be flagged value !</param>
+            <param name="emailAddress">Email address.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.EmailAddress.Changed">
+            <summary>
+            This method is called when some property has changed, wee need to update underlaying vCard item.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.EmailAddress.Parse(LumiSoft.Net.Mime.vCard.Item)">
+            <summary>
+            Parses email address from vCard EMAIL structure string.
+            </summary>
+            <param name="item">vCard EMAIL item.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.vCard.EmailAddress.EmailTypeToString(LumiSoft.Net.Mime.vCard.EmailAddressType_enum)">
+            <summary>
+            Converts EmailAddressType_enum to vCard item parameters string.
+            </summary>
+            <param name="type">Value to convert.</param>
+            <returns></returns>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.EmailAddress.Item">
+            <summary>
+            Gets underlaying vCrad item.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.EmailAddress.EmailType">
+            <summary>
+            Gets or sets email type. Note: This property can be flagged value !
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.vCard.EmailAddress.Email">
+            <summary>
+            Gets or sets email address.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.ParametizedHeaderField">
+            <summary>
+            Parametized header field. 
+            <p/>
+            Syntax: value;parameterName=parameterValue;parameterName=parameterValue;... .
+            Example: (Content-Type:) text/html; charset="ascii".
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.ParametizedHeaderField.#ctor(LumiSoft.Net.Mime.HeaderField)">
+            <summary>
+            Default constructor.
+            </summary>
+            <param name="headerField">Source header field.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.ParametizedHeaderField.ParseParameters">
+            <summary>
+            Parses parameters from header field.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.ParametizedHeaderField.StoreParameters(System.String,System.Collections.Hashtable)">
+            <summary>
+            Stores parameters to header field Value property.
+            </summary>
+            <param name="value"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.ParametizedHeaderField.Name">
+            <summary>
+            Gets header field name.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.ParametizedHeaderField.Value">
+            <summary>
+            Gets or sets header field value.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.ParametizedHeaderField.Parameters">
+            <summary>
+            Gets header field parameters.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.Mime">
+            <summary>
+            Class for creating,parsing,modifing rfc 2822 mime messages.
+            </summary>
+            <remarks>
+            <code>
+            
+            Message examples:
+            
+            <B>Simple message:</B>
+            
+            //--- Beginning of message
+            From: sender@domain.com
+            To: recipient@domain.com
+            Subject: Message subject.
+            Content-Type: text/plain
+            
+            Message body text. Bla blaa
+            blaa,blaa.
+            //--- End of message
+            
+            
+            In simple message MainEntity is whole message.
+            
+            <B>Message with attachments:</B>
+            
+            //--- Beginning of message
+            From: sender@domain.com
+            To: recipient@domain.com
+            Subject: Message subject.
+            Content-Type: multipart/mixed; boundary="multipart_mixed"
+            
+            --multipart_mixed	/* text entity */
+            Content-Type: text/plain
+            
+            Message body text. Bla blaa
+            blaa,blaa.	
+            --multipart_mixed	/* attachment entity */
+            Content-Type: application/octet-stream
+            
+            attachment_data
+            --multipart_mixed--
+            //--- End of message
+            
+            MainEntity is multipart_mixed entity and text and attachment entities are child entities of MainEntity.
+            </code>
+            </remarks>
+            <example>
+            <code>
+            // Parsing example:
+            Mime m = Mime.Parse("message.eml");
+            // Do your stuff with mime
+            </code>
+            <code>
+            // Create simple message with simple way:
+            AddressList from = new AddressList();
+            from.Add(new MailboxAddress("dispaly name","user@domain.com"));
+            AddressList to = new AddressList();
+            to.Add(new MailboxAddress("dispaly name","user@domain.com"));
+            
+            Mime m = Mime.CreateSimple(from,to,"test subject","test body text","");
+            </code>
+            <code>
+            // Creating a new simple message
+            Mime m = new Mime();
+            MimeEntity mainEntity = m.MainEntity;
+            // Force to create From: header field
+            mainEntity.From = new AddressList();
+            mainEntity.From.Add(new MailboxAddress("dispaly name","user@domain.com"));
+            // Force to create To: header field
+            mainEntity.To = new AddressList();
+            mainEntity.To.Add(new MailboxAddress("dispaly name","user@domain.com"));
+            mainEntity.Subject = "subject";
+            mainEntity.ContentType = MediaType_enum.Text_plain;
+            mainEntity.ContentTransferEncoding = ContentTransferEncoding_enum.QuotedPrintable;
+            mainEntity.DataText = "Message body text.";
+            
+            m.ToFile("message.eml");
+            </code>
+            <code>
+            // Creating message with text and attachments
+            Mime m = new Mime();
+            MimeEntity mainEntity = m.MainEntity;
+            // Force to create From: header field
+            mainEntity.From = new AddressList();
+            mainEntity.From.Add(new MailboxAddress("dispaly name","user@domain.com"));
+            // Force to create To: header field
+            mainEntity.To = new AddressList();
+            mainEntity.To.Add(new MailboxAddress("dispaly name","user@domain.com"));
+            mainEntity.Subject = "subject";
+            mainEntity.ContentType = MediaType_enum.Multipart_mixed;
+            
+            MimeEntity textEntity = mainEntity.ChildEntities.Add();
+            textEntity.ContentType = MediaType_enum.Text_plain;
+            textEntity.ContentTransferEncoding = ContentTransferEncoding_enum.QuotedPrintable;
+            textEntity.DataText = "Message body text.";
+            
+            MimeEntity attachmentEntity = mainEntity.ChildEntities.Add();
+            attachmentEntity.ContentType = MediaType_enum.Application_octet_stream;
+            attachmentEntity.ContentDisposition = ContentDisposition_enum.Attachment;
+            attachmentEntity.ContentTransferEncoding = ContentTransferEncoding_enum.Base64;
+            attachmentEntity.ContentDisposition_FileName = "yourfile.xxx";
+            attachmentEntity.DataFromFile("yourfile.xxx");
+            // or
+            attachmentEntity.Data = your_attachment_data;
+            </code>
+            </example>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.Mime.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.Mime.Parse(System.Byte[])">
+            <summary>
+            Parses mime message from byte[] data.
+            </summary>
+            <param name="data">Mime message data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.Mime.Parse(System.String)">
+            <summary>
+            Parses mime message from file.
+            </summary>
+            <param name="fileName">Mime message file.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.Mime.Parse(System.IO.Stream)">
+            <summary>
+            Parses mime message from stream.
+            </summary>
+            <param name="stream">Mime message stream.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.Mime.CreateSimple(LumiSoft.Net.Mime.AddressList,LumiSoft.Net.Mime.AddressList,System.String,System.String,System.String)">
+            <summary>
+            Creates simple mime message.
+            </summary>
+            <param name="from">Header field From: value.</param>
+            <param name="to">Header field To: value.</param>
+            <param name="subject">Header field Subject: value.</param>
+            <param name="bodyText">Body text of message. NOTE: Pass null is body text isn't wanted.</param>
+            <param name="bodyHtml">Body HTML text of message. NOTE: Pass null is body HTML text isn't wanted.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.Mime.CreateSimple(LumiSoft.Net.Mime.AddressList,LumiSoft.Net.Mime.AddressList,System.String,System.String,System.String,System.String[])">
+            <summary>
+            Creates simple mime message with attachments.
+            </summary>
+            <param name="from">Header field From: value.</param>
+            <param name="to">Header field To: value.</param>
+            <param name="subject">Header field Subject: value.</param>
+            <param name="bodyText">Body text of message. NOTE: Pass null is body text isn't wanted.</param>
+            <param name="bodyHtml">Body HTML text of message. NOTE: Pass null is body HTML text isn't wanted.</param>
+            <param name="attachmentFileNames">Attachment file names. Pass null if no attachments. NOTE: File name must contain full path to file, for example: c:\test.pdf.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.Mime.ToStringData">
+            <summary>
+            Stores mime message to string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.Mime.ToByteData">
+            <summary>
+            Stores mime message to byte[].
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.Mime.ToFile(System.String)">
+            <summary>
+            Stores mime message to specified file.
+            </summary>
+            <param name="fileName">File name.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.Mime.ToStream(System.IO.Stream)">
+            <summary>
+            Stores mime message to specified stream. Stream position stays where mime writing ends.
+            </summary>
+            <param name="storeStream">Stream where to store mime message.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.Mime.GetEntities(LumiSoft.Net.Mime.MimeEntityCollection,System.Collections.Generic.List{LumiSoft.Net.Mime.MimeEntity})">
+            <summary>
+            Gets mime entities, including nested entries. 
+            </summary>
+            <param name="entities"></param>
+            <param name="allEntries"></param>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.Mime.MainEntity">
+            <summary>
+            Message main(top-level) entity.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.Mime.MimeEntities">
+            <summary>
+            Gets all mime entities contained in message, including child entities.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.Mime.Attachments">
+            <summary>
+            Gets attachment entities. Entity is considered as attachmnet if:<p/>
+                *) Content-Disposition: attachment (RFC 2822 message)<p/>
+                *) Content-Disposition: filename = "" is specified  (RFC 2822 message)<p/>
+                *) Content-Type: name = "" is specified  (old RFC 822 message)<p/>
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.Mime.BodyText">
+            <summary>
+            Gets message body text. Returns null if no body text specified.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.Mime.BodyHtml">
+            <summary>
+            Gets message body html. Returns null if no body html text specified.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.StringReader">
+            <summary>
+            String reader.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.StringReader.#ctor(System.String)">
+            <summary>
+            Default constructor.
+            </summary>
+            <param name="source">Source string.</param>
+        </member>
+        <member name="M:LumiSoft.Net.StringReader.AppenString(System.String)">
+            <summary>
+            Appends specified string to SourceString.
+            </summary>
+            <param name="str">String value to append.</param>
+        </member>
+        <member name="M:LumiSoft.Net.StringReader.ReadToFirstChar">
+            <summary>
+            Reads to first char, skips SP,VTAB,HTAB,CR,LF from the beginning of source string.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.StringReader.ReadSpecifiedLength(System.Int32)">
+            <summary>
+            Reads string with specified length. Throws exception if read length is bigger than source string length.
+            </summary>
+            <param name="length">Number of chars to read.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.StringReader.QuotedReadToDelimiter(System.Char)">
+            <summary>
+            Reads string to specified delimiter or to end of underlying string. Notes: Delimiter in quoted string is skipped.
+            Delimiter is removed by default.
+            For example: delimiter = ',', text = '"aaaa,eee",qqqq' - then result is '"aaaa,eee"'.
+            </summary>
+            <param name="delimiter">Data delimiter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.StringReader.QuotedReadToDelimiter(System.Char[])">
+            <summary>
+            Reads string to specified delimiter or to end of underlying string. Notes: Delimiters in quoted string is skipped.
+            Delimiter is removed by default.
+            For example: delimiter = ',', text = '"aaaa,eee",qqqq' - then result is '"aaaa,eee"'.
+            </summary>
+            <param name="delimiters">Data delimiters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.StringReader.QuotedReadToDelimiter(System.Char[],System.Boolean)">
+            <summary>
+            Reads string to specified delimiter or to end of underlying string. Notes: Delimiters in quoted string is skipped. 
+            For example: delimiter = ',', text = '"aaaa,eee",qqqq' - then result is '"aaaa,eee"'.
+            </summary>
+            <param name="delimiters">Data delimiters.</param>
+            <param name="removeDelimiter">Specifies if delimiter is removed from underlying string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.StringReader.ReadWord">
+            <summary>
+            Reads word from string. Returns null if no word is available.
+            Word reading begins from first char, for example if SP"text", then space is trimmed.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.StringReader.ReadWord(System.Boolean)">
+            <summary>
+            Reads word from string. Returns null if no word is available.
+            Word reading begins from first char, for example if SP"text", then space is trimmed.
+            </summary>
+            <param name="unQuote">Specifies if quoted string word is unquoted.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.StringReader.ReadWord(System.Boolean,System.Char[],System.Boolean)">
+            <summary>
+            Reads word from string. Returns null if no word is available.
+            Word reading begins from first char, for example if SP"text", then space is trimmed.
+            </summary>
+            <param name="unQuote">Specifies if quoted string word is unquoted.</param>
+            <param name="wordTerminatorChars">Specifies chars what terminate word.</param>
+            <param name="removeWordTerminator">Specifies if work terminator is removed.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.StringReader.ReadParenthesized">
+            <summary>
+            Reads parenthesized value. Supports {},(),[],&lt;&gt; parenthesis. 
+            Throws exception if there isn't parenthesized value or closing parenthesize is missing.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.StringReader.ReadToEnd">
+            <summary>
+            Reads all remaining string, returns null if no chars left to read.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.StringReader.StartsWith(System.String)">
+            <summary>
+            Gets if source string starts with specified value. Compare is case-sensitive.
+            </summary>
+            <param name="value">Start string value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.StringReader.StartsWith(System.String,System.Boolean)">
+            <summary>
+            Gets if source string starts with specified value.
+            </summary>
+            <param name="value">Start string value.</param>
+            <param name="case_sensitive">Specifies if compare is case-sensitive.</param>
+            <returns></returns>
+        </member>
+        <member name="P:LumiSoft.Net.StringReader.Available">
+            <summary>
+            Gets how many chars are available for reading.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.StringReader.OriginalString">
+            <summary>
+            Gets original string passed to class constructor.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.StringReader.SourceString">
+            <summary>
+            Gets currently remaining string.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.StringReader.Position">
+            <summary>
+            Gets position in original string.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.MimeEntity">
+            <summary>
+            Rfc 2822 Mime Entity.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntity.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntity.Parse(System.IO.Stream,System.String)">
+            <summary>
+            Parses mime entity from stream.
+            </summary>
+            <param name="stream">Data stream from where to read data.</param>
+            <param name="toBoundary">Entity data is readed to specified boundary.</param>
+            <returns>Returns false if last entity. Returns true for mulipart entity, if there are more entities.</returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntity.ToStream(System.IO.Stream)">
+            <summary>
+            Stores mime entity and it's child entities to specified stream.
+            </summary>
+            <param name="storeStream">Stream where to store mime entity.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntity.DataToFile(System.String)">
+            <summary>
+            Saves this.Data property value to specified file.
+            </summary>
+            <param name="fileName">File name where to store data.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntity.DataToStream(System.IO.Stream)">
+            <summary>
+            Saves this.Data property value to specified stream.
+            </summary>
+            <param name="stream">Stream where to store data.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntity.DataFromFile(System.String)">
+            <summary>
+            Loads MimeEntity.Data property from file.
+            </summary>
+            <param name="fileName">File name.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntity.DataFromStream(System.IO.Stream)">
+            <summary>
+            Loads MimeEntity.Data property from specified stream. Note: reading starts from current position and stream isn't closed.
+            </summary>
+            <param name="stream">Data stream.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntity.EncodeData(System.Byte[],LumiSoft.Net.Mime.ContentTransferEncoding_enum)">
+            <summary>
+            Encodes data with specified content transfer encoding.
+            </summary>
+            <param name="data">Data to encode.</param>
+            <param name="encoding">Encoding with what to encode data.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MimeEntity.FoldHeader(System.String)">
+            <summary>
+            Folds header.
+            </summary>
+            <param name="header">Header string.</param>
+            <returns></returns>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.Header">
+            <summary>
+            Gets message header.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.HeaderString">
+            <summary>
+            Gets header as RFC 2822 message headers.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.ParentEntity">
+            <summary>
+            Gets parent entity of this entity. If this entity is top level, then this property returns null.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.ChildEntities">
+            <summary>
+            Gets child entities. This property is available only if ContentType = multipart/... .
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.MimeVersion">
+            <summary>
+            Gets or sets header field "<b>Mime-Version:</b>" value. Returns null if value isn't set.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.ContentType">
+            <summary>
+            Gets or sets header field "<b>Content-Type:</b>" value. This property specifies what entity data is.
+            NOTE: ContentType can't be changed while there is data specified(Exception is thrown) in this mime entity, because it isn't
+            possible todo data conversion between different types. For example text/xx has charset parameter and other types don't,
+            changing loses it and text data becomes useless.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.ContentTypeString">
+            <summary>
+            Gets or sets header field "<b>Content-Type:</b>" value. Returns null if value isn't set. This property specifies what entity data is.
+            This property is meant for advanced users, who needs other values what defined MediaType_enum provides.
+            Example value: text/plain; charset="utf-8". 
+            NOTE: ContentType can't be changed while there is data specified(Exception is thrown) in this mime entity, because it isn't
+            possible todo data conversion between different types. For example text/xx has charset parameter and other types don't,
+            changing loses it and text data becomes useless.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.ContentTransferEncoding">
+            <summary>
+            Gets or sets header field "<b>Content-Transfer-Encoding:</b>" value. This property specifies how data is encoded/decoded.
+            If you set this value, it's recommended that you use QuotedPrintable for text and Base64 for binary data.
+            7bit,_8bit,Binary are today obsolete (used for parsing). 
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.ContentDisposition">
+            <summary>
+            Gets or sets header field "<b>Content-Disposition:</b>" value.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.ContentDescription">
+            <summary>
+            Gets or sets header field "<b>Content-Description:</b>" value. Returns null if value isn't set.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.ContentID">
+            <summary>
+            Gets or sets header field "<b>Content-ID:</b>" value. Returns null if value isn't set.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.ContentType_Name">
+            <summary>
+            Gets or sets "<b>Content-Type:</b>" header field "<b>name</b>" parameter.
+            Returns null if Content-Type: header field value isn't set or Content-Type: header field "<b>name</b>" parameter isn't set.
+            <p/>
+            Note: Content-Type must be application/xxx or exception is thrown.
+            This property is obsolete today, it's replaced with <b>Content-Disposition: filename</b> parameter.
+            If possible always set FileName property instead of it. 
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.ContentType_CharSet">
+            <summary>
+            Gets or sets "<b>Content-Type:</b>" header field "<b>charset</b>" parameter.
+            Returns null if Content-Type: header field value isn't set or Content-Type: header field "<b>charset</b>" parameter isn't set.
+            If you don't know what charset to use then <b>utf-8</b> is recommended, most of times this is sufficient.
+            Note: Content-Type must be text/xxx or exception is thrown.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.ContentType_Boundary">
+            <summary>
+            Gets or sets "<b>Content-Type:</b>" header field "<b>boundary</b>" parameter.
+            Returns null if Content-Type: header field value isn't set or Content-Type: header field "<b>boundary</b>" parameter isn't set.
+            Note: Content-Type must be multipart/xxx or exception is thrown.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.ContentDisposition_FileName">
+            <summary>
+            Gets or sets "<b>Content-Disposition:</b>" header field "<b>filename</b>" parameter.
+            Returns null if Content-Disposition: header field value isn't set or Content-Disposition: header field "<b>filename</b>" parameter isn't set.
+            Note: Content-Disposition must be attachment or inline.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.Date">
+            <summary>
+            Gets or sets header field "<b>Date:</b>" value.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.MessageID">
+            <summary>
+            Gets or sets header field "<b>Message-ID:</b>" value. Returns null if value isn't set.
+            Syntax: '&lt;'id-left@id-right'&gt;'. Example: &lt;621bs724bfs8@jnfsjaas4263&gt;
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.To">
+            <summary>
+            Gets or sets header field "<b>To:</b>" value. Returns null if value isn't set.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.Cc">
+            <summary>
+            Gets or sets header field "<b>Cc:</b>" value. Returns null if value isn't set.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.Bcc">
+            <summary>
+            Gets or sets header field "<b>Bcc:</b>" value. Returns null if value isn't set.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.From">
+            <summary>
+            Gets or sets header field "<b>From:</b>" value. Returns null if value isn't set.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.Sender">
+            <summary>
+            Gets or sets header field "<b>Sender:</b>" value. Returns null if value isn't set.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.ReplyTo">
+            <summary>
+            Gets or sets header field "<b>Reply-To:</b>" value. Returns null if value isn't set.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.InReplyTo">
+            <summary>
+            Gets or sets header field "<b>In-Reply-To:</b>" value. Returns null if value isn't set.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.DSN">
+            <summary>
+            Gets or sets header field "<b>Disposition-Notification-To:</b>" value. Returns null if value isn't set.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.Subject">
+            <summary>
+            Gets or sets header field "<b>Subject:</b>" value. Returns null if value isn't set.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.Data">
+            <summary>
+            Gets or sets entity data. Data is encoded/decoded with "<b>Content-Transfer-Encoding:</b>" header field value.
+            Note: This property can be set only if Content-Type: isn't multipart.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.DataText">
+            <summary>
+            Gets or sets entity text data. Data is encoded/decoded with "<b>Content-Transfer-Encoding:</b>" header field value with this.Charset charset.
+            Note: This property is available only if ContentType is Text/xxx... or no content type specified, othwerwise Excpetion is thrown.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MimeEntity.DataEncoded">
+            <summary>
+            Gets or sets entity encoded data. If you set this value, be sure that you encode this value as specified by Content-Transfer-Encoding: header field.
+            Set this value only if you need custom Content-Transfer-Encoding: what current Mime class won't support, other wise set data through this.Data property. 
+            Note: This property can be set only if Content-Type: isn't multipart.
+            </summary>
+        </member>
+        <member name="T:LumiSoft.Net.Mime.MailboxAddressCollection">
+            <summary>
+            Rfc 2822 3.4 mailbox-list. Syntax: mailbox *(',' mailbox).
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MailboxAddressCollection.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MailboxAddressCollection.Add(LumiSoft.Net.Mime.MailboxAddress)">
+            <summary>
+            Adds a new mailbox to the end of the collection.
+            </summary>
+            <param name="mailbox">Mailbox to add.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MailboxAddressCollection.Insert(System.Int32,LumiSoft.Net.Mime.MailboxAddress)">
+            <summary>
+            Inserts a new mailbox into the collection at the specified location.
+            </summary>
+            <param name="index">The location in the collection where you want to add the mailbox.</param>
+            <param name="mailbox">Mailbox to add.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MailboxAddressCollection.Remove(System.Int32)">
+            <summary>
+            Removes header field at the specified index from the collection.
+            </summary>
+            <param name="index">Index of the mailbox which to remove.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MailboxAddressCollection.Remove(LumiSoft.Net.Mime.MailboxAddress)">
+            <summary>
+            Removes specified mailbox from the collection.
+            </summary>
+            <param name="mailbox">Mailbox to remove.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MailboxAddressCollection.Clear">
+            <summary>
+            Clears the collection of all mailboxes.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MailboxAddressCollection.Parse(System.String)">
+            <summary>
+            Parses mailboxes from Rfc 2822 3.4 mailbox-list string. Syntax: mailbox *(',' mailbox).
+            </summary>
+            <param name="mailboxList">Mailbox list string.</param>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MailboxAddressCollection.ToMailboxListString">
+            <summary>
+            Convert addresses to Rfc 2822 mailbox-list string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MailboxAddressCollection.OnCollectionChanged">
+            <summary>
+            This called when collection has changed. Item is added,deleted,changed or collection cleared.
+            </summary>
+        </member>
+        <member name="M:LumiSoft.Net.Mime.MailboxAddressCollection.GetEnumerator">
+            <summary>
+            Gets enumerator.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MailboxAddressCollection.Item(System.Int32)">
+            <summary>
+            Gets mailbox from specified index.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MailboxAddressCollection.Count">
+            <summary>
+            Gets mailboxes count in the collection.
+            </summary>
+        </member>
+        <member name="P:LumiSoft.Net.Mime.MailboxAddressCollection.Owner">
+            <summary>
+            Gets or sets owner of this collection.
+            </summary>
+        </member>
+    </members>
+</doc>

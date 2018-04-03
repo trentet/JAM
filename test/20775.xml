@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Message UID="20775">
+  <Part ID="0">
+    <Delivered-To>trentfromrid@gmail.com</Delivered-To>
+    <Received>by 10.2.30.221 with SMTP id 90csp640906jat; Sun, 30 Jul 201700:40:40 -0700 (PDT)</Received>
+    <X-Received>by 10.55.207.18 with SMTP id e18mr17503283qkj.82.1501400440620;Sun, 30 Jul 2017 00:40:40 -0700 (PDT)</X-Received>
+    <ARC-Seal>i=1; a=rsa-sha256; t=1501400440; cv=none; d=google.com;s=arc-20160816;b=DerJLtBDA32p8jiH/B6H5nHTiuvXamvMBDLWby4mCM74V4U4sRN5gD/I74UlmD0d10KwboZ3ifylo/9vcu39C4XKDjVN6zSJHVzKPajOL9llIjFSnz9t3Fvon074858J+dp1zmRWdURJPr6D4pbjxf1EhX2dH1k7gHJch2+Vv+4wbuEIZwLJX9A7icB154DH5qZhL9JsUAJV1Wzstj7+5BoiwHSugpK/ZqWSJAOGN4R0Wn85Pu97ioJuWrAjZgGnOxLoiBf1Ct6EBN6woEtp3xK6oC+UOAsegBqnVaaE39KjvQ0O6TXqNtCstptlWkNG2uRhb9YEiQ9bVh4Zw8 eqwQ==</ARC-Seal>
+    <ARC-Message-Signature>i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;s=arc-20160816; h=mime-version:subject:message-id:to:from:date:dkim-signature:arc-authentication-results; bh=1XAqGxa8ALRRUjSFl33B0EtJ5J94mu+sA5pnYECXP8M=;b=AYgz1GfgtvVFsIfI0bAxHJ0FGBa5NZItSi7oYmusAYpLC3LxpCHpmjhYe6xAFtUdnj+bC0N4AUaJrqXsaFopCJd0uvVwlFCuUwrH9edmsALPUbgLPE1iccG4KIVX0dl6Qs//aoef/ESuuUiGxbrFpHpOD+keCunXel+9+l4O0UdnWfH8vaCImzcJdTGpzHMzfAISw+gjxgaH3o5lehq+aIRyE7O5Cuszc1HxPkGluUwd518ZJgaQFxGH247fvza5ZRFUMk3VNMn64Mo+Fg+gAV8CErPYN68awNyoptEwhzpr7qYlJ8VcEUjGN3iPFoaz2DkpKh+YezVQo7l0NM taGw==</ARC-Message-Signature>
+    <ARC-Authentication-Results>i=1; mx.google.com; dkim=pass header.i=@ebay.comheader.b=uusNJSln; spf=pass (google.com: domain of ebay@ebay.com designates66.211.184.89 as permitted sender) smtp.mailfrom=ebay@ebay.com; dmarc=pass(p=NONE sp=NONE dis=NONE) header.from=ebay.com</ARC-Authentication-Results>
+    <Return-Path>&lt;ebay@ebay.com&gt;</Return-Path>
+    <Received>from mxphxpool1023.ebay.com (mxphxpool1023.ebay.com.[66.211.184.89]) by mx.google.com with ESMTPS idf2si2469670qkd.193.2017.07.30.00.40.40 for &lt;trentfromrid@gmail.com&gt;(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128); Sun, 30 Jul2017 00:40:40 -0700 (PDT)</Received>
+    <Received-SPF>pass (google.com: domain of ebay@ebay.com designates66.211.184.89 as permitted sender) client-ip=66.211.184.89;</Received-SPF>
+    <Authentication-Results>mx.google.com; dkim=pass header.i=@ebay.comheader.b=uusNJSln; spf=pass (google.com: domain of ebay@ebay.com designates66.211.184.89 as permitted sender) smtp.mailfrom=ebay@ebay.com; dmarc=pass(p=NONE sp=NONE dis=NONE) header.from=ebay.com</Authentication-Results>
+    <Received>from slc5b02c-a5ce.stratus.slc.ebay.com(slc5b02c-a5ce.stratus.slc.ebay.com [10.126.63.97]) by mxphxpool1023.ebay.com(8.14.4/8.14.4) with ESMTP id v6U7eFeg026462 for &lt;trentfromrid@gmail.com&gt;;Sun, 30 Jul 2017 00:40:39 -0700</Received>
+    <X-DKIM>Sendmail DKIM Filter v2.8.3 mxphxpool1023.ebay.com v6U7eFeg026462</X-DKIM>
+    <DKIM-Signature>v=1; a=rsa-sha1; c=relaxed/relaxed; d=ebay.com; s=dkim1k;t=1501400439; bh=D5w4QASAFAnKmSWJ5lQExaXUzq4=;h=From:To:Message-ID:Subject:MIME-Version:Content-Type;b=uusNJSlngzdjK9T1gW267Nr3XzkGJJWz6iTo/z63p13n/bdC2yKG00V5ApgxIyDseX+NzFDxy3Q0yz1eJQhT4baJunnZD6bMe1H0frIQVBJyXt6OeaXA2s4lfaAsNUUBfY1huO+RknTGe3R/Q785wWNqDMZHpmcsxgFCy6N9Kxw=</DKIM-Signature>
+    <Date>Sun, 30 Jul 2017 00:40:39 -0700</Date>
+    <From>eBay &lt;ebay@ebay.com&gt;</From>
+    <To>trentfromrid@gmail.com</To>
+    <Message-ID>&lt;ac953488-c335-4869-be5e-3a02695508c5@slc5b02c-a5ce&gt;</Message-ID>
+    <Subject>=?UTF-8?Q?=E2=9C=85_ORDER_CONFIRMED:_10X_NINTENDO_GAMECUB...?=</Subject>
+    <MIME-Version>1.0</MIME-Version>
+    <Content-Type>multipart/alternative;boundary="----=_Part_42753871_740371489.1501400439234"</Content-Type>
+    <X-eBay-MailTracker>11400.000.0.0.7624cfd5877d492db5ba4ab077275e77</X-eBay-MailTracker>
+    <Part ID="1">
+      <content-type>TEXT/HTML; CHARSET="UTF-8"</content-type>
+      <content-transfer-encoding>QUOTED-PRINTABLE</content-transfer-encoding>
+      <content-size>93681</content-size>
+    </Part>
+  </Part>
+</Message>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Message UID="21999">
+  <Part ID="0">
+    <Delivered-To>trentfromrid@gmail.com</Delivered-To>
+    <Received>by 10.55.167.146 with SMTP id q140csp1044726qke; Tue, 24 Oct 201716:03:39 -0700 (PDT)</Received>
+    <X-Google-Smtp-Source>ABhQp+RxGU+ESNBCOLpC8D00y1laGuvQAaewkDFoQgvt2YIGHb/l5Rw4fG7kVrT3J80AVsqzFPvu</X-Google-Smtp-Source>
+    <X-Received>by 10.107.148.149 with SMTP idw143mr23718050iod.140.1508886219768; Tue, 24 Oct 2017 16:03:39 -0700 (PDT)</X-Received>
+    <ARC-Seal>i=1; a=rsa-sha256; t=1508886219; cv=none; d=google.com;s=arc-20160816;b=diK5heNpjC/VMh1fXHhlYG7Iv7kgTV4V6g18YI8e9m7mqXoENijS72SqNYjgTFax+UlLtkPWYD/ahZpy1/mx1Qcs3Ru0/V1FbfwIXAOexuq3AqVRiGyMPouHDxjZYsUSjOf9lrA8rkWvLMtQKG/v38SgXarcE/yYHHm7eQt15fChSbI/H+6UdLR5U20MxVH2oedLb5pzDXqM50ZZIPzzoI92b7BDSD2KGhFja+gzqGxZNyd1IUvrxLN4/JD//zb0xAPUjR3/nv98L+jSmBAtex+KUd+MieVH1wXDhBnmRd6bO7dxetX8oN5P1Njl8dSQXxTWfVYTyFECEDfJ3W r/pw==</ARC-Seal>
+    <ARC-Message-Signature>i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;s=arc-20160816; h=from:reply-to:to:date:subject:message-id:mime-version:content-disposition:content-transfer-encoding:dkim-signature:arc-authentication-results; bh=kJ52baIU59otGGuTPZH5SxordWT+/DdSwHF8PspxlHk=;b=xyfJYTLL2x9t+uyPR2B/2mpTZAk0W0d5gNGss5EGcLX5Pe4RJ6yCTiK3Xbfv9+T66AB6NCwrLzdGxPFIZHJztPuqLGGMd7CNrHktQRnczY+SjiJ80aN4GBurKsg8zNfJW4aG/lRvH1aTUx37RCRXITwNAp5jdxzCJvbNBjLAFKUUOG+i5ITj54G4yMqzWobgpBJYiCh3fzqvFI0JxMO0cEVeyNSg508fO/mbLAj/qB/hTSbQB88suNVHoKzf0Eyc1WVq6bw7PImZB0P/3t8LSAGXUUOAtxKMn8f9PqhVKJYUfD8xsCjPgd1UrSDWa/ooAiRZz532Vok5PYgIHT 51Sw==</ARC-Message-Signature>
+    <ARC-Authentication-Results>i=1; mx.google.com; dkim=passheader.i=@mail.stumblemail.net header.s=sv header.b=2qqJTAAR; spf=pass(google.com: domain of bounce@bounce.stumblemail.net designates166.78.227.204 as permitted sender)smtp.mailfrom=bounce@bounce.stumblemail.net; dmarc=pass (p=NONE sp=NONEdis=NONE) header.from=stumblemail.net</ARC-Authentication-Results>
+    <Return-Path>&lt;bounce@bounce.stumblemail.net&gt;</Return-Path>
+    <Received>from mail.stumblemail.net (mail.stumblemail.net. [166.78.227.204])by mx.google.com with ESMTPS id d123si987346itc.89.2017.10.24.16.03.39 for&lt;TrentFromRiD@gmail.com&gt; (version=TLS1 cipher=ECDHE-RSA-AES128-SHAbits=128/128); Tue, 24 Oct 2017 16:03:39 -0700 (PDT)</Received>
+    <Received-SPF>pass (google.com: domain of bounce@bounce.stumblemail.netdesignates 166.78.227.204 as permitted sender) client-ip=166.78.227.204;</Received-SPF>
+    <Authentication-Results>mx.google.com; dkim=passheader.i=@mail.stumblemail.net header.s=sv header.b=2qqJTAAR; spf=pass(google.com: domain of bounce@bounce.stumblemail.net designates166.78.227.204 as permitted sender)smtp.mailfrom=bounce@bounce.stumblemail.net; dmarc=pass (p=NONE sp=NONEdis=NONE) header.from=stumblemail.net</Authentication-Results>
+    <Received>from mail.stumblemail.net ([172.18.100.204]) by mail.stumblemail.net(-); Tue, 24 Oct 2017 16:03:28 -0700</Received>
+    <X-VirtualServer>Marketing, mail.stumblemail.net, 172.18.100.204</X-VirtualServer>
+    <X-VirtualServerGroup>Marketing</X-VirtualServerGroup>
+    <X-MailingID>16793093::128703::11600::15613::1_3389::3389_765707_0__3553</X-MailingID>
+    <X-SMHeaderMap>mid="X-MailingID"</X-SMHeaderMap>
+    <X-Destination-ID>TrentFromRiD@gmail.com</X-Destination-ID>
+    <X-SMFBL>VHJlbnRGcm9tUmlEQGdtYWlsLmNvbQ==</X-SMFBL>
+    <DKIM-Signature>v=1; a=rsa-sha1; c=simple; d=mail.stumblemail.net; s=sv;i=@mail.stumblemail.net; h=Content-Transfer-Encoding:Content-Disposition:Content-Type:MIME-Version:Message-ID:X-ReportingKey:Subject:Date:To:Reply-To:From; bh=vjzoG+mxNyUFdpzpAD5wi4IFpY8=; b=2qqJTAARjXlozPmmYHW2SE0VuStrcJIUetA4eEvRWFBIhDuE9cR73vGCWJdSyhJI3IxR49e5twTyFTZl5Hd6IqESvmDSMIcczA0xPgWiZZFsPKwZw11i7xmk8EXQDFAzZa3TXyscYDL+pVAPscPb6HZ6JbBbxBBAcyyTw9ZGULg=</DKIM-Signature>
+    <Content-Transfer-Encoding>7bit</Content-Transfer-Encoding>
+    <Content-Disposition>inline</Content-Disposition>
+    <Content-Type>text/html; charset="UTF-8"</Content-Type>
+    <MIME-Version>1.0</MIME-Ve

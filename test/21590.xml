@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Message UID="21590">
+  <Part ID="0">
+    <Delivered-To>trentfromrid@gmail.com</Delivered-To>
+    <Received>by 10.55.31.132 with SMTP id n4csp2933853qkh; Mon, 25 Sep 201715:44:55 -0700 (PDT)</Received>
+    <X-Google-Smtp-Source>AOwi7QAMMUBD63xcau0OLXce2DeXsinPLTGMJn0TmqTr4mgUwPdmJ7dayX5unUQ2L0MQmJMH6/7X</X-Google-Smtp-Source>
+    <X-Received>by 10.99.191.6 with SMTP id v6mr9315676pgf.284.1506379494969; Mon,25 Sep 2017 15:44:54 -0700 (PDT)</X-Received>
+    <ARC-Seal>i=1; a=rsa-sha256; t=1506379494; cv=none; d=google.com;s=arc-20160816;b=G8gA1OJ4Ldik1S+rfDBMLX5Pf29fndS2lNiCUh7CLeBKx4+u+jOuSb7XX4Ycm1r5CPUgnrFSsaliybkDGrXCN1mCwAaWmUw5/jASyfNJ/Y2ug15VEs786NIdDRESEjv8QYA17byXnUCTQc9fH7sNYKqroF2EKVwXti5lezvjJxZlZmcDzdhI3yIbmR8kZntZU233+bEH5nKwpxZaTwG5o+1v1PpO7pXofKTLUpFMKgTxST76onTKfshHatZzuaQjpfO1n/5ji+rRbQtPUuD1nKRUIfTjOjURdz4+QQLVN+X1IAG07Guy0yzpQDCwoQZ+FbEoXMmXMNR9KL3wLM Zibw==</ARC-Seal>
+    <ARC-Message-Signature>i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;s=arc-20160816; h=mime-version:subject:message-id:to:from:date:dkim-signature:dkim-filter:arc-authentication-results;bh=dH61MOEaieJijODnqlkR6GGvQpV5zRs0vkz5gEm8K14=;b=V/aPLR6mNYQAEbQwNx3bxAT77RvRRT1H+h8xK1YjCZ7lsENL1rLtohWRxh8Ca1v3UXDjr/oIQL4+PVNIy6hDAAV2tIMKRwjCqmqXnzlCrBsloPb095NrPa7yGLdruUcYlxL9YILYzluRXwJGu0z/+h3G7igpjdRnv806TlANnh+LeQ36Oae7yBNlz3OskdSmf9mXhMMCJFwgyrbr4MGK+dAhEEdWMFpWt9ODHc0eky4/W6yGAoBD2N4ZA/1Z9V+Z+YeOg0cPlEzgs6MG2lBdH0Z51Ue+nt/HItAsyn2EHKJsGetCsjbzX6M+bGvQgsZRARwhiSfMs6y/s3haKu sBFQ==</ARC-Message-Signature>
+    <ARC-Authentication-Results>i=1; mx.google.com; dkim=pass header.i=@ebay.comheader.s=dkim1k header.b=XKsno3bM; spf=pass (google.com: domain ofebay@ebay.com designates 66.211.184.86 as permitted sender)smtp.mailfrom=ebay@ebay.com; dmarc=pass (p=NONE sp=NONE dis=NONE)header.from=ebay.com</ARC-Authentication-Results>
+    <Return-Path>&lt;ebay@ebay.com&gt;</Return-Path>
+    <Received>from mxphxpool1020.ebay.com (mxphxpool1020.ebay.com.[66.211.184.86]) by mx.google.com with ESMTPS idr16si4840744pgn.563.2017.09.25.15.44.54 for &lt;trentfromrid@gmail.com&gt;(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128); Mon, 25 Sep2017 15:44:54 -0700 (PDT)</Received>
+    <Received-SPF>pass (google.com: domain of ebay@ebay.com designates66.211.184.86 as permitted sender) client-ip=66.211.184.86;</Received-SPF>
+    <Authentication-Results>mx.google.com; dkim=pass header.i=@ebay.comheader.s=dkim1k header.b=XKsno3bM; spf=pass (google.com: domain ofebay@ebay.com designates 66.211.184.86 as permitted sender)smtp.mailfrom=ebay@ebay.com; dmarc=pass (p=NONE sp=NONE dis=NONE)header.from=ebay.com</Authentication-Results>
+    <Received>from slc07-1311381.stratus.slc.ebay.com(slc07-1311381.stratus.slc.ebay.com [10.156.16.248]) bymxphxpool1020.ebay.com (8.14.7/8.14.7) with ESMTP id v8PMiPpS013819 for&lt;trentfromrid@gmail.com&gt;; Mon, 25 Sep 2017 15:44:54 -0700</Received>
+    <DKIM-Filter>OpenDKIM Filter v2.10.3 mxphxpool1020.ebay.com v8PMiPpS013819</DKIM-Filter>
+    <DKIM-Signature>v=1; a=rsa-sha1; c=relaxed/relaxed; d=ebay.com; s=dkim1k;t=1506379494; bh=ErU2h/I0CXKUzCdtLeG452HePXM=; h=From:To:Subject;b=XKsno3bM1ACeecGZ3k82Mv7AYYe01OAwbsrYGnDAcoueVvWXRyoGDNYlfzPCnNxZ02lHMxrny/2asckIN+zaBUH+uifAf1yr2/X89k3I+C/+4cVM7hZ/G7XK+f0pvOGI+oEMCLa+7QneFsVeF15b7OEnf66vKjZOxX254yApOfE=</DKIM-Signature>
+    <Date>Mon, 25 Sep 2017 15:44:54 -0700</Date>
+    <From>eBay &lt;ebay@ebay.com&gt;</From>
+    <To>trentfromrid@gmail.com</To>
+    <Message-ID>&lt;291f064d-180c-4957-9ce1-7cbaaddb8600@slc07-1311381&gt;</Message-ID>
+    <Subject>DELIVERED: Replacement Housing Shell C...</Subject>
+    <MIME-Version>1.0</MIME-Version>
+    <Content-Type>multipart/alternative;boundary="----=_Part_115816125_993278772.1506379494127"</Content-Type>
+    <X-eBay-MailTracker>11412.000.0.0.71e08574a2c74fc79f4e8493b1d92123</X-eBay-MailTracker>
+    <Part ID="1">
+      <content-type>TEXT/HTML; CHARSET="UTF-8"</content-type>
+      <content-transfer-encoding>QUOTED-PRINTABLE</content-transfer-encoding>
+      <content-size>42090</content-size>
+    </Part>
+  </Part>
+</Message>

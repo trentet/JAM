@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Message UID="21017">
+  <Part ID="0">
+    <Delivered-To>trentfromrid@gmail.com</Delivered-To>
+    <Received>by 10.55.81.196 with SMTP id f187csp1807276qkb; Thu, 17 Aug 201700:13:25 -0700 (PDT)</Received>
+    <X-Received>by 10.200.10.67 with SMTP id f3mr6052500qti.196.1502954005721;Thu, 17 Aug 2017 00:13:25 -0700 (PDT)</X-Received>
+    <ARC-Seal>i=1; a=rsa-sha256; t=1502954005; cv=none; d=google.com;s=arc-20160816;b=0dALaOz+D5M0IQGLKEBEef5omMSsFepxIKAin07Hada57KvAU7Ys+wQ6xkks2Fd4KsjmEQhBk2b3BvOVKDBT1WWeOrOKpT09LV22DKYg0L5oAEhIwDth5RubpjTGViyfWnZJ3kq4tSbF72z8e32bPO60TNJmjDmwWp5p1kGYKQj9p2OVI4KgbyG+AFa0uz/ATd3jAztz8e3DdpTPRK7ryxROlOxo29CQ5Z7cpVEVpH8+X+Ix54MK5YgAKT19mU6PgO/6jO+haT40FCUXnYzmhdipcwDpBcwIbFo9tpEKvopMYQRCL83Au2LdMD+N0rzAHv4+uApPOR/19KHcio MnCw==</ARC-Seal>
+    <ARC-Message-Signature>i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;s=arc-20160816; h=mime-version:subject:message-id:to:from:date:dkim-signature:dkim-filter:arc-authentication-results;bh=6vMRAR4jGYZonR9VPbilmlyUO5qbqHtuU2mdcP1sY20=;b=vcKpmIbTkgEkMLHa5umvZEm/9GD5tE+uWdol/6nJXJo3PoT5AdtiR6PGs1m10ry6MtQXH2eDvQo3b5QRsvOuOTEZLuZyijL9pLk3nVapMfwXkOBpk5UXbGg40T/5xxONVPTFUjJeHSAhh9qHcPgpg2jy2arhoOo8Cwqc+MR1nibM/Kk/6I5TQFv4JRThv3Um1RRmgmgYZUpe+o2cJmwV4VEh5oUIv0eeDV4kRDL4DgdQ+EZQKYOVPabCqwbDkKBm16PjYm6yIx4/WJ5EMJoJFINfi3XfgYluzfmp4pbzD7sjnLCjOXD8dTzOtmHVQxeE5u+ss+Mo0462nJul/A Tkzg==</ARC-Message-Signature>
+    <ARC-Authentication-Results>i=1; mx.google.com; dkim=neutral (body hash didnot verify) header.i=@ebay.com header.s=dkim1k header.b=R/xm99yA; spf=pass(google.com: domain of ebay@ebay.com designates 66.211.184.71 as permittedsender) smtp.mailfrom=ebay@ebay.com; dmarc=pass (p=NONE sp=NONE dis=NONE)header.from=ebay.com</ARC-Authentication-Results>
+    <Return-Path>&lt;ebay@ebay.com&gt;</Return-Path>
+    <Received>from mxphxpool1005.ebay.com (mxphxpool1005.ebay.com.[66.211.184.71]) by mx.google.com with ESMTPS idk123si2290431qkf.489.2017.08.17.00.13.25 for &lt;trentfromrid@gmail.com&gt;(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128); Thu, 17 Aug2017 00:13:25 -0700 (PDT)</Received>
+    <Received-SPF>pass (google.com: domain of ebay@ebay.com designates66.211.184.71 as permitted sender) client-ip=66.211.184.71;</Received-SPF>
+    <Authentication-Results>mx.google.com; dkim=neutral (body hash did not verify)header.i=@ebay.com header.s=dkim1k header.b=R/xm99yA; spf=pass (google.com:domain of ebay@ebay.com designates 66.211.184.71 as permitted sender)smtp.mailfrom=ebay@ebay.com; dmarc=pass (p=NONE sp=NONE dis=NONE)header.from=ebay.com</Authentication-Results>
+    <Received>from slc4b03c-2ae7.stratus.slc.ebay.com(slc4b03c-2ae7.stratus.slc.ebay.com [10.53.128.115]) bymxphxpool1005.ebay.com (8.14.7/8.14.7) with ESMTP id v7H7DHjU004825 for&lt;trentfromrid@gmail.com&gt;; Thu, 17 Aug 2017 00:13:24 -0700</Received>
+    <DKIM-Filter>OpenDKIM Filter v2.10.3 mxphxpool1005.ebay.com v7H7DHjU004825</DKIM-Filter>
+    <DKIM-Signature>v=1; a=rsa-sha1; c=relaxed/relaxed; d=ebay.com; s=dkim1k;t=1502954004; bh=E33IKb8dvrD9ODha0yzPb9kJsqA=; h=From:To:Subject;b=R/xm99yABnClTPJRhoxjSaovKnscen/CL/P8OTDE1jePhMqIgV6VWvv7QsjZfhFUmO//rNz00Tc6JKv5Dgf9rnIjQPFDCZ7IAEkkf0rpK8dh04dVq3ZKEVmm6WdBrCzzDk9pEYPg76I+tjcY5lHRwgjyHUmNBMqqSPGACGFQ13w=</DKIM-Signature>
+    <Date>Thu, 17 Aug 2017 00:13:24 -0700</Date>
+    <From>eBay &lt;ebay@ebay.com&gt;</From>
+    <To>trentfromrid@gmail.com</To>
+    <Message-ID>&lt;ae987ba8-f110-4a47-9523-eed095619661@slc4b03c-2ae7&gt;</Message-ID>
+    <Subject>Don't forget to return your item</Subject>
+    <MIME-Version>1.0</MIME-Version>
+    <Content-Type>multipart/alternative;boundary="----=_Part_186011519_1660838654.1502954004347"</Content-Type>
+    <X-eBay-MailTracker>11925.000.0.0.2b613f633fcb414eb989a9671dcb686b</X-eBay-MailTracker>
+    <Part ID="1">
+      <content-type>TEXT/HTML; CHARSET="UTF-8"</content-type>
+      <content-transfer-encoding>7BIT</content-transfer-encoding>
+      <content-size>28363</content-size>
+    </Part>
+  </Part>
+</Message>

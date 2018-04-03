@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Message UID="21530">
+  <Part ID="0">
+    <Delivered-To>trentfromrid@gmail.com</Delivered-To>
+    <Received>by 10.55.31.132 with SMTP id n4csp1533133qkh; Wed, 20 Sep 201723:07:05 -0700 (PDT)</Received>
+    <X-Google-Smtp-Source>AOwi7QCUKiEatX+OOgt6XwpgZsOYAz2uwjvpRQIFfqOMCnfUrV1u3tVXQzz+18dPQQCQYdij5o6F</X-Google-Smtp-Source>
+    <X-Received>by 10.55.16.74 with SMTP id a71mr1656285qkh.170.1505974025203;Wed, 20 Sep 2017 23:07:05 -0700 (PDT)</X-Received>
+    <ARC-Seal>i=1; a=rsa-sha256; t=1505974025; cv=none; d=google.com;s=arc-20160816;b=J2jaFbIX8o9HufSmyp8vW7VQIAWFs1eItQk3V6uTyc9P/vt/20yPVAAkRgACD/TIZ+PObByIRxA3Yzbt6NilQ7s+24lgTKbeg7uFdBjL7I4jPINEFXo+UuFH/45+2vS+Dk3cBc03Vdy/+zG0AiAtShfZ0srIMh5+M5VckYLb6QZsNxjihe5pOwJ5ZEV0rl64l0ZBcCWuTmek+mSVLGW4P/R4oYMsiExT7uX/2Ldg+ANV1zi0gr4cbrcVT55FPqZSh27WE2nxOOD9EAc6Q0ewlzn43xgMwc5txkl21gcD7a03m6lCnN4FkF/KR/cAbiwypMzmpnE3eiE5rIfEYB 55Xw==</ARC-Seal>
+    <ARC-Message-Signature>i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;s=arc-20160816; h=mime-version:subject:message-id:to:from:date:dkim-signature:dkim-filter:arc-authentication-results;bh=te+rESnDX9QjmAw9yReM9PS6hN/SDMV4OJbGGzNFBPA=;b=L4Y6RffSZ3YYQ3qIT4jKACbq6c1AvlyFOdQ0dFRdownY4rnPgyK+JhMUcChoRhSQuvLGZtp3+9gpljN6sgvPMxxk+4bjJEqy5kjl6u/IokXar8gLd5K/CJV75kFUjPVOXYoTG/itQ3VNWU2PHs8ENVQpFv/hkNLLXrOx6TpsjqB7H6/EbnZ9CWt3JZcMOaRnnAkQ4ft/wkPElkdXomWBX/Q+RHj7PSq5rfVMC3Dyk2i3FDO6RI05Y+DtIeADEZrw/XTUaXqE9IbQ7uh+hCkgVB6dy304dOjL3l9ERiwpAgOlEyCNem3N7zNy+WnP05kw4+rjP56826aS5/xkUm UaCA==</ARC-Message-Signature>
+    <ARC-Authentication-Results>i=1; mx.google.com; dkim=pass header.i=@ebay.comheader.s=dkim1k header.b=rlDmcIVr; spf=pass (google.com: domain ofebay@ebay.com designates 66.211.184.96 as permitted sender)smtp.mailfrom=ebay@ebay.com; dmarc=pass (p=NONE sp=NONE dis=NONE)header.from=ebay.com</ARC-Authentication-Results>
+    <Return-Path>&lt;ebay@ebay.com&gt;</Return-Path>
+    <Received>from mxphxpool2001.ebay.com (mxphxpool2001.ebay.com.[66.211.184.96]) by mx.google.com with ESMTPS ids184si617736qkd.167.2017.09.20.23.07.04 for &lt;trentfromrid@gmail.com&gt;(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128); Wed, 20 Sep2017 23:07:05 -0700 (PDT)</Received>
+    <Received-SPF>pass (google.com: domain of ebay@ebay.com designates66.211.184.96 as permitted sender) client-ip=66.211.184.96;</Received-SPF>
+    <Authentication-Results>mx.google.com; dkim=pass header.i=@ebay.comheader.s=dkim1k header.b=rlDmcIVr; spf=pass (google.com: domain ofebay@ebay.com designates 66.211.184.96 as permitted sender)smtp.mailfrom=ebay@ebay.com; dmarc=pass (p=NONE sp=NONE dis=NONE)header.from=ebay.com</Authentication-Results>
+    <Received>from slc07-1299604.stratus.slc.ebay.com(slc07-1299604.stratus.slc.ebay.com [10.153.32.43]) by mxphxpool2001.ebay.com(8.14.7/8.14.7) with ESMTP id v8L673X1010118 for &lt;trentfromrid@gmail.com&gt;;Wed, 20 Sep 2017 23:07:04 -0700</Received>
+    <DKIM-Filter>OpenDKIM Filter v2.10.3 mxphxpool2001.ebay.com v8L673X1010118</DKIM-Filter>
+    <DKIM-Signature>v=1; a=rsa-sha1; c=relaxed/relaxed; d=ebay.com; s=dkim1k;t=1505974024; bh=NfxMC6GcEyT4QjkJh+0F7XGbaaY=; h=From:To:Subject;b=rlDmcIVrt8N1e5nimPKZczWUbO5FtvJa/DNLZFlPhoXzBsquVy8R/Xwr1pTG/JKpMCg/V7WQyE6HycoxyB4GyUTnlM11OJM4kHqFF3gdHLL3OXYJppNvvpplk0ck1NtTXhaabw4qjIKezMEB/sKu7xACwpIWb7rHZDF67rvQAa0=</DKIM-Signature>
+    <Date>Wed, 20 Sep 2017 23:07:03 -0700</Date>
+    <From>eBay &lt;ebay@ebay.com&gt;</From>
+    <To>trentfromrid@gmail.com</To>
+    <Message-ID>&lt;3052b8e7-0880-4b70-a708-9a3f40ee3032@slc07-1299604&gt;</Message-ID>
+    <Subject>=?UTF-8?Q?=F0=9F=9A=9A_ORDER_SHIPPED:_New_Bottom_Lower_LCD...?=</Subject>
+    <MIME-Version>1.0</MIME-Version>
+    <Content-Type>multipart/alternative;boundary="----=_Part_67698830_526983017.1505974023846"</Content-Type>
+    <X-eBay-MailTracker>11401.000.0.0.25589a24bd36457fb5a8b05c54a260a6</X-eBay-MailTracker>
+    <Part ID="1">
+      <content-type>TEXT/HTML; CHARSET="UTF-8"</content-type>
+      <content-transfer-encoding>QUOTED-PRINTABLE</content-transfer-encoding>
+      <content-size>78942</content-size>
+    </Part>
+  </Part>
+</Message>
