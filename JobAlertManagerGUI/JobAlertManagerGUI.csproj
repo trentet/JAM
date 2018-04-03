@@ -206,7 +206,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\IFileSystemVShell\FileSystemVShellInterfaces.csproj">
+      <Project>{5cd69207-fab4-464e-96f1-19d541024bbc}</Project>
+      <Name>FileSystemVShellInterfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\arrow-045.png" />
     <Resource Include="Images\arrow-out.png" />
