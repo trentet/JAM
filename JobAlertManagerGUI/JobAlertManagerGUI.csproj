@@ -233,5 +233,19 @@
     <Resource Include="Images\mail-arrow.png" />
     <Resource Include="Images\node-select-all.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Plugins\AvalonDock.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugins\IFileSystemVShell.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugins\LumiSoft.Net.Mime.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugins\MimeViewerLib.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

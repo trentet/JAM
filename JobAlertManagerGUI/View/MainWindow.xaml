@@ -93,9 +93,12 @@
                         <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding Path=Bcc}" FontWeight="Normal" VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"  Padding="0,2,0,2" />
                     </Grid>
                 </Border>
-                <Grid Grid.Row="2">
-                    <locView:EMailPresenter x:Name="presenter" IsAlreadyExpanded="True" />
-                </Grid>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1">
+                    <Grid>
+                        <!--<locView:EMailPresenter x:Name="presenter" IsAlreadyExpanded="True" />-->
+                        <ContentPresenter x:Name="creader" Margin="5"/>
+                    </Grid>
+                </Border>
             </Grid>
         </Grid>
     </Grid>

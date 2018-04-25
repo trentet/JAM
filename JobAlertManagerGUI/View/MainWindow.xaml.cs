@@ -19,6 +19,9 @@ using System.Threading.Tasks;
 using CryptoGateway.FileSystem.VShell.Interfaces;
 using TrentUtil;
 using JobAlertManagerGUI.Controller;
+using System.ComponentModel.Composition.Hosting;
+using System.ComponentModel.Composition.Primitives;
+using System.Linq;
 
 namespace JobAlertManagerGUI.View
 {
@@ -63,7 +66,40 @@ namespace JobAlertManagerGUI.View
             AppConfig.IsConsole = false;
             AppConfig.EmailSaveDirectory = Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), @"Documents\JAM\Emails\");
             Console.SetOut(new MultiTextWriter(new LogWriter(), Console.Out));
+            //string pluginDir = System.IO.Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + @"..\..\..\JobAlertManagerGUI\bin\Debug\");
+            //if (System.IO.Directory.Exists(pluginDir))
+            //    LoadReader(pluginDir);
+            //else
+            //{
+            //string pluginDir = System.IO.Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + @"Plugins\");
+            //if (System.IO.Directory.Exists(pluginDir))
+            //{
+            //    LoadReader(pluginDir);
+            //}
+            //}
             UpdateLoggedInUser();
+        }
+
+        private void LoadReader(string pluginDir)
+        {
+            DirectoryCatalog categ = new DirectoryCatalog(pluginDir);
+            string cname = AttributedModelServices.GetContractName(typeof(IEMailReader));
+            System.Linq.Expressions.Expression<Func<ExportDefinition, bool>> exp = a => a.ContractName == cname;
+            ImportDefinition id = new ImportDefinition(exp, cname, ImportCardinality.ExactlyOne, true, true);
+            List<Tuple<ComposablePartDefinition, ExportDefinition>> l = categ.GetExports(id).ToList();
+            if (l.Count == 1)
+            {
+                var cc = new CompositionContainer(categ);
+                cc.ComposeParts(this);
+                creader.Content = reader;
+                reader.QueryThread = OnQueryThread;
+                //mnLoadReader.IsEnabled = false;
+            }
+            else if (l.Count == 0)
+            {
+                creader.Visibility = System.Windows.Visibility.Collapsed;
+                System.Windows.MessageBox.Show("Failed to find any plugin!");
+            }
         }
 
         public void UpdateUI()
@@ -88,6 +124,13 @@ namespace JobAlertManagerGUI.View
                 var login = new LoginWindow();
                 login.ShowDialog();
                 UpdateLoggedInUser();
+
+                string pluginDir = System.IO.Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + @"Plugins\");
+                if (System.IO.Directory.Exists(pluginDir))
+                {
+                    LoadReader(pluginDir);
+                }
+
                 if (AppConfig.CurrentIMap.IsAuthenticated && AppConfig.CurrentIMap.IsConnected)
                 {
                     await Task.Run(() =>
@@ -121,6 +164,8 @@ namespace JobAlertManagerGUI.View
                 {
                     Emails.Clear();
                     EmailList.SelectedIndex = -1;
+                    reader = null;
+                    creader.Content = reader;
                 });
             }
             catch (Exception ex)
@@ -130,12 +175,31 @@ namespace JobAlertManagerGUI.View
             }
         }
 
+        private void LoadMimeFile(UniqueId id)
+        {
+            if (reader == null)
+            {
+                System.Windows.MessageBox.Show("The reader has not been loaded.");
+                return;
+            }
+
+            string fileName = AppConfig.EmailSaveDirectory + id + ".eml";
+            reader.SourceUri = new Uri(fileName);
+        }
+
+        private bool OnQueryThread(string MsgID, out ThreadedMessage StartMsg)
+        {
+            StartMsg = null;
+            return false;
+        }
+
         void EmailList_SelectionChanged(object sender, RoutedEventArgs e)
         {
             if (EmailList.SelectedIndex > -1)
             {
                 SelectedEmail = Emails[EmailList.SelectedIndex];
                 EmailContent.DataContext = SelectedEmail;
+                LoadMimeFile(SelectedEmail.Id);
             }
             else
             {
