@@ -11,26 +11,33 @@ namespace JobAlertManagerGUI.Model
 {
     public class Email
     {
-        private IMessageSummary messageSummary;
-        private string[] TrimStartList = new string[] { "\r", "\n", " ", "-", "\t", "&nbsp;" };
-        private string[] ReplaceBodyList = new string[] { "\r\n", "\r", "\n", "\t", "--", "- -", "&nbsp;" };
+        private readonly string[] _trimStartList = { "\r", "\n", " ", "-", "\t", "&nbsp;" };
+        private readonly string[] _replaceBodyList = { "\r\n", "\r", "\n", "\t", "--", "- -", "&nbsp;" };
 
-        public IMessageSummary MessageSummary { get => messageSummary; set => messageSummary = value; }
-        public string Preview { get => GetPreview(MessageSummary); }
+        public UniqueId Id { get; set; }
+        public MimeMessage Message { get; set; }
+        public string Preview { get => GetPreview(); }
 
-        public Email(IMessageSummary messageSummary)
+        public Email(UniqueId messageId)
         {
-            MessageSummary = messageSummary;
+            Id = messageId;
+            Message = AppConfig.CurrentIMap.Inbox.GetMessage(Id);
         }
 
-        public string GetPreview(IMessageSummary MessageSummary)
+        public Email(UniqueId messageId, MimeMessage message)
+        {
+            Id = messageId;
+            Message = message;
+        }
+
+        public string GetPreview()
         {
             try
             {
-                string previewText = "";
-                if (MessageSummary.TextBody != null)
+                var previewText = "";
+                if (Message.TextBody != null)
                 {
-                    var messageBody = AppConfig.CurrentIMap.Inbox.GetMessage(MessageSummary.UniqueId).Body;
+                    var messageBody = Message.Body;
 
                     if (messageBody.GetType() == typeof(MultipartAlternative))
                     {
@@ -38,7 +45,7 @@ namespace JobAlertManagerGUI.Model
                     }
                     else if (messageBody.GetType() == typeof(Multipart))
                     {
-                        Multipart multipartMsg = (Multipart)messageBody;
+                        var multipartMsg = (Multipart)messageBody;
                         if (multipartMsg[0].GetType() == typeof(TextPart))
                         {
                             previewText = ((TextPart)multipartMsg[0]).Text;
@@ -46,12 +53,13 @@ namespace JobAlertManagerGUI.Model
                         else
                         {
                             var type = multipartMsg[0].GetType();
-                            return null;
+                            previewText = "Unsupported message type detected (" + type + ")...";
+                            return previewText;
                         }
                     }
                     else if (messageBody.GetType() == typeof(MultipartRelated))
                     {
-                        MultipartRelated multipartMsg = (MultipartRelated)messageBody;
+                        var multipartMsg = (MultipartRelated)messageBody;
                         if (multipartMsg[0].GetType() == typeof(MultipartAlternative))
                         {
                             previewText = ((MultipartAlternative)multipartMsg[0]).TextBody;
@@ -59,7 +67,8 @@ namespace JobAlertManagerGUI.Model
                         else
                         {
                             var type = multipartMsg[0].GetType();
-                            return null;
+                            previewText = "Unsupported message type detected (" + type + ")...";
+                            return previewText;
                         }
                     }
                     else if (messageBody.GetType() == typeof(TextPart))
@@ -68,14 +77,14 @@ namespace JobAlertManagerGUI.Model
                     }
                     else
                     {
-                        var thing = messageBody.GetType();
-                        previewText = "Unsupported message type detected...";
+                        var type = messageBody.GetType();
+                        previewText = "Unsupported message type detected (" + type + ")...";
                         return previewText;
                     }
                 }
-                else if (MessageSummary.HtmlBody != null)
+                else if (Message.HtmlBody != null)
                 {
-                    var htmlMsg = AppConfig.CurrentIMap.Inbox.GetMessage(MessageSummary.UniqueId).Body;
+                    var htmlMsg = Message.Body;
                     if (htmlMsg.GetType() == typeof(TextPart))
                     {
                         previewText = ((TextPart)htmlMsg).Text;
@@ -87,9 +96,9 @@ namespace JobAlertManagerGUI.Model
                     else
                     {
                         var type = htmlMsg.GetType();
-                        return "HTML Body type detected. Unsupported message type...";
+                        return "HTML Body type detected. Unsupported message type (" + type + ")...";
                     }
-                    previewText = GetBodyTextFromHTML(previewText);
+                    previewText = GetBodyTextFromHtml(previewText);
                 }
                 else
                 {
@@ -110,9 +119,9 @@ namespace JobAlertManagerGUI.Model
 
         private string TrimPreview(string previewText)
         {
-            while (TrimStartList.Contains(previewText.Substring(0, 1)) || TrimStartList.Contains(previewText.Substring(0, 2)))
+            while (_trimStartList.Contains(previewText.Substring(0, 1)) || _trimStartList.Contains(previewText.Substring(0, 2)))
             {
-                foreach (string trimFilter in TrimStartList)
+                foreach (string trimFilter in _trimStartList)
                 {
                     if (previewText.StartsWith(trimFilter))
                     {
@@ -126,7 +135,7 @@ namespace JobAlertManagerGUI.Model
                 previewText = previewText.Substring(0, 150);
             }
 
-            foreach (string bodyFilter in ReplaceBodyList)
+            foreach (string bodyFilter in _replaceBodyList)
             {
                 previewText = previewText.Replace(bodyFilter, " ");
             }
@@ -154,12 +163,12 @@ namespace JobAlertManagerGUI.Model
             return previewText;
         }
 
-        private string GetBodyTextFromHTML(string htmlString)
+        private static string GetBodyTextFromHtml(string htmlString)
         {
-            string bodyText = "Unable to retrieve message preview...";
-            HtmlDocument doc = new HtmlDocument();
+            var bodyText = "Unable to retrieve message preview...";
+            var doc = new HtmlDocument();
             doc.LoadHtml(htmlString);
-            foreach (HtmlNode body in doc.DocumentNode.SelectNodes("//body"))
+            foreach (var body in doc.DocumentNode.SelectNodes("//body"))
             {
                 bodyText = body.InnerText;
                 break;

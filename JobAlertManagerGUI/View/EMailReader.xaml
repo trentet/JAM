@@ -9,7 +9,6 @@
         Width="450" 
         Left="50" 
         Top="50" Loaded="OnLoaded" Closing="OnClosing" Closed="OnClosed" WindowStyle="SingleBorderWindow">
-    <!--xmlns:res="clr-namespace:JobAlertManagerGUI.Properties;assembly=JobAlertManagerGUI"-->
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

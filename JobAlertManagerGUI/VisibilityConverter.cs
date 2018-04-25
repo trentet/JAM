@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Data;
 
-namespace JobAlertManagerGUI.Helpers
+namespace JobAlertManagerGUI
 {
     public class VisibilityConverter : IValueConverter
     {

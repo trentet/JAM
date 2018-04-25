@@ -72,6 +72,7 @@
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Printing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
@@ -97,8 +98,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Component1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Component1.Designer.cs">
+      <DependentUpon>Component1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controller\JAMController.cs" />
     <Compile Include="Controller\MenuController.cs" />
+    <Compile Include="Controller\ThreadHelper.cs" />
     <Compile Include="View\EMailMetaDetails.xaml.cs">
       <DependentUpon>EMailMetaDetails.xaml</DependentUpon>
     </Compile>
@@ -111,7 +119,7 @@
     <Compile Include="Helpers\MultiTextWriter.cs" />
     <Compile Include="Helpers\LogWriter.cs" />
     <Compile Include="Helpers\ControlWriter.cs" />
-    <Compile Include="Helpers\VisibilityConverter.cs" />
+    <Compile Include="VisibilityConverter.cs" />
     <Compile Include="HttpContentServer.cs" />
     <Compile Include="View\LargeTextBox.xaml.cs">
       <DependentUpon>LargeTextBox.xaml</DependentUpon>
@@ -137,6 +145,8 @@
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EmailHelper.cs" />
+    <Compile Include="Words.cs" />
     <Page Include="View\EMailMetaDetails.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -196,6 +206,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Component1.resx">
+      <DependentUpon>Component1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

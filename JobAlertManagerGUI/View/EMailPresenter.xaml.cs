@@ -52,20 +52,10 @@ namespace JobAlertManagerGUI.View
                 (o as EMailPresenter).SourceUri = e.NewValue as Uri;
             }));
 
-        public QueryMessageThreadHanlder QueryThread
-        {
-            get;
-            set;
-        }
+        public QueryMessageThreadHanlder QueryThread { get; set; }
 
-        public byte[] SourceData
-        {
-            set
-            {
-                _sourceData = value;
-                DataPending = value != null;
-            }
-        }
+        public byte[] SourceData { set { _sourceData = value; DataPending = value != null; } }
+
         private byte[] _sourceData = null;
 
         private bool DataPending = false;
@@ -125,7 +115,6 @@ namespace JobAlertManagerGUI.View
         public EMailPresenter()
         {
             InitializeComponent();
-            //TxtAttach.Text = Properties.Resources.AttachmentsWordQ;
             ChkBriefView.Content = Properties.Resources.BriefViewWord;
         }
 

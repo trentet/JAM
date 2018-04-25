@@ -37,7 +37,7 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <ListBox Name="EmailSubjectList" HorizontalContentAlignment="Stretch" Grid.Column="0" DataContext="{Binding Path=Emails}" SelectionChanged="EmailSubjectList_SelectionChanged">
+            <ListBox Name="EmailList" HorizontalContentAlignment="Stretch" Grid.Column="0" DataContext="{Binding Path=Emails}" SelectionChanged="EmailList_SelectionChanged">
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
                         <Setter Property="BorderThickness" Value="1" />
@@ -54,7 +54,7 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <TextBlock Text="{Binding Path=MessageSummary.Envelope.Subject}" Grid.Row="0"/>
+                            <TextBlock Text="{Binding Path=Message.Subject}" Grid.Row="0"/>
                             <TextBlock Text="{Binding Path=Preview}" Grid.Row="1"/>
                         </Grid>
                     </DataTemplate>
@@ -66,7 +66,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Border BorderBrush="Black" BorderThickness="1">
-                    <Grid Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="5" DataContext="{Binding Path=MessageSummary.Envelope}">
+                    <Grid Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="5" DataContext="{Binding Path=Message}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*"/>
