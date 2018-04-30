@@ -2,10 +2,7 @@
 using MailKit;
 using MimeKit;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JobAlertManagerGUI.Model
 {
@@ -13,31 +10,53 @@ namespace JobAlertManagerGUI.Model
     {
         private readonly string[] _trimStartList = { "\r", "\n", " ", "-", "\t", "&nbsp;" };
         private readonly string[] _replaceBodyList = { "\r\n", "\r", "\n", "\t", "--", "- -", "&nbsp;" };
+        private string _preview;
 
         public UniqueId Id { get; set; }
-        public MimeMessage Message { get; set; }
-        public string Preview { get => GetPreview(); }
+        public IMessageSummary MessageSummary { get; set; }
+        public string Preview { get => _preview; }
+        public string FileName { get => Id + ".eml";  }
 
-        public Email(UniqueId messageId)
+        public Email(IMessageSummary summary)
         {
-            Id = messageId;
-            Message = AppConfig.CurrentIMap.Inbox.GetMessage(Id);
+            Id = summary.UniqueId;
+            MessageSummary = summary;
+            SetPreview(null);
         }
 
-        public Email(UniqueId messageId, MimeMessage message)
+        public Email(IMessageSummary summary, MimeMessage message)
         {
-            Id = messageId;
-            Message = message;
+            Id = summary.UniqueId;
+            MessageSummary = summary;
+            SetPreview(message);
         }
 
-        public string GetPreview()
+        public void SetPreview(MimeMessage message)
+        {
+            if (MessageSummary.TextBody != null && message == null)
+            {
+                _preview = MessageSummary.PreviewText;
+            }
+            else if (MessageSummary.HtmlBody != null && message.HtmlBody != null)
+            {
+                _preview = GetPreview(message);
+            }
+            else
+            {
+                _preview = "Unable to load preview...";
+            }
+
+            _preview = TrimPreview(_preview);
+        }
+
+        public string GetPreview(MimeMessage message)
         {
             try
             {
                 var previewText = "";
-                if (Message.TextBody != null)
+                if (message.TextBody != null)
                 {
-                    var messageBody = Message.Body;
+                    var messageBody = message.Body;
 
                     if (messageBody.GetType() == typeof(MultipartAlternative))
                     {
@@ -82,9 +101,9 @@ namespace JobAlertManagerGUI.Model
                         return previewText;
                     }
                 }
-                else if (Message.HtmlBody != null)
+                else if (message.HtmlBody != null)
                 {
-                    var htmlMsg = Message.Body;
+                    var htmlMsg = message.Body;
                     if (htmlMsg.GetType() == typeof(TextPart))
                     {
                         previewText = ((TextPart)htmlMsg).Text;
@@ -114,7 +133,6 @@ namespace JobAlertManagerGUI.Model
                 Console.WriteLine(ex.StackTrace);
                 return "Error retrieving email preview...";
             }
-
         }
 
         private string TrimPreview(string previewText)

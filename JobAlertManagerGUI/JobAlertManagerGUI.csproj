@@ -98,15 +98,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Component1.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Component1.Designer.cs">
-      <DependentUpon>Component1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controller\JAMController.cs" />
-    <Compile Include="Controller\MenuController.cs" />
     <Compile Include="Controller\ThreadHelper.cs" />
+    <Compile Include="Model\Extensions.cs" />
     <Compile Include="View\EMailMetaDetails.xaml.cs">
       <DependentUpon>EMailMetaDetails.xaml</DependentUpon>
     </Compile>
@@ -125,14 +118,9 @@
       <DependentUpon>LargeTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\AppConfig.cs" />
-    <Compile Include="Model\CommandResult.cs" />
     <Compile Include="Model\Credentials.cs" />
     <Compile Include="Model\Email.cs" />
-    <Compile Include="Model\IMapCommands.cs" />
     <Compile Include="Model\LogHandler.cs" />
-    <Compile Include="Model\MenuCommand.cs" />
-    <Compile Include="Model\MenuModel.cs" />
-    <Compile Include="Model\Unit.cs" />
     <Compile Include="Model\RootModel.cs" />
     <Compile Include="Helpers\DateTimeConverter.cs" />
     <Compile Include="View\EMailAttachments.xaml.cs">
@@ -146,7 +134,6 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="EmailHelper.cs" />
-    <Compile Include="Words.cs" />
     <Page Include="View\EMailMetaDetails.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -194,9 +181,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\ApplicationPages.cs" />
-    <Compile Include="Model\Authentication.cs" />
-    <Compile Include="Model\MyMenuItem.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -206,9 +190,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Component1.resx">
-      <DependentUpon>Component1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

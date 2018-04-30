@@ -3,21 +3,15 @@ using JobAlertManagerGUI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using MailKit.Search;
 using MailKit;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel.Composition;
-using MimeKit;
 using System.IO;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using CryptoGateway.FileSystem.VShell.Interfaces;
-using TrentUtil;
 using JobAlertManagerGUI.Controller;
 using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
@@ -28,7 +22,7 @@ namespace JobAlertManagerGUI.View
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : INotifyPropertyChanged
     {
         internal void RaisePropertyChanged(string prop)
         {
@@ -38,22 +32,20 @@ namespace JobAlertManagerGUI.View
         public event PropertyChangedEventHandler PropertyChanged;
 
         [Import(typeof(IEMailReader))]
-        private IEMailReader reader
+        private IEMailReader Reader
         {
             get;
             set;
         }
 
-        private ObservableCollection<Email> emails = new ObservableCollection<Email>();
+        //private ObservableCollection<Email> _emails = new ObservableCollection<Email>();
 
-        public ObservableCollection<Email> Emails { get => emails; set => emails = value; }
+        public ObservableCollection<Email> Emails { get; set; }
 
-        private Email selectedEmail;
+        public Email SelectedEmail { get; set; }
 
-        public Email SelectedEmail { get => selectedEmail; set => selectedEmail = value; }
-
-        private readonly SynchronizationContext synchronizationContext;
-        private DateTime previousTime = DateTime.Now;
+        private readonly SynchronizationContext _synchronizationContext;
+        private DateTime _previousTime = DateTime.Now;
 
         //private bool logoutRequested = false;
         //private bool stallLogout = false;
@@ -61,22 +53,11 @@ namespace JobAlertManagerGUI.View
         public MainWindow()
         {
             InitializeComponent();
-            synchronizationContext = SynchronizationContext.Current;
-            Emails.CollectionChanged += OnEmailCollectionChanged;
+            _synchronizationContext = SynchronizationContext.Current;
+            //Emails.CollectionChanged += OnEmailCollectionChanged;
             AppConfig.IsConsole = false;
             AppConfig.EmailSaveDirectory = Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), @"Documents\JAM\Emails\");
             Console.SetOut(new MultiTextWriter(new LogWriter(), Console.Out));
-            //string pluginDir = System.IO.Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + @"..\..\..\JobAlertManagerGUI\bin\Debug\");
-            //if (System.IO.Directory.Exists(pluginDir))
-            //    LoadReader(pluginDir);
-            //else
-            //{
-            //string pluginDir = System.IO.Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + @"Plugins\");
-            //if (System.IO.Directory.Exists(pluginDir))
-            //{
-            //    LoadReader(pluginDir);
-            //}
-            //}
             UpdateLoggedInUser();
         }
 
@@ -91,9 +72,8 @@ namespace JobAlertManagerGUI.View
             {
                 var cc = new CompositionContainer(categ);
                 cc.ComposeParts(this);
-                creader.Content = reader;
-                reader.QueryThread = OnQueryThread;
-                //mnLoadReader.IsEnabled = false;
+                creader.Content = Reader;
+                Reader.QueryThread = OnQueryThread;
             }
             else if (l.Count == 0)
             {
@@ -106,14 +86,14 @@ namespace JobAlertManagerGUI.View
         {
             var timeNow = DateTime.Now;
 
-            if ((timeNow - previousTime).Milliseconds <= 50) return;
+            if ((timeNow - _previousTime).Milliseconds <= 50) return;
 
-            synchronizationContext.Post(new SendOrPostCallback(o =>
+            _synchronizationContext.Post(new SendOrPostCallback(o =>
             {
                 EmailList.ItemsSource = Emails;
             }), Emails);
 
-            previousTime = timeNow;
+            _previousTime = timeNow;
         }
 
         private async void Login_Click(object sender, RoutedEventArgs e)
@@ -125,6 +105,9 @@ namespace JobAlertManagerGUI.View
                 login.ShowDialog();
                 UpdateLoggedInUser();
 
+                Emails = new ObservableCollection<Email>();
+                Emails.CollectionChanged += OnEmailCollectionChanged;
+
                 string pluginDir = System.IO.Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + @"Plugins\");
                 if (System.IO.Directory.Exists(pluginDir))
                 {
@@ -135,8 +118,7 @@ namespace JobAlertManagerGUI.View
                 {
                     await Task.Run(() =>
                     {
-                        EmailHelper emailHelper = new EmailHelper(this);
-                        emailHelper.PopulateEmailList();
+                        PopulateEmailList(AppConfig.CurrentIMap.Inbox);
                     });
                 }
             }
@@ -162,10 +144,11 @@ namespace JobAlertManagerGUI.View
                 UpdateLoggedInUser();
                 Dispatcher.Invoke((Action)delegate
                 {
-                    Emails.Clear();
+                    Emails = null;
+                    EmailList.ItemsSource = Emails;
                     EmailList.SelectedIndex = -1;
-                    reader = null;
-                    creader.Content = reader;
+                    Reader = null;
+                    creader.Content = Reader;
                 });
             }
             catch (Exception ex)
@@ -175,16 +158,14 @@ namespace JobAlertManagerGUI.View
             }
         }
 
-        private void LoadMimeFile(UniqueId id)
+        private void LoadMimeFile(Email email)
         {
-            if (reader == null)
+            if (Reader == null)
             {
                 System.Windows.MessageBox.Show("The reader has not been loaded.");
                 return;
             }
-
-            string fileName = AppConfig.EmailSaveDirectory + id + ".eml";
-            reader.SourceUri = new Uri(fileName);
+            Reader.SourceUri = new Uri(AppConfig.EmailSaveDirectory + email.FileName);
         }
 
         private bool OnQueryThread(string MsgID, out ThreadedMessage StartMsg)
@@ -198,12 +179,89 @@ namespace JobAlertManagerGUI.View
             if (EmailList.SelectedIndex > -1)
             {
                 SelectedEmail = Emails[EmailList.SelectedIndex];
+                SelectedEmail.DownloadEmail(AppConfig.CurrentIMap.Inbox);
                 EmailContent.DataContext = SelectedEmail;
-                LoadMimeFile(SelectedEmail.Id);
+                LoadMimeFile(SelectedEmail);
             }
             else
             {
                 EmailContent.DataContext = null;
+            }
+        }
+
+        public void PopulateEmailList(IMailFolder mailFolder)
+        {
+            // The Inbox folder is always available on all IMAP servers...
+            mailFolder.Open(FolderAccess.ReadOnly);
+
+            var emailSummaries = mailFolder.Fetch(0, 49, MessageSummaryItems.UniqueId | MessageSummaryItems.PreviewText | MessageSummaryItems.Envelope);
+
+            Console.WriteLine("Total messages: {0}", mailFolder.Count);
+            Console.WriteLine("Recent messages: {0}", mailFolder.Recent);
+
+            foreach (var emailSummary in emailSummaries)
+            {
+                if (AppConfig.CurrentIMap.IsConnected && AppConfig.CurrentIMap.IsAuthenticated && ThreadHelper.LogoutRequested == false)
+                {
+                    try
+                    {
+                        Email email = null;
+                        ThreadHelper.StallLogout = true;
+
+                        if (emailSummary.TextBody != null)
+                        {
+                            email = new Email(emailSummary);
+                        }
+                        else if (emailSummary.HtmlBody != null)
+                        {
+                            email = new Email(emailSummary, mailFolder.GetMessage(emailSummary.UniqueId));
+                        }
+
+                        if (email != null && email.Id != null && email.MessageSummary != null)
+                        {
+                            Application.Current.Dispatcher.Invoke((Action)delegate
+                            {
+                                Emails.Add(email);
+                                Console.WriteLine("[Email Added] {0:D2}: {1}", email.Id, email.MessageSummary.Envelope.Subject);
+                            });
+                        }
+                        else
+                        {
+                            string idState = "NOT NULL";
+                            string messageState = "NOT NULL";
+                            if (email.Id == null)
+                            {
+                                idState = "NULL";
+                            }
+
+                            if (email.MessageSummary == null)
+                            {
+                                messageState = "NULL";
+                            }
+
+                            Console.WriteLine("Email not added successfully.\nId {" + idState + "}\nMessage {" + messageState + "}");
+                        }
+
+                        ThreadHelper.StallLogout = false;
+                    }
+                    catch (Exception exception)
+                    {
+                        if (ThreadHelper.LogoutRequested)
+                        {
+                            Console.WriteLine("Logout requested during email collection. ");
+                            ThreadHelper.StallLogout = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine(exception);
+                            throw;
+                        }
+                    }
+                }
+                else
+                {
+                    break;
+                }
             }
         }
 
@@ -225,55 +283,6 @@ namespace JobAlertManagerGUI.View
             {
                 LoggedInUser.Text = "Not logged in";
             }
-        }
-
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            // This event handler is called when the background thread finishes.  
-            // This method runs on the main thread.  
-            if (e.Error != null)
-                MessageBox.Show("Error: " + e.Error.Message);
-            else if (e.Cancelled)
-                MessageBox.Show("Word counting canceled.");
-            else
-                MessageBox.Show("Finished counting words.");
-        }
-
-        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            // This method runs on the main thread.  
-            Words.CurrentState state =
-                (Words.CurrentState)e.UserState;
-            //this.LinesCounted.Text = state.LinesCounted.ToString();
-            //this.WordsCounted.Text = state.WordsMatched.ToString();
-        }
-
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-            // This event handler is where the actual work is done.  
-            // This method runs on the background thread.  
-
-            // Get the BackgroundWorker object that raised this event.  
-            System.ComponentModel.BackgroundWorker worker;
-            worker = (System.ComponentModel.BackgroundWorker)sender;
-
-            // Get the Words object and call the main method.  
-            Words WC = (Words)e.Argument;
-            WC.CountWords(worker, e);
-        }
-
-        private void StartThread()
-        {
-            // This method runs on the main thread.  
-            //this.WordsCounted.Text = "0";
-
-            // Initialize the object that the background worker calls.  
-            Words WC = new Words();
-            //WC.CompareString = this.CompareString.Text;
-            //WC.SourceFile = this.SourceFile.Text;
-
-            // Start the asynchronous operation.  
-            //backgroundWorker1.RunWorkerAsync(WC);
         }
     }
 }
