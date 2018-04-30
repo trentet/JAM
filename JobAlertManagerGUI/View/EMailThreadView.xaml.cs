@@ -1,25 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using CryptoGateway.FileSystem.VShell.Interfaces;
 using AvalonDock;
+using CryptoGateway.FileSystem.VShell.Interfaces;
 
 namespace JobAlertManagerGUI.View
 {
     /// <summary>
-    /// Interaction logic for EMailThreadView.xaml
+    ///     Interaction logic for EMailThreadView.xaml
     /// </summary>
     public partial class EMailThreadView : DockableContent
     {
+        private ThreadedMessage _root;
+
+        public Action<bool, DockableContent> ClosedHandler = null;
+        private bool IsTreeInitializing;
+
+        public Action<string> MailSelected = null;
+
+        public EMailThreadView()
+        {
+            InitializeComponent();
+        }
+
         public ThreadedMessage Root
         {
             set
@@ -31,7 +35,7 @@ namespace JobAlertManagerGUI.View
                     {
                         IsTreeInitializing = true;
                         TreeThrd.BeginInit();
-                        TreeThrd.ItemsSource = new ThreadedMessage[] { value };
+                        TreeThrd.ItemsSource = new[] {value};
                         TreeThrd.EndInit();
                         IsTreeInitializing = false;
                     }
@@ -41,42 +45,34 @@ namespace JobAlertManagerGUI.View
                 }
             }
         }
-        private ThreadedMessage _root = null;
-        private bool IsTreeInitializing = false;
-
-        public Action<string> MailSelected = null;
-
-        public Action<bool, DockableContent> ClosedHandler = null;
-
-        public EMailThreadView()
-        {
-            InitializeComponent();
-        }
 
         public bool IsInThread(string path)
         {
             if (_root == null)
                 return false;
-            List<ThreadedMessage> pnl = new List<ThreadedMessage>();
-            List<ThreadedMessage> cnl = new List<ThreadedMessage>();
+            var pnl = new List<ThreadedMessage>();
+            var cnl = new List<ThreadedMessage>();
             pnl.Add(_root);
             while (true)
             {
-                for (int i = 0; i < pnl.Count; i++)
+                for (var i = 0; i < pnl.Count; i++)
                 {
-                    if ((pnl[i].MsgDataPath is string) && (pnl[i].MsgDataPath as string).ToLower() == path.ToLower())
+                    if (pnl[i].MsgDataPath is string && pnl[i].MsgDataPath.ToLower() == path.ToLower())
                     {
                         pnl[i].IsMsgNodeSelected = true;
                         return true;
                     }
-                    foreach (ThreadedMessage cmsg in pnl[i].ReplyMsgs)
+
+                    foreach (var cmsg in pnl[i].ReplyMsgs)
                         cnl.Add(cmsg);
                 }
+
                 if (cnl.Count == 0)
                     break;
                 pnl = cnl;
                 cnl = new List<ThreadedMessage>();
             }
+
             return false;
         }
 
@@ -85,13 +81,11 @@ namespace JobAlertManagerGUI.View
             if (IsTreeInitializing)
                 return;
             if (e.NewValue is ThreadedMessage && MailSelected != null)
-            {
                 MailSelected((e.NewValue as ThreadedMessage).MsgDataPath);
-            }
         }
 
-        
-        private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
+
+        private void OnClosing(object sender, CancelEventArgs e)
         {
             if (ClosedHandler != null)
                 ClosedHandler(false, this);

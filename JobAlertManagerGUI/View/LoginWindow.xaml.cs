@@ -1,8 +1,8 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.IO;
 using System.Windows;
 using JobAlertManagerGUI.Model;
-using System;
-using System.IO;
 
 namespace JobAlertManagerGUI.View
 {
@@ -22,6 +22,8 @@ namespace JobAlertManagerGUI.View
             }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private void MenuItem_Click1(object sender, RoutedEventArgs e)
         {
             LoginLayer.Visibility = Visibility.Visible;
@@ -32,13 +34,9 @@ namespace JobAlertManagerGUI.View
             Credentials.Host = txtHost.Text;
             Credentials.Ssl = true;
             if (checkBoxSSL.IsChecked ?? false)
-            {
                 Credentials.Ssl = true;
-            }
             else
-            {
                 Credentials.Ssl = false;
-            }
             Credentials.Port = Convert.ToUInt16(txtPort.Text);
             Credentials.Username = txtEmail.Text;
             Credentials.Password = txtPassword.Text;
@@ -68,7 +66,5 @@ namespace JobAlertManagerGUI.View
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-
     }
 }

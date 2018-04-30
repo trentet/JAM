@@ -1,10 +1,11 @@
 ﻿<UserControl x:Class="JobAlertManagerGUI.View.EMailAttachments"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Loaded="OnLoaded" DataContextChanged="OnDataContextChanged" MinHeight="300">
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="OnLoaded" DataContextChanged="OnDataContextChanged"
+             MinHeight="300">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,7 +18,7 @@
             <RowDefinition Height="95*" />
             <RowDefinition Height="205*" />
         </Grid.RowDefinitions>
-        <GroupBox x:Name="GBB" Margin="0,1" >
+        <GroupBox x:Name="GBB" Margin="0,1">
             <ListView x:Name="LstAttach" Margin="0,1" BorderThickness="0" SelectionChanged="OnSelectAttachment">
                 <ListView.View>
                     <GridView>
@@ -26,11 +27,14 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border MinWidth="150">
-                                            <TextBlock x:Name="txt" Text="{Binding Entity.ContentDisposition_FileName}" HorizontalAlignment="Left" />
+                                            <TextBlock x:Name="txt" Text="{Binding Entity.ContentDisposition_FileName}"
+                                                       HorizontalAlignment="Left" />
                                         </Border>
                                         <DataTemplate.Triggers>
-                                            <DataTrigger Binding="{Binding Entity.ContentDisposition_FileName}" Value="{x:Null}">
-                                                <Setter TargetName="txt" Property="Text" Value="{Binding Entity.ContentDescription}" />
+                                            <DataTrigger Binding="{Binding Entity.ContentDisposition_FileName}"
+                                                         Value="{x:Null}">
+                                                <Setter TargetName="txt" Property="Text"
+                                                        Value="{Binding Entity.ContentDescription}" />
                                             </DataTrigger>
                                         </DataTemplate.Triggers>
                                     </DataTemplate>
@@ -39,8 +43,10 @@
                             <GridViewColumn Width="50">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Style="{StaticResource ButtonStyle3}" ToolTip="{Binding ButtonTip}" Click="OnSaveAttachment" HorizontalAlignment="Center">
-                                            <Image Source="/Images/disk-black.png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="16" Height="16" Margin="0,1" />
+                                        <Button Style="{StaticResource ButtonStyle3}" ToolTip="{Binding ButtonTip}"
+                                                Click="OnSaveAttachment" HorizontalAlignment="Center">
+                                            <Image Source="/Images/disk-black.png" VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center" Width="16" Height="16" Margin="0,1" />
                                         </Button>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -50,7 +56,7 @@
                 </ListView.View>
             </ListView>
         </GroupBox>
-        <GroupBox x:Name="GBC"  Margin="1,3,1,1" Grid.Row="1">
+        <GroupBox x:Name="GBC" Margin="1,3,1,1" Grid.Row="1">
             <ContentControl x:Name="cviewer" />
         </GroupBox>
     </Grid>

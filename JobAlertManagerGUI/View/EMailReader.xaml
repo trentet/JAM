@@ -4,10 +4,10 @@
         xmlns:locView="clr-namespace:JobAlertManagerGUI.View"
         xmlns:locHelper="clr-namespace:JobAlertManagerGUI.Helpers"
         xmlns:ad="clr-namespace:AvalonDock;assembly=AvalonDock"
-        Title="EMailReader" 
-        Height="100" 
-        Width="450" 
-        Left="50" 
+        Title="EMailReader"
+        Height="100"
+        Width="450"
+        Left="50"
         Top="50" Loaded="OnLoaded" Closing="OnClosing" Closed="OnClosed" WindowStyle="SingleBorderWindow">
     <Window.Resources>
         <ResourceDictionary>
@@ -24,30 +24,35 @@
         </Grid.RowDefinitions>
         <ad:DockingManager x:Name="_MainDockMgr" Loaded="MainDockManagerLoaded">
             <ad:DockingManager.LayoutTransform>
-                <ScaleTransform ScaleX="{Binding Value, ElementName=zoomSlider}" ScaleY="{Binding Value, ElementName=zoomSlider}"/>
+                <ScaleTransform ScaleX="{Binding Value, ElementName=zoomSlider}"
+                                ScaleY="{Binding Value, ElementName=zoomSlider}" />
             </ad:DockingManager.LayoutTransform>
             <ad:ResizingPanel>
                 <ad:ResizingPanel ad:ResizingPanel.ResizeWidth="0.5*">
                     <ad:DockablePane>
-                        <locView:EMailThreadView x:Name="ThrdViewer" Icon="/Images/node-select-all.png" StateChanged="OnThreadViewStateChanged"/>
+                        <locView:EMailThreadView x:Name="ThrdViewer" Icon="/Images/node-select-all.png"
+                                                 StateChanged="OnThreadViewStateChanged" />
                     </ad:DockablePane>
                 </ad:ResizingPanel>
                 <ad:DocumentPane>
-                    <ad:DocumentContent x:Name="DocContent" Title="Test" Icon="/Images/mail-arrow.png" IsCloseable="False">
+                    <ad:DocumentContent x:Name="DocContent" Title="Test" Icon="/Images/mail-arrow.png"
+                                        IsCloseable="False">
                         <Grid Background="#FFEEF5EE">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="100" />
                                 <RowDefinition Height="5" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <Border x:Name="PanelHeader" Margin="5" Background="White" BorderBrush="SkyBlue" BorderThickness="1" CornerRadius="5">
+                            <Border x:Name="PanelHeader" Margin="5" Background="White" BorderBrush="SkyBlue"
+                                    BorderThickness="1" CornerRadius="5">
                                 <Border.Effect>
                                     <DropShadowEffect />
                                 </Border.Effect>
-                                <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="5">
+                                <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto"
+                                      Height="Auto" Margin="5">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
@@ -57,18 +62,43 @@
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding MsgFromWord}" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Right" Width="Auto" Height="Auto"  Padding="0,2,5,2" />
-                                    <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding MsgFrom}" FontWeight="Normal" VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"  Padding="0,2,0,2" />
-                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding MsgToWord}" FontWeight="Bold" VerticalAlignment="Top" Width="Auto" Height="Auto"  Padding="0,2,5,2" HorizontalAlignment="Right" />
-                                    <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding MsgTo}" FontWeight="Normal" VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"  Padding="0,2,0,2" />
-                                    <TextBlock Grid.Column="0" Grid.Row="2" Text="{Binding MsgSubjectWord}" FontWeight="Bold" VerticalAlignment="Top" Width="Auto" Height="Auto"  Padding="0,2,5,2" HorizontalAlignment="Right" />
-                                    <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding MsgSubject}" FontWeight="Normal" VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"  Padding="0,2,0,2" />
-                                    <TextBlock Grid.Column="0" Grid.Row="3" Text="{Binding ReceivedDateTimeWord}" FontWeight="Bold" VerticalAlignment="Top" Width="Auto" Height="Auto"  Padding="0,2,5,2" HorizontalAlignment="Right" />
-                                    <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding ReceivedDateTime, Converter={StaticResource ConvertDateTime}}" FontWeight="Normal" VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"  Padding="0,2,0,2" />
-                                    <TextBlock Grid.Column="0" Grid.Row="4" Text="{Binding MsgCcWord}" FontWeight="Bold" VerticalAlignment="Top" Width="Auto" Height="Auto"  Padding="0,2,5,2" HorizontalAlignment="Right" />
-                                    <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding MsgCc}" FontWeight="Normal" VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"  Padding="0,2,0,2" />
-                                    <TextBlock Grid.Column="0" Grid.Row="5" Text="{Binding MsgBccWord}" FontWeight="Bold" VerticalAlignment="Top" Width="Auto" Height="Auto"  Padding="0,2,5,2" HorizontalAlignment="Right" />
-                                    <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding MsgBcc}" FontWeight="Normal" VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"  Padding="0,2,0,2" />
+                                    <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding MsgFromWord}"
+                                               FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Right"
+                                               Width="Auto" Height="Auto" Padding="0,2,5,2" />
+                                    <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding MsgFrom}"
+                                               FontWeight="Normal" VerticalAlignment="Top" Width="Auto" Height="Auto"
+                                               TextWrapping="Wrap" Padding="0,2,0,2" />
+                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding MsgToWord}"
+                                               FontWeight="Bold" VerticalAlignment="Top" Width="Auto" Height="Auto"
+                                               Padding="0,2,5,2" HorizontalAlignment="Right" />
+                                    <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding MsgTo}" FontWeight="Normal"
+                                               VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"
+                                               Padding="0,2,0,2" />
+                                    <TextBlock Grid.Column="0" Grid.Row="2" Text="{Binding MsgSubjectWord}"
+                                               FontWeight="Bold" VerticalAlignment="Top" Width="Auto" Height="Auto"
+                                               Padding="0,2,5,2" HorizontalAlignment="Right" />
+                                    <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding MsgSubject}"
+                                               FontWeight="Normal" VerticalAlignment="Top" Width="Auto" Height="Auto"
+                                               TextWrapping="Wrap" Padding="0,2,0,2" />
+                                    <TextBlock Grid.Column="0" Grid.Row="3" Text="{Binding ReceivedDateTimeWord}"
+                                               FontWeight="Bold" VerticalAlignment="Top" Width="Auto" Height="Auto"
+                                               Padding="0,2,5,2" HorizontalAlignment="Right" />
+                                    <TextBlock Grid.Column="1" Grid.Row="3"
+                                               Text="{Binding ReceivedDateTime, Converter={StaticResource ConvertDateTime}}"
+                                               FontWeight="Normal" VerticalAlignment="Top" Width="Auto" Height="Auto"
+                                               TextWrapping="Wrap" Padding="0,2,0,2" />
+                                    <TextBlock Grid.Column="0" Grid.Row="4" Text="{Binding MsgCcWord}"
+                                               FontWeight="Bold" VerticalAlignment="Top" Width="Auto" Height="Auto"
+                                               Padding="0,2,5,2" HorizontalAlignment="Right" />
+                                    <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding MsgCc}" FontWeight="Normal"
+                                               VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"
+                                               Padding="0,2,0,2" />
+                                    <TextBlock Grid.Column="0" Grid.Row="5" Text="{Binding MsgBccWord}"
+                                               FontWeight="Bold" VerticalAlignment="Top" Width="Auto" Height="Auto"
+                                               Padding="0,2,5,2" HorizontalAlignment="Right" />
+                                    <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding MsgBcc}" FontWeight="Normal"
+                                               VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"
+                                               Padding="0,2,0,2" />
                                 </Grid>
                             </Border>
                             <GridSplitter Grid.Row="1" ResizeBehavior="PreviousAndNext" HorizontalAlignment="Stretch" />
@@ -80,11 +110,14 @@
         </ad:DockingManager>
         <StatusBar Grid.Row="1">
             <StatusBarItem>
-                <StackPanel Orientation="Horizontal" >
-                    <TextBlock Text="A" VerticalAlignment="Center"/>
-                    <Slider x:Name="zoomSlider" VerticalAlignment="Center" Value="1" IsSnapToTickEnabled="True" TickFrequency="0.05" TickPlacement="TopLeft" Minimum="0.5" Maximum="2" SmallChange="0.05" LargeChange="0.5" Width="100"/>
-                    <TextBlock Text="A" FontSize="20" VerticalAlignment="Center"/>
-                    <TextBlock Text="{Binding Value, ElementName=zoomSlider, StringFormat=P}" Margin="2,0" VerticalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="A" VerticalAlignment="Center" />
+                    <Slider x:Name="zoomSlider" VerticalAlignment="Center" Value="1" IsSnapToTickEnabled="True"
+                            TickFrequency="0.05" TickPlacement="TopLeft" Minimum="0.5" Maximum="2" SmallChange="0.05"
+                            LargeChange="0.5" Width="100" />
+                    <TextBlock Text="A" FontSize="20" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding Value, ElementName=zoomSlider, StringFormat=P}" Margin="2,0"
+                               VerticalAlignment="Center" />
                 </StackPanel>
             </StatusBarItem>
         </StatusBar>

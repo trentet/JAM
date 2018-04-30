@@ -13,31 +13,32 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="95*"/>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="95*" />
         </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <StackPanel>
                 <Menu VerticalAlignment="Top" Grid.Column="0" Grid.Row="0">
                     <MenuItem Header="Account">
-                        <MenuItem Header="Login" Click="Login_Click"/>
-                        <MenuItem Header="Logout" Click="Logout_Click"/>
+                        <MenuItem Header="Login" Click="Login_Click" />
+                        <MenuItem Header="Logout" Click="Logout_Click" />
                     </MenuItem>
                 </Menu>
             </StackPanel>
             <Menu VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="0">
-                <TextBlock x:Name="LoggedInUser" Text="{Binding Source={x:Static local2:Credentials.Username}}"/>
+                <TextBlock x:Name="LoggedInUser" Text="{Binding Source={x:Static local2:Credentials.Username}}" />
             </Menu>
         </Grid>
         <Grid Grid.Column="0" Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
-            <ListBox Name="EmailList" HorizontalContentAlignment="Stretch" Grid.Column="0" DataContext="{Binding Path=Emails}" SelectionChanged="EmailList_SelectionChanged">
+            <ListBox Name="EmailList" HorizontalContentAlignment="Stretch" Grid.Column="0"
+                     DataContext="{Binding Path=Emails}" SelectionChanged="EmailList_SelectionChanged">
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
                         <Setter Property="BorderThickness" Value="1" />
@@ -51,25 +52,26 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <TextBlock Text="{Binding Path=MessageSummary.Envelope.Subject}" Grid.Row="0"/>
-                            <TextBlock Text="{Binding Path=Preview}" Grid.Row="1"/>
+                            <TextBlock Text="{Binding Path=MessageSummary.Envelope.Subject}" Grid.Row="0" />
+                            <TextBlock Text="{Binding Path=Preview}" Grid.Row="1" />
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
             <Grid x:Name="EmailContent" Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Border BorderBrush="Black" BorderThickness="1">
-                    <Grid Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="5" DataContext="{Binding Path=MessageSummary.Envelope}">
+                    <Grid Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto"
+                          Height="Auto" Margin="5" DataContext="{Binding Path=MessageSummary.Envelope}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -79,23 +81,43 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Column="0" Grid.Row="0" Text="From: " FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Right" Width="Auto" Height="Auto"  Padding="0,2,5,2" />
-                        <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Path=From}" FontWeight="Normal" VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"  Padding="0,2,0,2" />
-                        <TextBlock Grid.Column="0" Grid.Row="1" Text="To: " FontWeight="Bold" VerticalAlignment="Top" Width="Auto" Height="Auto"  Padding="0,2,5,2" HorizontalAlignment="Right" />
-                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Path=To}" FontWeight="Normal" VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"  Padding="0,2,0,2" />
-                        <TextBlock Grid.Column="0" Grid.Row="2" Text="Subject: " FontWeight="Bold" VerticalAlignment="Top" Width="Auto" Height="Auto"  Padding="0,2,5,2" HorizontalAlignment="Right" />
-                        <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Path=Subject}" FontWeight="Normal" VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"  Padding="0,2,0,2" />
-                        <TextBlock Grid.Column="0" Grid.Row="3" Text="Date: " FontWeight="Bold" VerticalAlignment="Top" Width="Auto" Height="Auto"  Padding="0,2,5,2" HorizontalAlignment="Right" />
-                        <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Path=Date, Converter={StaticResource ConvertDateTime}}" FontWeight="Normal" VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"  Padding="0,2,0,2" />
-                        <TextBlock Grid.Column="0" Grid.Row="4" Text="CC: " FontWeight="Bold" VerticalAlignment="Top" Width="Auto" Height="Auto"  Padding="0,2,5,2" HorizontalAlignment="Right" />
-                        <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding Path=Cc}" FontWeight="Normal" VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"  Padding="0,2,0,2" />
-                        <TextBlock Grid.Column="0" Grid.Row="5" Text="BCC: " FontWeight="Bold" VerticalAlignment="Top" Width="Auto" Height="Auto"  Padding="0,2,5,2" HorizontalAlignment="Right" />
-                        <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding Path=Bcc}" FontWeight="Normal" VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"  Padding="0,2,0,2" />
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="From: " FontWeight="Bold" VerticalAlignment="Top"
+                                   HorizontalAlignment="Right" Width="Auto" Height="Auto" Padding="0,2,5,2" />
+                        <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Path=From}" FontWeight="Normal"
+                                   VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"
+                                   Padding="0,2,0,2" />
+                        <TextBlock Grid.Column="0" Grid.Row="1" Text="To: " FontWeight="Bold" VerticalAlignment="Top"
+                                   Width="Auto" Height="Auto" Padding="0,2,5,2" HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Path=To}" FontWeight="Normal"
+                                   VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"
+                                   Padding="0,2,0,2" />
+                        <TextBlock Grid.Column="0" Grid.Row="2" Text="Subject: " FontWeight="Bold"
+                                   VerticalAlignment="Top" Width="Auto" Height="Auto" Padding="0,2,5,2"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Path=Subject}" FontWeight="Normal"
+                                   VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"
+                                   Padding="0,2,0,2" />
+                        <TextBlock Grid.Column="0" Grid.Row="3" Text="Date: " FontWeight="Bold" VerticalAlignment="Top"
+                                   Width="Auto" Height="Auto" Padding="0,2,5,2" HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1" Grid.Row="3"
+                                   Text="{Binding Path=Date, Converter={StaticResource ConvertDateTime}}"
+                                   FontWeight="Normal" VerticalAlignment="Top" Width="Auto" Height="Auto"
+                                   TextWrapping="Wrap" Padding="0,2,0,2" />
+                        <TextBlock Grid.Column="0" Grid.Row="4" Text="CC: " FontWeight="Bold" VerticalAlignment="Top"
+                                   Width="Auto" Height="Auto" Padding="0,2,5,2" HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding Path=Cc}" FontWeight="Normal"
+                                   VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"
+                                   Padding="0,2,0,2" />
+                        <TextBlock Grid.Column="0" Grid.Row="5" Text="BCC: " FontWeight="Bold" VerticalAlignment="Top"
+                                   Width="Auto" Height="Auto" Padding="0,2,5,2" HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding Path=Bcc}" FontWeight="Normal"
+                                   VerticalAlignment="Top" Width="Auto" Height="Auto" TextWrapping="Wrap"
+                                   Padding="0,2,0,2" />
                     </Grid>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1">
                     <Grid>
-                        <ContentPresenter x:Name="creader" Margin="5"/>
+                        <ContentPresenter x:Name="creader" Margin="5" />
                     </Grid>
                 </Border>
             </Grid>

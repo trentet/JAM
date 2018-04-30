@@ -1,227 +1,47 @@
 ﻿using System;
+using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.IO;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.ComponentModel.Composition;
-using CryptoGateway.FileSystem.VShell;
 using CryptoGateway.FileSystem.VShell.Interfaces;
-using LumiSoft.Net.Mime;
 using JobAlertManagerGUI.Model;
+using LumiSoft.Net.Mime;
 
 namespace JobAlertManagerGUI.View
 {
     [Export(typeof(IEMailReader))]
     public partial class EMailPresenter : UserControl, IEMailReader
     {
-        public Uri SourceUri
-        {
-            get { return (Uri)GetValue(SourceUriProperty); }
-            set
-            {
-                if (SourceUri == null && value != null || SourceUri != null && value == null || SourceUri.ToString() != value.ToString())
-                    SetValue(SourceUriProperty, value);
-                if (prev_uri == value.ToString())
-                    return;
-                prev_uri = value.ToString();
-                if (IsAlreadyExpanded || !IsExpandedViewOpened)
-                {
-                    if (IsAlreadyExpanded)
-                    {
-                        if (!ThreadSelection && RootModel.ThreadViewer != null && !RootModel.ThreadViewer.IsInThread(value.LocalPath))
-                            RefreshThreadPending = true;
-                    }
-                    DisplayMsg();
-                }
-                else
-                    RootModel.ReaderWindow.SourceUri = value;
-            }
-        }
         public static readonly DependencyProperty SourceUriProperty =
-            DependencyProperty.Register("SourceUri", typeof(Uri), typeof(EMailPresenter), new UIPropertyMetadata(null, (o, e) =>
-            {
-                (o as EMailPresenter).SourceUri = e.NewValue as Uri;
-            }));
+            DependencyProperty.Register("SourceUri", typeof(Uri), typeof(EMailPresenter),
+                new UIPropertyMetadata(null, (o, e) => { (o as EMailPresenter).SourceUri = e.NewValue as Uri; }));
 
-        public QueryMessageThreadHanlder QueryThread { get; set; }
-
-        public byte[] SourceData { set { _sourceData = value; DataPending = value != null; } }
-
-        private byte[] _sourceData = null;
-
-        private bool DataPending = false;
-
-        public bool IsAlreadyExpanded
-        {
-            get { return (bool)GetValue(IsAlreadyExpandedProperty); }
-            set
-            {
-                if (IsAlreadyExpanded != value)
-                    SetValue(IsAlreadyExpandedProperty, value);
-                if (value)
-                {
-                    BtnFullView.Visibility = System.Windows.Visibility.Collapsed;
-                    BtnThreadView.Visibility = System.Windows.Visibility.Visible;
-                }
-                else
-                {
-                    BtnFullView.Visibility = System.Windows.Visibility.Visible;
-                    BtnThreadView.Visibility = System.Windows.Visibility.Collapsed;
-                }
-
-            }
-        }
         public static readonly DependencyProperty IsAlreadyExpandedProperty =
-            DependencyProperty.Register("IsAlreadyExpanded", typeof(bool), typeof(EMailPresenter), new UIPropertyMetadata(false, (o, e) =>
-            {
-                (o as EMailPresenter).IsAlreadyExpanded = (bool)e.NewValue;
-            }));
+            DependencyProperty.Register("IsAlreadyExpanded", typeof(bool), typeof(EMailPresenter),
+                new UIPropertyMetadata(false,
+                    (o, e) => { (o as EMailPresenter).IsAlreadyExpanded = (bool) e.NewValue; }));
 
-        internal RootModel Data
-        {
-            get
-            {
-                if (RootModel.CurrentModel == null)
-                {
-                    RootModel _data = new RootModel();
-                    _data.TextHeaderStr = Properties.Resources.PlainTextWord;
-                    _data.HtmlHeaderStr = Properties.Resources.RichTextWord;
-                    _data.RawHeaderStr = Properties.Resources.RawTextWord;
-                    _data.OtherAspectsHeaderStr = Properties.Resources.MailPropertiesWord;
-                    _data.SaveAttachmentToolTip = Properties.Resources.SaveAttachmentWord;
-                    RootModel.CurrentModel = _data;
-                }
-                return RootModel.CurrentModel;
-            }
-            set
-            {
-                RootModel.CurrentModel = value;
-                if (UpdateModePending)
-                    OnCheckBriefView(this, null);
-            }
-        }
+        private byte[] _sourceData;
 
-        private bool IsExpandedViewOpened = false;
+        private bool _threadWindowOpened = true;
 
-        public EMailPresenter()
-        {
-            InitializeComponent();
-            ChkBriefView.Content = Properties.Resources.BriefViewWord;
-        }
+        private bool ActiveShowThreadWindow;
 
-        public void UpdateState()
-        {
-            OnCheckBriefView(this, null);
-        }
+        private byte[] CurrSourceData;
 
-        public void UpdateMode()
-        {
-            UpdateModePending = true;
-        }
+        private bool DataPending;
 
-        private bool UpdateModePending = false;
+        private bool IsExpandedViewOpened;
 
-        private void OnInitialized(object sender, EventArgs e)
-        {
-            DataContext = Data;
-            BtnThreadView.ToolTip = Properties.Resources.ShowMessageThreadDDDToolTip;
-            BtnFullView.ToolTip = Properties.Resources.OpenViewWindowDDDToolTip;
-            BtnSubDoc.ToolTip = Properties.Resources.SubMessageFoundDDDTip;
-        }
-
-        private void OnLoaded(object sender, RoutedEventArgs e)
-        {
-            if (DataPending)
-            {
-                DataPending = false;
-                DisplayMsg(_sourceData);
-            }
-        }
+        private string prev_uri;
+        private bool RefreshThreadPending;
 
         private bool StartBrief = true;
-
-        private void OnExpandView(object sender, RoutedEventArgs e)
-        {
-            if (!IsExpandedViewOpened)
-            {
-                bool isfirst = RootModel.ReaderWindow == null;
-                if (isfirst)
-                {
-                    RootModel.ReaderWindow = new EMailReader();
-                    RootModel.ReaderWindow.Title = Properties.Resources.CGWEMailReaderTitleWord;
-                    RootModel.ReaderWindow.ClosedHandler = OnFullViewClosed;
-                    RootModel.ReaderWindow.Owner = Window.GetWindow(this);
-                    RootModel.ReaderWindow.QueryThread = QueryThread;
-                    RootModel.ReaderWindow.HostPresenter = this;
-                }
-                else
-                    RootModel.ReaderWindow.UpdateMode();
-                //RootModel.ReaderWindow.Data = Data;
-                RootModel.ReaderWindow.SourceUri = SourceUri;
-                StartBrief = Data.BriefView;
-                RootModel.ReaderWindow.Show();
-                Visibility = System.Windows.Visibility.Collapsed;
-                IsExpandedViewOpened = true;
-                if (isfirst)
-                    RootModel.ReaderWindow.SourceUri = SourceUri;
-            }
-        }
-
-        private byte[] CurrSourceData = null;
-
-        private void OnOpenSubDoc(object sender, RoutedEventArgs e)
-        {
-            EMailReader reader = new EMailReader();
-            reader.ForceClose = true;
-            reader.SourceData = CurrSourceData;
-            reader.Title += "/" + Properties.Resources.SubMessagesWord;
-            reader.HostPresenter = this;
-            reader.ShowDialog();
-        }
-
-        private void OnFullViewClosed(bool IsClosed, Window reader)
-        {
-            if (!IsClosed)
-            {
-                Visibility = System.Windows.Visibility.Visible;
-                IsExpandedViewOpened = false;
-                if (StartBrief != Data.BriefView)
-                    OnCheckBriefView(this, null);
-            }
-        }
-
-        private void OnCheckBriefView(object sender, RoutedEventArgs e)
-        {
-            if (Data.Entity != null)
-            {
-                bool hasAttachments = Data.EntityRoot.Attachments != null && Data.EntityRoot.Attachments.Length > 0;
-                if (!Data.HasAlternativeParts)
-                {
-                    if (Data.Entity.ContentType == MediaType_enum.Text_plain || Data.Entity.ContentType == MediaType_enum.NotSpecified)
-                        view.ContentTemplate = Data.BriefView ? (hasAttachments ? GetTemplate("aad") : GetTemplate("aa")) : (hasAttachments ? GetTemplate("ad") : GetTemplate("a"));
-                    else
-                        view.ContentTemplate = Data.BriefView ? (hasAttachments ? GetTemplate("bbd") : GetTemplate("bb")) : (hasAttachments ? GetTemplate("bd") : GetTemplate("b"));
-                }
-                else
-                    view.ContentTemplate = Data.BriefView ? (hasAttachments ? GetTemplate("ccd") : GetTemplate("cc")) : (hasAttachments ? GetTemplate("cd") : GetTemplate("c"));
-                UpdateModePending = false;
-            }
-        }
-
-        private string LastDepositFolder
-        {
-            get { return RootModel.LastDepositFolder; }
-            //set { RootModel.LastDepositFolder = value; }
-        }
+        private bool ThreadSelection;
 
         /*
         private void OnSelectAttachment(object sender, SelectionChangedEventArgs e)
@@ -271,20 +91,224 @@ namespace JobAlertManagerGUI.View
         }
         */
 
-        private DataTemplate tmpl_a = null;
-        private DataTemplate tmpl_ad = null;
-        private DataTemplate tmpl_aa = null;
-        private DataTemplate tmpl_aad = null;
-        private DataTemplate tmpl_b = null;
-        private DataTemplate tmpl_bd = null;
-        private DataTemplate tmpl_bb = null;
-        private DataTemplate tmpl_bbd = null;
-        private DataTemplate tmpl_c = null;
-        private DataTemplate tmpl_cd = null;
-        private DataTemplate tmpl_cc = null;
-        private DataTemplate tmpl_ccd = null;
+        private DataTemplate tmpl_a;
+        private DataTemplate tmpl_aa;
+        private DataTemplate tmpl_aad;
+        private DataTemplate tmpl_ad;
+        private DataTemplate tmpl_b;
+        private DataTemplate tmpl_bb;
+        private DataTemplate tmpl_bbd;
+        private DataTemplate tmpl_bd;
+        private DataTemplate tmpl_c;
+        private DataTemplate tmpl_cc;
+        private DataTemplate tmpl_ccd;
+        private DataTemplate tmpl_cd;
 
-        private string prev_uri = null;
+        private bool UpdateModePending;
+
+        public EMailPresenter()
+        {
+            InitializeComponent();
+            ChkBriefView.Content = Properties.Resources.BriefViewWord;
+        }
+
+        public byte[] SourceData
+        {
+            set
+            {
+                _sourceData = value;
+                DataPending = value != null;
+            }
+        }
+
+        public bool IsAlreadyExpanded
+        {
+            get => (bool) GetValue(IsAlreadyExpandedProperty);
+            set
+            {
+                if (IsAlreadyExpanded != value)
+                    SetValue(IsAlreadyExpandedProperty, value);
+                if (value)
+                {
+                    BtnFullView.Visibility = Visibility.Collapsed;
+                    BtnThreadView.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    BtnFullView.Visibility = Visibility.Visible;
+                    BtnThreadView.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
+
+        internal RootModel Data
+        {
+            get
+            {
+                if (RootModel.CurrentModel == null)
+                {
+                    var _data = new RootModel();
+                    _data.TextHeaderStr = Properties.Resources.PlainTextWord;
+                    _data.HtmlHeaderStr = Properties.Resources.RichTextWord;
+                    _data.RawHeaderStr = Properties.Resources.RawTextWord;
+                    _data.OtherAspectsHeaderStr = Properties.Resources.MailPropertiesWord;
+                    _data.SaveAttachmentToolTip = Properties.Resources.SaveAttachmentWord;
+                    RootModel.CurrentModel = _data;
+                }
+
+                return RootModel.CurrentModel;
+            }
+            set
+            {
+                RootModel.CurrentModel = value;
+                if (UpdateModePending)
+                    OnCheckBriefView(this, null);
+            }
+        }
+
+        private string LastDepositFolder => RootModel.LastDepositFolder;
+
+        public bool ThreadWindowOpened
+        {
+            get => _threadWindowOpened;
+            set
+            {
+                if (_threadWindowOpened != value)
+                {
+                    _threadWindowOpened = value;
+                    BtnThreadView.IsEnabled = !value;
+                }
+            }
+        }
+
+        public Uri SourceUri
+        {
+            get => (Uri) GetValue(SourceUriProperty);
+            set
+            {
+                if (SourceUri == null && value != null || SourceUri != null && value == null ||
+                    SourceUri.ToString() != value.ToString())
+                    SetValue(SourceUriProperty, value);
+                if (prev_uri == value.ToString())
+                    return;
+                prev_uri = value.ToString();
+                if (IsAlreadyExpanded || !IsExpandedViewOpened)
+                {
+                    if (IsAlreadyExpanded)
+                        if (!ThreadSelection && RootModel.ThreadViewer != null &&
+                            !RootModel.ThreadViewer.IsInThread(value.LocalPath))
+                            RefreshThreadPending = true;
+                    DisplayMsg();
+                }
+                else
+                {
+                    RootModel.ReaderWindow.SourceUri = value;
+                }
+            }
+        }
+
+        public QueryMessageThreadHanlder QueryThread { get; set; }
+
+        public void UpdateState()
+        {
+            OnCheckBriefView(this, null);
+        }
+
+        public void UpdateMode()
+        {
+            UpdateModePending = true;
+        }
+
+        private void OnInitialized(object sender, EventArgs e)
+        {
+            DataContext = Data;
+            BtnThreadView.ToolTip = Properties.Resources.ShowMessageThreadDDDToolTip;
+            BtnFullView.ToolTip = Properties.Resources.OpenViewWindowDDDToolTip;
+            BtnSubDoc.ToolTip = Properties.Resources.SubMessageFoundDDDTip;
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            if (DataPending)
+            {
+                DataPending = false;
+                DisplayMsg(_sourceData);
+            }
+        }
+
+        private void OnExpandView(object sender, RoutedEventArgs e)
+        {
+            if (!IsExpandedViewOpened)
+            {
+                var isfirst = RootModel.ReaderWindow == null;
+                if (isfirst)
+                {
+                    RootModel.ReaderWindow = new EMailReader();
+                    RootModel.ReaderWindow.Title = Properties.Resources.CGWEMailReaderTitleWord;
+                    RootModel.ReaderWindow.ClosedHandler = OnFullViewClosed;
+                    RootModel.ReaderWindow.Owner = Window.GetWindow(this);
+                    RootModel.ReaderWindow.QueryThread = QueryThread;
+                    RootModel.ReaderWindow.HostPresenter = this;
+                }
+                else
+                {
+                    RootModel.ReaderWindow.UpdateMode();
+                }
+
+                //RootModel.ReaderWindow.Data = Data;
+                RootModel.ReaderWindow.SourceUri = SourceUri;
+                StartBrief = Data.BriefView;
+                RootModel.ReaderWindow.Show();
+                Visibility = Visibility.Collapsed;
+                IsExpandedViewOpened = true;
+                if (isfirst)
+                    RootModel.ReaderWindow.SourceUri = SourceUri;
+            }
+        }
+
+        private void OnOpenSubDoc(object sender, RoutedEventArgs e)
+        {
+            var reader = new EMailReader();
+            reader.ForceClose = true;
+            reader.SourceData = CurrSourceData;
+            reader.Title += "/" + Properties.Resources.SubMessagesWord;
+            reader.HostPresenter = this;
+            reader.ShowDialog();
+        }
+
+        private void OnFullViewClosed(bool IsClosed, Window reader)
+        {
+            if (!IsClosed)
+            {
+                Visibility = Visibility.Visible;
+                IsExpandedViewOpened = false;
+                if (StartBrief != Data.BriefView)
+                    OnCheckBriefView(this, null);
+            }
+        }
+
+        private void OnCheckBriefView(object sender, RoutedEventArgs e)
+        {
+            if (Data.Entity != null)
+            {
+                var hasAttachments = Data.EntityRoot.Attachments != null && Data.EntityRoot.Attachments.Length > 0;
+                if (!Data.HasAlternativeParts)
+                    if (Data.Entity.ContentType == MediaType_enum.Text_plain ||
+                        Data.Entity.ContentType == MediaType_enum.NotSpecified)
+                        view.ContentTemplate = Data.BriefView
+                            ? (hasAttachments ? GetTemplate("aad") : GetTemplate("aa"))
+                            : (hasAttachments ? GetTemplate("ad") : GetTemplate("a"));
+                    else
+                        view.ContentTemplate = Data.BriefView
+                            ? (hasAttachments ? GetTemplate("bbd") : GetTemplate("bb"))
+                            : (hasAttachments ? GetTemplate("bd") : GetTemplate("b"));
+                else
+                    view.ContentTemplate = Data.BriefView
+                        ? (hasAttachments ? GetTemplate("ccd") : GetTemplate("cc"))
+                        : (hasAttachments ? GetTemplate("cd") : GetTemplate("c"));
+                UpdateModePending = false;
+            }
+        }
 
         private void DisplayMsg()
         {
@@ -293,37 +317,41 @@ namespace JobAlertManagerGUI.View
                 ClearView();
                 return;
             }
+
             if (File.Exists(SourceUri.LocalPath))
             {
-                StreamReader sr = new StreamReader(SourceUri.LocalPath);
+                var sr = new StreamReader(SourceUri.LocalPath);
                 Data.RawText = sr.ReadToEnd();
                 sr.Close();
-                byte[] bf = Encoding.ASCII.GetBytes(Data.RawText);
+                var bf = Encoding.ASCII.GetBytes(Data.RawText);
                 DisplayMsg(bf);
             }
             else
+            {
                 ClearView();
+            }
         }
 
         private void DisplayMsg(byte[] bf)
         {
-            LumiSoft.Net.Mime.Mime m;
+            Mime m;
             try
             {
-                m = LumiSoft.Net.Mime.Mime.Parse(bf);
+                m = Mime.Parse(bf);
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Trace.WriteLine(SourceUri);
-                System.Diagnostics.Trace.WriteLine(ex.Message);
+                Trace.WriteLine(SourceUri);
+                Trace.WriteLine(ex.Message);
                 return;
             }
+
             Data.EntityRoot = m;
             if (GetSubDocData(m.MainEntity))
-                BtnSubDoc.Visibility = System.Windows.Visibility.Visible;
+                BtnSubDoc.Visibility = Visibility.Visible;
             else
-                BtnSubDoc.Visibility = System.Windows.Visibility.Collapsed;
-            bool hasAttachments = m.Attachments != null && m.Attachments.Length > 0;
+                BtnSubDoc.Visibility = Visibility.Collapsed;
+            var hasAttachments = m.Attachments != null && m.Attachments.Length > 0;
             /*
             if (hasAttachments)
             {
@@ -343,17 +371,19 @@ namespace JobAlertManagerGUI.View
                 RefreshThreadPending = false;
             }
 
-            MimeEntity centity = GetDocEntity(m.MainEntity);
-            if (centity == null)
-            {
-                centity = m.MainEntity;
-            }
-            Data.HasAlternativeParts = centity != null && centity.ParentEntity != null && centity.ParentEntity.ContentType == MediaType_enum.Multipart_alternative && centity.ParentEntity.ChildEntities.Count > 1;
+            var centity = GetDocEntity(m.MainEntity);
+            if (centity == null) centity = m.MainEntity;
+            Data.HasAlternativeParts = centity != null && centity.ParentEntity != null &&
+                                       centity.ParentEntity.ContentType == MediaType_enum.Multipart_alternative &&
+                                       centity.ParentEntity.ChildEntities.Count > 1;
             if (!Data.HasAlternativeParts)
             {
-                if (centity.ContentType == MediaType_enum.Text_plain || centity.ContentType == MediaType_enum.NotSpecified)
+                if (centity.ContentType == MediaType_enum.Text_plain ||
+                    centity.ContentType == MediaType_enum.NotSpecified)
                 {
-                    view.ContentTemplate = Data.BriefView ? (hasAttachments ? GetTemplate("aad") : GetTemplate("aa")) : (hasAttachments ? GetTemplate("ad") : GetTemplate("a"));
+                    view.ContentTemplate = Data.BriefView
+                        ? (hasAttachments ? GetTemplate("aad") : GetTemplate("aa"))
+                        : (hasAttachments ? GetTemplate("ad") : GetTemplate("a"));
                     view.Content = DataContext;
                     Data.PlainText = m.BodyText;
                     Data.Entity = centity;
@@ -364,28 +394,20 @@ namespace JobAlertManagerGUI.View
                     if (centity.ContentType != MediaType_enum.Multipart_related)
                         Data.Entity = centity;
                     else
-                    {
                         foreach (MimeEntity ce in centity.ChildEntities)
-                        {
                             if (ce.ContentType == MediaType_enum.Multipart_alternative)
                             {
                                 tentity = centity;
                                 Data.HasAlternativeParts = true;
                                 foreach (MimeEntity cce in ce.ChildEntities)
-                                {
                                     if (cce.ContentType == MediaType_enum.Text_plain)
                                         tentity = cce;
                                     else if (IsContentBlock(cce))
                                         Data.Entity = cce;
                                     else if (ce.ContentType == MediaType_enum.Multipart_related)
-                                    {
                                         foreach (MimeEntity ccce in cce.ChildEntities)
-                                        {
                                             if (IsContentBlock(ccce))
                                                 Data.Entity = ccce;
-                                        }
-                                    }
-                                }
                             }
                             else
                             {
@@ -395,38 +417,45 @@ namespace JobAlertManagerGUI.View
                                     break;
                                 }
                             }
-                        }
-                    }
+
                     if (Data.HasAlternativeParts)
-                        view.ContentTemplate = Data.BriefView ? (hasAttachments ? GetTemplate("ccd") : GetTemplate("cc")) : (hasAttachments ? GetTemplate("cd") : GetTemplate("c"));
+                        view.ContentTemplate = Data.BriefView
+                            ? (hasAttachments ? GetTemplate("ccd") : GetTemplate("cc"))
+                            : (hasAttachments ? GetTemplate("cd") : GetTemplate("c"));
                     else
-                        view.ContentTemplate = Data.BriefView ? (hasAttachments ? GetTemplate("bbd") : GetTemplate("bb")) : (hasAttachments ? GetTemplate("bd") : GetTemplate("b"));
+                        view.ContentTemplate = Data.BriefView
+                            ? (hasAttachments ? GetTemplate("bbd") : GetTemplate("bb"))
+                            : (hasAttachments ? GetTemplate("bd") : GetTemplate("b"));
                     view.Content = DataContext;
-                    Data.PlainText = tentity != null && (tentity.ContentType == MediaType_enum.Text_plain || tentity.ContentType == MediaType_enum.NotSpecified) ? tentity.DataText : "";
+                    Data.PlainText =
+                        tentity != null && (tentity.ContentType == MediaType_enum.Text_plain ||
+                                            tentity.ContentType == MediaType_enum.NotSpecified)
+                            ? tentity.DataText
+                            : "";
                     ServerHtml();
                 }
             }
             else
             {
-                MimeEntity tentity = centity;
+                var tentity = centity;
                 foreach (MimeEntity ce in centity.ParentEntity.ChildEntities)
-                {
                     if (ce.ContentType == MediaType_enum.Text_plain)
                         tentity = ce;
                     else if (IsContentBlock(ce))
                         Data.Entity = ce;
                     else if (ce.ContentType == MediaType_enum.Multipart_related)
-                    {
                         foreach (MimeEntity cce in ce.ChildEntities)
-                        {
                             if (IsContentBlock(cce))
                                 Data.Entity = cce;
-                        }
-                    }
-                }
-                view.ContentTemplate = Data.BriefView ? (hasAttachments ? GetTemplate("ccd") : GetTemplate("cc")) : (hasAttachments ? GetTemplate("cd") : GetTemplate("c"));
+                view.ContentTemplate = Data.BriefView
+                    ? (hasAttachments ? GetTemplate("ccd") : GetTemplate("cc"))
+                    : (hasAttachments ? GetTemplate("cd") : GetTemplate("c"));
                 view.Content = DataContext;
-                Data.PlainText = tentity != null && (tentity.ContentType == MediaType_enum.Text_plain || tentity.ContentType == MediaType_enum.NotSpecified) ? tentity.DataText : "";
+                Data.PlainText =
+                    tentity != null && (tentity.ContentType == MediaType_enum.Text_plain ||
+                                        tentity.ContentType == MediaType_enum.NotSpecified)
+                        ? tentity.DataText
+                        : "";
                 ServerHtml();
             }
         }
@@ -434,24 +463,24 @@ namespace JobAlertManagerGUI.View
         private bool IsContentBlock(MimeEntity entity)
         {
             return entity.ContentType == MediaType_enum.Text_html ||
-                entity.ContentType == MediaType_enum.Text_plain ||
-                entity.ContentType == MediaType_enum.Text_rtf ||
-                entity.ContentType == MediaType_enum.Text_xml ||
-                entity.ContentType == MediaType_enum.NotSpecified;
+                   entity.ContentType == MediaType_enum.Text_plain ||
+                   entity.ContentType == MediaType_enum.Text_rtf ||
+                   entity.ContentType == MediaType_enum.Text_xml ||
+                   entity.ContentType == MediaType_enum.NotSpecified;
         }
 
         private bool GetSubDocData(MimeEntity entity)
         {
-            if (entity.ContentType == MediaType_enum.Message_rfc822 && entity.ContentDisposition == ContentDisposition_enum.Inline)
+            if (entity.ContentType == MediaType_enum.Message_rfc822 &&
+                entity.ContentDisposition == ContentDisposition_enum.Inline)
             {
                 CurrSourceData = entity.Data;
                 return true;
             }
+
             foreach (MimeEntity ce in entity.ChildEntities)
-            {
                 if (GetSubDocData(ce))
                     return true;
-            }
             return false;
         }
 
@@ -461,10 +490,11 @@ namespace JobAlertManagerGUI.View
                 return entity;
             foreach (MimeEntity ce in entity.ChildEntities)
             {
-                MimeEntity centity = GetDocEntity(ce);
+                var centity = GetDocEntity(ce);
                 if (centity != null)
                     return centity;
             }
+
             return null;
         }
 
@@ -521,6 +551,7 @@ namespace JobAlertManagerGUI.View
                         tmpl_ccd = FindResource("CCD") as DataTemplate;
                     return tmpl_ccd;
             }
+
             return null;
         }
 
@@ -529,10 +560,7 @@ namespace JobAlertManagerGUI.View
             HttpContentServer.State = HttpContentServerState.Message;
             if (!HttpContentServer.IsServing)
             {
-                Action act = () =>
-                {
-                    HttpContentServer.Start();
-                };
+                Action act = () => { HttpContentServer.Start(); };
                 act.BeginInvoke(ar => { SetBrowseUri(); }, null);
             }
             else
@@ -545,10 +573,7 @@ namespace JobAlertManagerGUI.View
         {
             if (!Dispatcher.CheckAccess())
             {
-                while (!HttpContentServer.IsServing)
-                {
-                    System.Threading.Thread.Sleep(10);
-                }
+                while (!HttpContentServer.IsServing) Thread.Sleep(10);
                 Dispatcher.Invoke(new Action(SetBrowseUri), null);
             }
             else
@@ -569,25 +594,6 @@ namespace JobAlertManagerGUI.View
             //DPAttach.Visibility = System.Windows.Visibility.Collapsed;
         }
 
-        private bool _threadWindowOpened = true;
-
-        public bool ThreadWindowOpened
-        {
-            get { return _threadWindowOpened; }
-            set
-            {
-                if (_threadWindowOpened != value)
-                {
-                    _threadWindowOpened = value;
-                    BtnThreadView.IsEnabled = !value;
-                }
-            }
-        }
-
-        private bool ActiveShowThreadWindow = false;
-        private bool ThreadSelection = false;
-        private bool RefreshThreadPending = false;
-
 
         private void OnShowThreadView(object sender, RoutedEventArgs e)
         {
@@ -605,7 +611,6 @@ namespace JobAlertManagerGUI.View
                 {
                     BtnThreadView.IsEnabled = start.ReplyMsgs.Count() > 0;
                     if (BtnThreadView.IsEnabled)
-                    {
                         if (RootModel.ThreadViewer.MailSelected == null)
                         {
                             RootModel.ThreadViewer.MailSelected = path =>
@@ -623,24 +628,17 @@ namespace JobAlertManagerGUI.View
                                 ThreadWindowOpened = false;
                             };
                         }
-                    }
+
                     RootModel.ThreadViewer.Root = start;
                     if (!ThreadWindowOpened)
-                    {
                         if (ActiveShowThreadWindow)
                         {
                             RootModel.ThreadViewer.Show();
                             BtnThreadView.IsEnabled = false;
                             ThreadWindowOpened = true;
                         }
-                    }
-                }
-                else
-                {
-                    //BtnThreadView.IsEnabled = false;
                 }
             }
         }
-
     }
 }

@@ -1,23 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace JobAlertManagerGUI.Helpers
 {
     public class MultiTextWriter : TextWriter
     {
-        private IEnumerable<TextWriter> writers;
+        private readonly IEnumerable<TextWriter> writers;
+
         public MultiTextWriter(IEnumerable<TextWriter> writers)
         {
             this.writers = writers.ToList();
         }
+
         public MultiTextWriter(params TextWriter[] writers)
         {
             this.writers = writers;
         }
+
+        public override Encoding Encoding => Encoding.ASCII;
 
         public override void Write(char value)
         {
@@ -41,11 +43,6 @@ namespace JobAlertManagerGUI.Helpers
         {
             foreach (var writer in writers)
                 writer.Close();
-        }
-
-        public override Encoding Encoding
-        {
-            get { return Encoding.ASCII; }
         }
     }
 }

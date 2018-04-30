@@ -1,22 +1,19 @@
-﻿using JobAlertManagerGUI.Model;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace JobAlertManagerGUI.Helpers
 {
     public class ControlWriter : TextWriter
     {
-        private TextBlock textbox;
+        private readonly TextBlock textbox;
 
         public ControlWriter(TextBlock textblock)
         {
-            this.textbox = textblock;
+            textbox = textblock;
         }
+
+        public override Encoding Encoding => Encoding.ASCII;
 
         public override void Write(char value)
         {
@@ -26,11 +23,6 @@ namespace JobAlertManagerGUI.Helpers
         public override void Write(string value)
         {
             textbox.Text += value;
-        }
-
-        public override Encoding Encoding
-        {
-            get { return Encoding.ASCII; }
         }
     }
 }

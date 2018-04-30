@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Windows.Input;
 using System.Diagnostics;
+using System.Windows.Input;
 
 namespace JobAlertManagerGUI.Helpers
 {
     /// <summary>
-    /// This RelayCommand is taken from MSDN magazine
-    /// http://msdn.microsoft.com/en-us/magazine/dd419663.aspx#id0090030
+    ///     This RelayCommand is taken from MSDN magazine
+    ///     http://msdn.microsoft.com/en-us/magazine/dd419663.aspx#id0090030
     /// </summary>
-
     public class RelayCommand : ICommand
     {
         #region Fields
 
-        readonly Action<object> _execute;
-        readonly Predicate<object> _canExecute;
+        private readonly Action<object> _execute;
+        private readonly Predicate<object> _canExecute;
 
         #endregion // Fields
 
@@ -33,6 +32,7 @@ namespace JobAlertManagerGUI.Helpers
             _execute = execute;
             _canExecute = canExecute;
         }
+
         #endregion // Constructors
 
         #region ICommand Members
@@ -45,8 +45,8 @@ namespace JobAlertManagerGUI.Helpers
 
         public event EventHandler CanExecuteChanged
         {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
         }
 
         public void Execute(object parameter)
@@ -56,5 +56,4 @@ namespace JobAlertManagerGUI.Helpers
 
         #endregion // ICommand Members
     }
-
 }

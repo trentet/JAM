@@ -1,5 +1,4 @@
-﻿
-namespace JobAlertManagerGUI.Model
+﻿namespace JobAlertManagerGUI.Model
 {
     public class User
     {

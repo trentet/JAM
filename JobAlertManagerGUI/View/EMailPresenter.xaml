@@ -1,15 +1,15 @@
 ﻿<UserControl x:Class="JobAlertManagerGUI.View.EMailPresenter"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:locModel="clr-namespace:JobAlertManagerGUI.Model"
              xmlns:locView="clr-namespace:JobAlertManagerGUI.View"
              xmlns:res="clr-namespace:JobAlertManagerGUI.Properties"
              xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300" Loaded="OnLoaded" Initialized="OnInitialized">
-    
+
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,16 +18,19 @@
             <DataTemplate x:Key="A">
                 <TabControl>
                     <TabItem Header="{Binding TextHeaderStr}">
-                        <TextBox Text="{Binding PlainText}" IsReadOnly="True" Background="White" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                        <TextBox Text="{Binding PlainText}" IsReadOnly="True" Background="White" TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto" />
                     </TabItem>
                     <TabItem Header="{Binding RawHeaderStr}">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top" >
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                                      VerticalAlignment="Top">
                             <locView:LargeTextBox Text="{Binding RawText}" />
                         </ScrollViewer>
                     </TabItem>
                     <TabItem Header="{Binding OtherAspectsHeaderStr}">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Top" >
-                            <locView:EMailMetaDetails DataContext="{Binding EntityRoot}"/>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                                      VerticalAlignment="Top">
+                            <locView:EMailMetaDetails DataContext="{Binding EntityRoot}" />
                         </ScrollViewer>
                     </TabItem>
                 </TabControl>
@@ -35,30 +38,35 @@
             <DataTemplate x:Key="AD">
                 <TabControl>
                     <TabItem Header="{Binding TextHeaderStr}">
-                        <TextBox Text="{Binding PlainText}" IsReadOnly="True" Background="White" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                        <TextBox Text="{Binding PlainText}" IsReadOnly="True" Background="White" TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto" />
                     </TabItem>
                     <TabItem Header="{Binding MsgAttachmentsWord}">
                         <locView:EMailAttachments DataContext="{Binding EntityRoot}" />
                     </TabItem>
                     <TabItem Header="{Binding RawHeaderStr}">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top" >
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                                      VerticalAlignment="Top">
                             <locView:LargeTextBox Text="{Binding RawText}" />
                         </ScrollViewer>
                     </TabItem>
                     <TabItem Header="{Binding OtherAspectsHeaderStr}">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Top" >
-                            <locView:EMailMetaDetails DataContext="{Binding EntityRoot}"/>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                                      VerticalAlignment="Top">
+                            <locView:EMailMetaDetails DataContext="{Binding EntityRoot}" />
                         </ScrollViewer>
                     </TabItem>
                 </TabControl>
             </DataTemplate>
             <DataTemplate x:Key="AA">
-                <TextBox Text="{Binding PlainText}" Background="White" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                <TextBox Text="{Binding PlainText}" Background="White" IsReadOnly="True" TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto" />
             </DataTemplate>
             <DataTemplate x:Key="AAD">
                 <TabControl>
                     <TabItem Header="{Binding TextHeaderStr}">
-                        <TextBox Text="{Binding PlainText}" IsReadOnly="True" Background="White" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                        <TextBox Text="{Binding PlainText}" IsReadOnly="True" Background="White" TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto" />
                     </TabItem>
                     <TabItem Header="{Binding MsgAttachmentsWord}">
                         <locView:EMailAttachments DataContext="{Binding EntityRoot}" />
@@ -68,16 +76,21 @@
             <DataTemplate x:Key="B">
                 <TabControl>
                     <TabItem Header="{Binding HtmlHeaderStr}">
-                        <WebBrowser x:Name="html" locModel:RootModel.EntryUri="{Binding HtmlUri, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" locModel:RootModel.Refresh="{Binding HtmlRefreshTrigger}" MinHeight="360" VerticalAlignment="Top" />
+                        <WebBrowser x:Name="html"
+                                    locModel:RootModel.EntryUri="{Binding HtmlUri, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    locModel:RootModel.Refresh="{Binding HtmlRefreshTrigger}" MinHeight="360"
+                                    VerticalAlignment="Top" />
                     </TabItem>
                     <TabItem Header="{Binding RawHeaderStr}">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top" >
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                                      VerticalAlignment="Top">
                             <locView:LargeTextBox Text="{Binding RawText}" />
                         </ScrollViewer>
                     </TabItem>
                     <TabItem Header="{Binding OtherAspectsHeaderStr}">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Top" >
-                            <locView:EMailMetaDetails DataContext="{Binding EntityRoot}"/>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                                      VerticalAlignment="Top">
+                            <locView:EMailMetaDetails DataContext="{Binding EntityRoot}" />
                         </ScrollViewer>
                     </TabItem>
                 </TabControl>
@@ -85,30 +98,40 @@
             <DataTemplate x:Key="BD">
                 <TabControl>
                     <TabItem Header="{Binding HtmlHeaderStr}">
-                        <WebBrowser x:Name="html" locModel:RootModel.EntryUri="{Binding HtmlUri, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" locModel:RootModel.Refresh="{Binding HtmlRefreshTrigger}" MinHeight="360" VerticalAlignment="Top" />
+                        <WebBrowser x:Name="html"
+                                    locModel:RootModel.EntryUri="{Binding HtmlUri, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    locModel:RootModel.Refresh="{Binding HtmlRefreshTrigger}" MinHeight="360"
+                                    VerticalAlignment="Top" />
                     </TabItem>
                     <TabItem Header="{Binding MsgAttachmentsWord}">
                         <locView:EMailAttachments DataContext="{Binding EntityRoot}" />
                     </TabItem>
                     <TabItem Header="{Binding RawHeaderStr}">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top" >
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                                      VerticalAlignment="Top">
                             <locView:LargeTextBox Text="{Binding RawText}" />
                         </ScrollViewer>
                     </TabItem>
                     <TabItem Header="{Binding OtherAspectsHeaderStr}">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Top" >
-                            <locView:EMailMetaDetails DataContext="{Binding EntityRoot}"/>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                                      VerticalAlignment="Top">
+                            <locView:EMailMetaDetails DataContext="{Binding EntityRoot}" />
                         </ScrollViewer>
                     </TabItem>
                 </TabControl>
             </DataTemplate>
             <DataTemplate x:Key="BB">
-                <WebBrowser x:Name="html" locModel:RootModel.EntryUri="{Binding HtmlUri}" locModel:RootModel.Refresh="{Binding HtmlRefreshTrigger}" MinHeight="360" VerticalAlignment="Top" />
+                <WebBrowser x:Name="html" locModel:RootModel.EntryUri="{Binding HtmlUri}"
+                            locModel:RootModel.Refresh="{Binding HtmlRefreshTrigger}" MinHeight="360"
+                            VerticalAlignment="Top" />
             </DataTemplate>
             <DataTemplate x:Key="BBD">
                 <TabControl>
                     <TabItem Header="{Binding HtmlHeaderStr}">
-                        <WebBrowser x:Name="html" locModel:RootModel.EntryUri="{Binding HtmlUri, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" locModel:RootModel.Refresh="{Binding HtmlRefreshTrigger}" MinHeight="360" VerticalAlignment="Top" />
+                        <WebBrowser x:Name="html"
+                                    locModel:RootModel.EntryUri="{Binding HtmlUri, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    locModel:RootModel.Refresh="{Binding HtmlRefreshTrigger}" MinHeight="360"
+                                    VerticalAlignment="Top" />
                     </TabItem>
                     <TabItem Header="{Binding MsgAttachmentsWord}">
                         <locView:EMailAttachments DataContext="{Binding EntityRoot}" />
@@ -118,19 +141,24 @@
             <DataTemplate x:Key="C">
                 <TabControl>
                     <TabItem Header="{Binding TextHeaderStr}">
-                        <TextBox Text="{Binding PlainText}" IsReadOnly="True" Background="White" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                        <TextBox Text="{Binding PlainText}" IsReadOnly="True" Background="White" TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto" />
                     </TabItem>
                     <TabItem Header="{Binding HtmlHeaderStr}">
-                        <WebBrowser x:Name="html" locModel:RootModel.EntryUri="{Binding HtmlUri}" locModel:RootModel.Refresh="{Binding HtmlRefreshTrigger}" MinHeight="360" VerticalAlignment="Top" />
+                        <WebBrowser x:Name="html" locModel:RootModel.EntryUri="{Binding HtmlUri}"
+                                    locModel:RootModel.Refresh="{Binding HtmlRefreshTrigger}" MinHeight="360"
+                                    VerticalAlignment="Top" />
                     </TabItem>
                     <TabItem Header="{Binding RawHeaderStr}">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top" >
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                                      VerticalAlignment="Top">
                             <locView:LargeTextBox Text="{Binding RawText}" />
                         </ScrollViewer>
                     </TabItem>
                     <TabItem Header="{Binding OtherAspectsHeaderStr}">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Top" >
-                            <locView:EMailMetaDetails DataContext="{Binding EntityRoot}"/>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                                      VerticalAlignment="Top">
+                            <locView:EMailMetaDetails DataContext="{Binding EntityRoot}" />
                         </ScrollViewer>
                     </TabItem>
                 </TabControl>
@@ -138,22 +166,27 @@
             <DataTemplate x:Key="CD">
                 <TabControl>
                     <TabItem Header="{Binding TextHeaderStr}">
-                        <TextBox Text="{Binding PlainText}" IsReadOnly="True" Background="White" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                        <TextBox Text="{Binding PlainText}" IsReadOnly="True" Background="White" TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto" />
                     </TabItem>
                     <TabItem Header="{Binding HtmlHeaderStr}">
-                        <WebBrowser x:Name="html" locModel:RootModel.EntryUri="{Binding HtmlUri}" locModel:RootModel.Refresh="{Binding HtmlRefreshTrigger}" MinHeight="360" VerticalAlignment="Top" />
+                        <WebBrowser x:Name="html" locModel:RootModel.EntryUri="{Binding HtmlUri}"
+                                    locModel:RootModel.Refresh="{Binding HtmlRefreshTrigger}" MinHeight="360"
+                                    VerticalAlignment="Top" />
                     </TabItem>
                     <TabItem Header="{Binding MsgAttachmentsWord}">
                         <locView:EMailAttachments DataContext="{Binding EntityRoot}" />
                     </TabItem>
                     <TabItem Header="{Binding RawHeaderStr}">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top" >
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                                      VerticalAlignment="Top">
                             <locView:LargeTextBox Text="{Binding RawText}" />
                         </ScrollViewer>
                     </TabItem>
                     <TabItem Header="{Binding OtherAspectsHeaderStr}">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Top" >
-                            <locView:EMailMetaDetails DataContext="{Binding EntityRoot}"/>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                                      VerticalAlignment="Top">
+                            <locView:EMailMetaDetails DataContext="{Binding EntityRoot}" />
                         </ScrollViewer>
                     </TabItem>
                 </TabControl>
@@ -161,20 +194,26 @@
             <DataTemplate x:Key="CC">
                 <TabControl>
                     <TabItem Header="{Binding TextHeaderStr}">
-                        <TextBox Text="{Binding PlainText}" IsReadOnly="True" Background="White" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                        <TextBox Text="{Binding PlainText}" IsReadOnly="True" Background="White" TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto" />
                     </TabItem>
                     <TabItem Header="{Binding HtmlHeaderStr}">
-                        <WebBrowser x:Name="html" locModel:RootModel.EntryUri="{Binding HtmlUri}" locModel:RootModel.Refresh="{Binding HtmlRefreshTrigger}" MinHeight="360" VerticalAlignment="Top" />
+                        <WebBrowser x:Name="html" locModel:RootModel.EntryUri="{Binding HtmlUri}"
+                                    locModel:RootModel.Refresh="{Binding HtmlRefreshTrigger}" MinHeight="360"
+                                    VerticalAlignment="Top" />
                     </TabItem>
                 </TabControl>
             </DataTemplate>
             <DataTemplate x:Key="CCD">
                 <TabControl>
                     <TabItem Header="{Binding TextHeaderStr}">
-                        <TextBox Text="{Binding PlainText}" IsReadOnly="True" Background="White" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                        <TextBox Text="{Binding PlainText}" IsReadOnly="True" Background="White" TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto" />
                     </TabItem>
                     <TabItem Header="{Binding HtmlHeaderStr}">
-                        <WebBrowser x:Name="html" locModel:RootModel.EntryUri="{Binding HtmlUri}" locModel:RootModel.Refresh="{Binding HtmlRefreshTrigger}" MinHeight="360" VerticalAlignment="Top" />
+                        <WebBrowser x:Name="html" locModel:RootModel.EntryUri="{Binding HtmlUri}"
+                                    locModel:RootModel.Refresh="{Binding HtmlRefreshTrigger}" MinHeight="360"
+                                    VerticalAlignment="Top" />
                     </TabItem>
                     <TabItem Header="{Binding MsgAttachmentsWord}">
                         <locView:EMailAttachments DataContext="{Binding EntityRoot}" />
@@ -190,14 +229,20 @@
         </Grid.RowDefinitions>
         <Border BorderBrush="SkyBlue" BorderThickness="0,0,0,1" Background="#FFF0F0F0">
             <DockPanel>
-                <CheckBox x:Name="ChkBriefView" IsChecked="{Binding BriefView}" Click="OnCheckBriefView" VerticalAlignment="Center" Margin="5,0" />
-                <Button x:Name="BtnThreadView" Style="{StaticResource SimpleButtonStyle}" HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="0,0,3,0" VerticalAlignment="Center" Click="OnShowThreadView" Visibility="Collapsed" IsEnabled="False">
+                <CheckBox x:Name="ChkBriefView" IsChecked="{Binding BriefView}" Click="OnCheckBriefView"
+                          VerticalAlignment="Center" Margin="5,0" />
+                <Button x:Name="BtnThreadView" Style="{StaticResource SimpleButtonStyle}" HorizontalAlignment="Right"
+                        DockPanel.Dock="Right" Margin="0,0,3,0" VerticalAlignment="Center" Click="OnShowThreadView"
+                        Visibility="Collapsed" IsEnabled="False">
                     <Image Source="/Images/node-select-all.png" />
                 </Button>
-                <Button x:Name="BtnFullView" Style="{StaticResource SimpleButtonStyle}" HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="0,0,3,0" VerticalAlignment="Center" Click="OnExpandView">
+                <Button x:Name="BtnFullView" Style="{StaticResource SimpleButtonStyle}" HorizontalAlignment="Right"
+                        DockPanel.Dock="Right" Margin="0,0,3,0" VerticalAlignment="Center" Click="OnExpandView">
                     <Image Source="/Images/arrow-out.png" />
                 </Button>
-                <Button x:Name="BtnSubDoc" Style="{StaticResource SimpleButtonStyle}" HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="0,0,3,0" VerticalAlignment="Center" Click="OnOpenSubDoc" Visibility="Collapsed">
+                <Button x:Name="BtnSubDoc" Style="{StaticResource SimpleButtonStyle}" HorizontalAlignment="Right"
+                        DockPanel.Dock="Right" Margin="0,0,3,0" VerticalAlignment="Center" Click="OnOpenSubDoc"
+                        Visibility="Collapsed">
                     <Image Source="/Images/arrow-045.png" />
                 </Button>
             </DockPanel>

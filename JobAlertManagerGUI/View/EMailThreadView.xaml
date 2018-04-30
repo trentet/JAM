@@ -4,9 +4,9 @@
                     xmlns:loc="clr-namespace:JobAlertManagerGUI.Helpers"
                     xmlns:res="clr-namespace:JobAlertManagerGUI.Properties"
                     xmlns:ad="clr-namespace:AvalonDock;assembly=AvalonDock"
-                    Title="{x:Static res:Resources.ConversationThreadWord}" 
-                    mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                    Title="{x:Static res:Resources.ConversationThreadWord}"
+                    mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     d:DesignHeight="237" d:DesignWidth="326" Closed="OnClosed" Closing="OnClosing">
     <ad:DockableContent.Resources>
         <ResourceDictionary>
@@ -22,7 +22,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button x:Name="BtnShowSeqNumb" Style="{StaticResource SimpleButtonStyle}" ToolTip="{x:Static res:Resources.ShowSequenceNumWord}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,1,0,1" Click="OnShowSeqNumber">
+            <Button x:Name="BtnShowSeqNumb" Style="{StaticResource SimpleButtonStyle}"
+                    ToolTip="{x:Static res:Resources.ShowSequenceNumWord}" HorizontalAlignment="Left"
+                    VerticalAlignment="Center" Margin="5,1,0,1" Click="OnShowSeqNumber">
                 <Image Source="/Images/edit-list-order.png" />
             </Button>
         </StackPanel>
@@ -39,12 +41,16 @@
                         <StackPanel.ToolTip>
                             <StackPanel Orientation="Horizontal" TextBlock.Foreground="Black">
                                 <TextBlock Text="{x:Static res:Resources.ReceivedDateTimeQWord}" />
-                                <TextBlock Text="{Binding MsgNode.ReceivedDateTimeEx, Converter={StaticResource ConvertDateTime}}" Margin="5,0" />
+                                <TextBlock
+                                    Text="{Binding MsgNode.ReceivedDateTimeEx, Converter={StaticResource ConvertDateTime}}"
+                                    Margin="5,0" />
                             </StackPanel>
                         </StackPanel.ToolTip>
-                        <TextBlock x:Name="txtTSN" Text="{Binding TimeSeqNumber, StringFormat='{}{0}: '}" Margin="0" Visibility="Collapsed" Foreground="#FFDF4322" />
+                        <TextBlock x:Name="txtTSN" Text="{Binding TimeSeqNumber, StringFormat='{}{0}: '}" Margin="0"
+                                   Visibility="Collapsed" Foreground="#FFDF4322" />
                         <TextBlock Text="{Binding MsgNode.MsgSubjectEx}" Margin="0" />
-                        <TextBlock Text="{Binding MsgNode.MsgFromEx, StringFormat='{}({0})'}" Margin="5,0,0,0" Foreground="Gray" />
+                        <TextBlock Text="{Binding MsgNode.MsgFromEx, StringFormat='{}({0})'}" Margin="5,0,0,0"
+                                   Foreground="Gray" />
                     </StackPanel>
                     <HierarchicalDataTemplate.Triggers>
                         <DataTrigger Binding="{Binding ShowTimeSeqNumber}" Value="True">

@@ -1,22 +1,13 @@
-﻿using JobAlertManagerGUI.Model;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Windows;
+﻿using System.Windows;
+using JobAlertManagerGUI.Model;
 
 namespace JobAlertManagerGUI
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    ///     Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
-        private LogHandler logHandler = new LogHandler();
-
-        public LogHandler Logger { get => logHandler; set => logHandler = value; }
-
-
+        public LogHandler Logger { get; set; } = new LogHandler();
     }
 }
